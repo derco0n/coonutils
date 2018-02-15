@@ -10,11 +10,11 @@ namespace Co0nUtilZ
 {
 
     /// <summary>
-    /// Diese Klasse gewährt Zugriff auf eine Samba/CIFS Freigabe
-    /// Erstellt:           08/2017
-    /// Autor:              D. Marx
-    /// Version:            0.55
-    /// Letzte Änderung:    11.01.2018
+    /// This Class grants Access to a Samba/CIFS-Share
+    /// Created:           08/2017
+    /// Author:              D. Marx
+    /// Version:            0.56
+    /// Last Change:    15.02.2018
     /// </summary>
     public class C_CIFSClient 
     {
@@ -31,22 +31,12 @@ namespace Co0nUtilZ
 
 
         #region properties
-        //Eigenschaften
-        /*
-        private bool _isConnected = false;
-        public bool isConnected
-        {
-            get
-            {
-                return this._isConnected;
-            }
-        }
-        */
+        
         #endregion
 
 
         #region Events
-        //Delegates und Events
+        //Delegates and Events
         public delegate void CompleteEventhandler();
         public delegate void MultiLoadProgressEventHandler(object sender, ProgressEventArgs Args);
         public delegate void ErrorEventHandler(object sender, ErrorEventArgs Fehler);
@@ -60,7 +50,7 @@ namespace Co0nUtilZ
         #endregion
 
         #region Handler
-        private void Handle_UnderlyingNetworkError(object sender, ErrorEventArgs e) //Fehler beim Einbinden der Netzwerkfreigabe behandeln.
+        private void Handle_UnderlyingNetworkError(object sender, ErrorEventArgs e) //Handle Connect-Error
         {
             if (this.GeneralError != null)
             {
@@ -75,12 +65,12 @@ namespace Co0nUtilZ
         #region Konstruktor
 
         /// <summary>
-        /// Konstruktor
+        /// Constructor
         /// </summary>
-        /// <param name="Server">\\Servername oder IP</Servername></param>
-        /// <param name="User">Benutzername</param>
-        /// <param name="Password">Passwort</param>
-        /// <param name="Domain">Domänenname</param>
+        /// <param name="Server">\\Servername or IP</Servername></param>
+        /// <param name="User">Username</param>
+        /// <param name="Password">Password</param>
+        /// <param name="Domain">Domainname</param>
         /// <param name="Authtype"></param>
         public C_CIFSClient(String Server, String User, String Password, String Domain, String Authtype = "Digest")
         {
@@ -94,7 +84,7 @@ namespace Co0nUtilZ
             {
                 if (!this._Server.Contains(@"\\"))
                 {
-                    //Server beginnt nicht mit \\
+                    //Servername does not start with '\\'
                     this._Server = @"\\" + this._Server;
                 }
                 this._NetworkCredential = new NetworkCredential(this._User, this._Password, this._Domain);
@@ -117,10 +107,10 @@ namespace Co0nUtilZ
         #region Methods
 
         /// <summary>
-        /// Gibt die Ordnerinformationen eines unterordners aus
+        /// Return the Folderinformation of a Subfolder
         /// </summary>
-        /// <param name="Subdir">Pfad auf dem Server (alles nach "\\Server\")</param>
-        /// <returns>Liste mit allen enthalteten Unterordnern</returns>
+        /// <param name="Subdir">Path on the server (everything after "\\Server\")</param>
+        /// <returns>List with all containing subfolders</returns>
         public DirectoryInfo getFolderInfo(String Subdir)
         {
             DirectoryInfo myReturn = null;
@@ -132,10 +122,10 @@ namespace Co0nUtilZ
                 using (C_NetworkConnection nc = new C_NetworkConnection(Searchpath, this._NetworkCredential))
                 {
 
-                    nc.NetworkError += this.Handle_UnderlyingNetworkError; //Eventhandler abbonieren
-                    if (!nc.Connect().Equals("0")) //Vebindung herstellen
-                    {//Wenn das Ergebnis des Verbindungsaufbaus nich "0" (OK) war...
-                        return myReturn; //Abbruch                       
+                    nc.NetworkError += this.Handle_UnderlyingNetworkError; //subscribe Eventhandler 
+                    if (!nc.Connect().Equals("0")) //Establish connection
+                    {//If the result was not "0" (OK)...
+                        return myReturn; //Abort                  
 
                     }
 
@@ -158,24 +148,24 @@ namespace Co0nUtilZ
 
 
         /// <summary>
-        /// Ermittelt alle Ordner eines Unterordners
+        /// Gets all folders of a given subfolder
         /// </summary>
-        /// <param name="Subdir">Pfad auf dem Server (alles nach "\\Server\")</param>
-        /// <returns>Liste mit allen enthalteten Unterordnern</returns>
+        /// <param name="Subdir">Serverpath (everything after "\\Server\")</param>
+        /// <returns>List With all subfolders</returns>
         public List<DirectoryInfo> listFolders(String Subdir, bool isLocaldir = false)
         {
             List<DirectoryInfo> myReturn = new List<DirectoryInfo>();
             if (!isLocaldir)
-            { //Remoteordner
+            { //Remotefolder
                 String Searchpath = this._Server + @"\" + @Subdir;
                 try
                 {
                     using (C_NetworkConnection nc = new C_NetworkConnection(Searchpath, this._NetworkCredential))
                     {
-                        nc.NetworkError += this.Handle_UnderlyingNetworkError; //Eventhandler abbonieren
-                        if (!nc.Connect().Equals("0")) //Vebindung herstellen
-                        {//Wenn das Ergebnis des Verbindungsaufbaus nich "0" (OK) war...
-                            return myReturn; //Abbruch                       
+                        nc.NetworkError += this.Handle_UnderlyingNetworkError; //subscribe Eventhandler 
+                        if (!nc.Connect().Equals("0")) //Establish connection
+                        {//If the result was not "0" (OK)...
+                            return myReturn; //Abort                         
 
                         }
 
@@ -196,7 +186,7 @@ namespace Co0nUtilZ
             }
             else
             {
-                //Lokaler Ordner
+                //Local Folder
                 try
                 {
                     string[] Folders = Directory.GetDirectories(@Subdir);
@@ -218,25 +208,25 @@ namespace Co0nUtilZ
         }
 
         /// <summary>
-        /// Ermittelt alle Dateien eines Ordners
+        /// Determines all Files of a Folder
         /// </summary>
-        /// <param name="Subdir">Pfad auf dem Server (alles nach "\\Server\")</param>
-        /// <returns>Liste mit allen enthaltenen Dateien</returns>
+        /// <param name="Subdir">Serverpath (everything after "\\Server\")</param>
+        /// <returns>List with all files of that folder</returns>
         public List<FileInfo> listFiles(String Subdir, bool isLocaldir = false)
         {
             List<FileInfo> myReturn = new List<FileInfo>();
 
             if (!isLocaldir)
-            { //Remoteordner
+            { //Remotefolder
 
                 String Searchpath = "";
                 if (Subdir[0] == '\\')
-                {//Wenn der Freigabepfad (alles nach dem Server) mit '\' beginnt
+                {//If sharepath begins with '\'
                     Searchpath = this._Server + @Subdir;
                 }
                 else
                 {
-                    // Führendes '\' fehlt
+                    // remove leading '\' 
                     Searchpath = this._Server + @"\" + @Subdir;
                 }
 
@@ -245,10 +235,11 @@ namespace Co0nUtilZ
                 {
                     using (C_NetworkConnection nc = new C_NetworkConnection(Searchpath, this._NetworkCredential))
                     {
-                        nc.NetworkError += this.Handle_UnderlyingNetworkError; //Eventhandler abbonieren
-                        if (!nc.Connect().Equals("0")) //Vebindung herstellen
-                        {//Wenn das Ergebnis des Verbindungsaufbaus nich "0" (OK) war...
-                            return myReturn; //Abbruch                       
+                        nc.NetworkError += this.Handle_UnderlyingNetworkError; //subscribe Eventhandler
+                        if (!nc.Connect().Equals("0")) //Establish connection
+                        {//If the result was not "0" (OK)...
+                            return myReturn;//Abort                         
+
 
                         }
 
@@ -272,7 +263,7 @@ namespace Co0nUtilZ
             }
             else
             {
-                //Lokaler Ordner
+                //Local Folder
                 try
                 {
                     string[] Files = Directory.GetFiles(@Subdir);
