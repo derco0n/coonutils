@@ -1,0 +1,5 @@
+c:\users\made\source\repos\Co0nUtilZ\Co0nUtilZ\bin\Release\Co0nUtilZ.dll
+c:\users\made\source\repos\Co0nUtilZ\Co0nUtilZ\bin\Release\Co0nUtilZ.pdb
+c:\users\made\source\repos\Co0nUtilZ\Co0nUtilZ\obj\Release\Co0nUtilZ.csproj.CoreCompileInputs.cache
+c:\users\made\source\repos\Co0nUtilZ\Co0nUtilZ\obj\Release\Co0nUtilZ.dll
+c:\users\made\source\repos\Co0nUtilZ\Co0nUtilZ\obj\Release\Co0nUtilZ.pdb

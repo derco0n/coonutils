@@ -1,0 +1,11 @@
+c:\users\made\source\repos\Co0nUtilZ\Co0nUtilZ\bin\Debug\Co0nUtilZ.dll
+c:\users\made\source\repos\Co0nUtilZ\Co0nUtilZ\bin\Debug\Co0nUtilZ.pdb
+c:\users\made\source\repos\Co0nUtilZ\Co0nUtilZ\obj\Debug\Co0nUtilZ.csproj.CoreCompileInputs.cache
+c:\users\made\source\repos\Co0nUtilZ\Co0nUtilZ\obj\Debug\Co0nUtilZ.dll
+c:\users\made\source\repos\Co0nUtilZ\Co0nUtilZ\obj\Debug\Co0nUtilZ.pdb
+D:\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\bin\Debug\Co0nUtilZ.dll
+D:\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\bin\Debug\Co0nUtilZ.pdb
+D:\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Debug\Co0nUtilZ.csproj.CoreCompileInputs.cache
+D:\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Debug\Co0nUtilZ.dll
+D:\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Debug\Co0nUtilZ.pdb
+D:\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Debug\Co0nUtilZ.csprojResolveAssemblyReference.cache
