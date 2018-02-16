@@ -12,8 +12,6 @@ namespace Co0nUtilZ
     /// Diese Klasse stellt den Zugriff auf eine Netzwerkfreigabe mittels API-Zugriffen her
     /// Erstellt:           08/2017
     /// Autor:              D. Marx
-    /// Version:            0.32
-    /// Letzte Änderung:    11.01.2018
     /// </summary>
     public class C_NetworkConnection : IDisposable
     { 

@@ -15,8 +15,6 @@ namespace Co0nUtilZ
     /// Diese Klasse ist ein FTP-Client, welcher es ermöglicht Dateien mit einem FTP-Server Auszutauschen
     /// Erstellt:           08/2017
     /// Autor:              D. Marx
-    /// Version:            0.973
-    /// Letzte Änderung:    27.11.2017
     /// </summary>
     public class C_FTPClient
     {

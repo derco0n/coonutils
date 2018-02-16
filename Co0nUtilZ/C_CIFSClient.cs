@@ -13,8 +13,6 @@ namespace Co0nUtilZ
     /// This Class grants Access to a Samba/CIFS-Share
     /// Created:           08/2017
     /// Author:              D. Marx
-    /// Version:            0.56
-    /// Last Change:    15.02.2018
     /// </summary>
     public class C_CIFSClient 
     {

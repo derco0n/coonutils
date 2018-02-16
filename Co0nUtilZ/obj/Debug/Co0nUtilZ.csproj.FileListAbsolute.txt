@@ -9,3 +9,9 @@ D:\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Debug\Co0nUtilZ.csproj.CoreCompileIn
 D:\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Debug\Co0nUtilZ.dll
 D:\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Debug\Co0nUtilZ.pdb
 D:\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Debug\Co0nUtilZ.csprojResolveAssemblyReference.cache
+C:\Users\coon\source\repos\coonutils\Co0nUtilZ\bin\Debug\Co0nUtilZ.dll
+C:\Users\coon\source\repos\coonutils\Co0nUtilZ\bin\Debug\Co0nUtilZ.pdb
+C:\Users\coon\source\repos\coonutils\Co0nUtilZ\obj\Debug\Co0nUtilZ.csprojResolveAssemblyReference.cache
+C:\Users\coon\source\repos\coonutils\Co0nUtilZ\obj\Debug\Co0nUtilZ.csproj.CoreCompileInputs.cache
+C:\Users\coon\source\repos\coonutils\Co0nUtilZ\obj\Debug\Co0nUtilZ.dll
+C:\Users\coon\source\repos\coonutils\Co0nUtilZ\obj\Debug\Co0nUtilZ.pdb

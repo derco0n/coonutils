@@ -13,8 +13,6 @@ namespace Co0nUtilZ
     /// <summary>
     /// Klasse welchen einen TCP-Client darstellt
     /// Autor: Dennis Marx
-    /// Version 0.1
-    /// Letzte Änderung: 18.01.2018
     /// </summary>
     public class C_NetClient
     { 

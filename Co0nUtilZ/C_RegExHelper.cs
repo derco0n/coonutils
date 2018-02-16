@@ -11,8 +11,6 @@ namespace Co0nUtilZ
     /// Hilfsklasse für reguläre Ausdrücke
     /// Erstellt:           12.10.2017
     /// Autor:              D. Marx
-    /// Version:            0.3
-    /// Letzte Änderung:    13.10.2017
     /// </summary>
     public class C_RegExHelper
     { 

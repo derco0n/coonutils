@@ -11,8 +11,6 @@ namespace Co0nUtilZ
     /// Dies ist eine Hilfsklasse, welche die Aufgabe übernimmt, Daten in die Registry zu schreiben bzw. aus dieser auszulesen.
     /// Erstellt:           06/2017
     /// Autor:              D. Marx
-    /// Version:            0.33
-    /// Letzte Änderung:    10.10.2017
     /// </summary>
     public class C_RegistryHelper
     { 

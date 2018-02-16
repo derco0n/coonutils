@@ -12,8 +12,6 @@ namespace Co0nUtilZ
     /// Verschlüsselunghelfer-Klasse.
     /// Erstellt:           10/2017
     /// Autor:              D. Marx 
-    /// Version:            0.4
-    /// Letzte Änderung:    04.01.2018
     /// </summary>
     public class C_Crypto
     {
