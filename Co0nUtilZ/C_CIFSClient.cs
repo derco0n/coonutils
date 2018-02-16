@@ -289,35 +289,35 @@ namespace Co0nUtilZ
         }
 
         /// <summary>
-        /// Ermittelt die jüngste Datei (letzer Schreibzugriff) eines Ordners
+        /// Determines the youngest file (last writetime) of a folder
         /// </summary>
-        /// <param name="Subdir">Pfad auf dem Server (alles nach "\\Server\")</param>
-        /// <returns>KeyValuePair der jüngsten Datei</returns>
+        /// <param name="Subdir">Serverpath (everything after "\\Server\")</param>
+        /// <returns>KeyValuePair of the youngest file</returns>
         public KeyValuePair<String, DateTime> youngestFile(String Subdir, bool isLocalDir)
         {
             KeyValuePair<String, DateTime> myReturn = new KeyValuePair<String, DateTime>();
             Dictionary<string, DateTime> FileDates = new Dictionary<string, DateTime>();
 
             if (!isLocalDir)
-            { //Remoteordner
+            { //Remotefolder
 
                 String Searchpath = "";
                 if (Subdir[0] == '\\')
-                {//Wenn der Freigabepfad (alles nach dem Server) mit '\' beginnt
+                {//if Sharepath (everything after \\server ) begins with '\'
                     Searchpath = this._Server + @Subdir;
                 }
                 else
                 {
-                    // Führendes '\' fehlt
+                    // Leading '\' missing
                     Searchpath = this._Server + @"\" + @Subdir;
                 }
 
                 using (C_NetworkConnection nc = new C_NetworkConnection(Searchpath, this._NetworkCredential))
                 {
-                    nc.NetworkError += this.Handle_UnderlyingNetworkError; //Eventhandler abbonieren
-                    if (!nc.Connect().Equals("0")) //Vebindung herstellen
-                    {//Wenn das Ergebnis des Verbindungsaufbaus nich "0" (OK) war...
-                        return myReturn; //Abbruch                       
+                    nc.NetworkError += this.Handle_UnderlyingNetworkError; //subscribe Eventhandler
+                    if (!nc.Connect().Equals("0")) //Establish connection
+                    {//If the Result was not "0" (OK)                        
+                        return myReturn; //Abort        
 
                     }
 
@@ -326,18 +326,18 @@ namespace Co0nUtilZ
                         List<FileInfo> Filelist = this.listFiles(Subdir, false);
                         foreach (FileInfo File in Filelist)
                         {
-                            if (//Wenn die aktuelle Datei noch nicht im Dictionary ist....
+                            if (//If the youngest file is NOT in the dictionary yet...
                                 !FileDates.Contains(new KeyValuePair<String, DateTime>(File.Name, File.LastWriteTimeUtc))
                                 )
                             {
-                                FileDates.Add(File.Name, File.LastWriteTimeUtc); //Diese dem Dictionary hinzufügen.
+                                FileDates.Add(File.Name, File.LastWriteTimeUtc); //Add this to dictionary
                             }
 
                             foreach (KeyValuePair<String, DateTime> entry in FileDates)
-                            {//Alle Dateien parsen
+                            {//Parse all files
                                 if (entry.Value > myReturn.Value)
-                                {//Wenn der aktuelle Eintrag jünger als der frisch hinzugefügte ist
-                                    myReturn = entry; //Diesen übernehmen
+                                {//If current entry is younger than the just added...                                   
+                                    myReturn = entry; //...use this
                                 }
                             }
                         }
@@ -358,24 +358,24 @@ namespace Co0nUtilZ
             }
             else
             {
-                //Lokaler Ordner
+                //Local Folder
                 try
                 {
                     List<FileInfo> Filelist = this.listFiles(Subdir, true);
                     foreach (FileInfo File in Filelist)
                     {
-                        if (//Wenn die aktuelle Datei noch nicht im Dictionary ist....
+                        if (//If the current file is not yet in the dictionary ....
                             !FileDates.Contains(new KeyValuePair<String, DateTime>(File.Name, File.LastWriteTimeUtc))
                             )
                         {
-                            FileDates.Add(File.Name, File.LastWriteTimeUtc); //Diese dem Dictionary hinzufügen.
+                            FileDates.Add(File.Name, File.LastWriteTimeUtc); // Add this to the dictionary.
                         }
 
                         foreach (KeyValuePair<String, DateTime> entry in FileDates)
-                        {//Alle Dateien parsen
+                        {// parse all files
                             if (entry.Value > myReturn.Value)
-                            {//Wenn der aktuelle Eintrag jünger als der frisch hinzugefügte ist
-                                myReturn = entry; //Diesen übernehmen
+                            {// if the current entry is younger than the freshly added one...
+                                myReturn = entry; //...use this
                             }
                         }
                     }
@@ -393,38 +393,39 @@ namespace Co0nUtilZ
                     }
                 }
             }
-            return myReturn; //Jüngste, ermittelte Datei zurückgeben
+            return myReturn; // Return the latest, identified file
         }
 
+
         /// <summary>
-        /// Prüft ob eine Datei die jüngste im angegebenen Ordner ist
+        /// Checks if a file is the youngest in the specified folder
         /// </summary>
-        /// <param name="Subdir">Pfad auf dem Server (alles nach "\\Server\")</param>
-        /// <param name="Filename">Dateiname</param>
-        /// <returns>Gibt im Wahrheitsfall TRUE zurück sonst FALSE</returns>
+        /// <param name = "Subdir"> Path on the server (everything to "\\ server \") </ param>
+        /// <param name = "filename"> filename </ param>
+        /// <returns> Returns TRUE if true, otherwise FALSE </ returns>
         public bool isYoungestFile(String Subdir, String Filename, bool isLocalDir = false)
         {
 
             if (!isLocalDir)
-            {//Remoteordner
+            {//Remotefolder
 
                 String Searchpath = "";
                 if (Subdir[0] == '\\')
-                {//Wenn der Freigabepfad (alles nach dem Server) mit '\' beginnt
+                {// If the share path (everything after the server) starts with '\'
                     Searchpath = this._Server + @Subdir;
                 }
                 else
                 {
-                    // Führendes '\' fehlt
+                    // leading '\' is missing
                     Searchpath = this._Server + @"\" + @Subdir;
                 }
 
                 using (C_NetworkConnection nc = new C_NetworkConnection(Searchpath, this._NetworkCredential))
                 {
-                    nc.NetworkError += this.Handle_UnderlyingNetworkError; //Eventhandler abbonieren
-                    if (!nc.Connect().Equals("0")) //Vebindung herstellen
-                    {//Wenn das Ergebnis des Verbindungsaufbaus nich "0" (OK) war...
-                        return false; //Abbruch                       
+                    nc.NetworkError += this.Handle_UnderlyingNetworkError; // Subscribe to event handler
+                    if (!nc.Connect().Equals("0")) // Establish connection
+                    {// If the result of the connection setup was not "0" (OK) ...
+                        return false; //Cancellation                    
 
                     }
 
@@ -452,7 +453,7 @@ namespace Co0nUtilZ
 
             }
             else
-            {//lokaler Ordner
+            {//local Folder
                 KeyValuePair<String, DateTime> yfile = this.youngestFile(@Subdir, isLocalDir);
                 if (yfile.Key.Equals(@Filename))
                 {
@@ -467,22 +468,22 @@ namespace Co0nUtilZ
         }
 
         /// <summary>
-        /// Prüft ob eine Verbindung zum Zielordner möglich ist
-        /// </summary>
-        /// <param name="Subdir">Unterordner auf dem Server</param>
-        /// <returns>Wenn der Ordner existiert (und der Zugriff darauf möglich ist) wird TRUE zurückgegeben.</returns>
+        /// Checks if a connection to the destination folder is possible
+        /// </ summary>
+        /// <param name = "Subdir"> subfolder on server </ param>
+        /// <returns> If the folder exists (and access is possible), TRUE is returned. </ returns>
         public bool TestConnection(String Subdir)
         {
             try
             {
                 String Searchpath = "";
                 if (Subdir[0] == '\\')
-                {//Wenn der Freigabepfad (alles nach dem Server) mit '\' beginnt
+                {// If the share path (everything after the server) starts with '\'
                     Searchpath = this._Server + @Subdir;
                 }
                 else
                 {
-                    // Führendes '\' fehlt
+                    // leading '\' is missing
                     Searchpath = this._Server + @"\" + @Subdir;
                 }
 
@@ -491,14 +492,14 @@ namespace Co0nUtilZ
                 using (C_NetworkConnection nc = new C_NetworkConnection(Searchpath, this._NetworkCredential))
                 {
 
-                    nc.NetworkError += this.Handle_UnderlyingNetworkError; //Eventhandler abbonieren
-                    if (!nc.Connect().Equals("0")) //Vebindung herstellen
-                    {//Wenn das Ergebnis des Verbindungsaufbaus nich "0" (OK) war...
-                        return false; //Abbruch                       
+                    nc.NetworkError += this.Handle_UnderlyingNetworkError; //subscribe Eventhandler
+                    if (!nc.Connect().Equals("0")) //connect
+                    {// If the result of the connection setup was not "0" (OK) ...
+                        return false; //Abort             
 
                     }
 
-                    return DirInfo.Exists; //Wenn Ordner existiert wird true zurückgegeben, sonst false
+                    return DirInfo.Exists; // If folder exists, true is returned, otherwise false
                 }
             }
 
@@ -515,7 +516,7 @@ namespace Co0nUtilZ
             }
 
 
-            return false; //Im Fehlerfall wird False zurückgegeben
+            return false; // False is returned in case of error
         }
 
 
@@ -525,31 +526,31 @@ namespace Co0nUtilZ
 
         #region copyfile
         /// <summary>
-        /// Erzeugt einen Thread welcher, die Dateiliste nach und nach aus einer CIFS-Freigabe herunterlädt
-        /// </summary>
-        /// <param name="Files">Liste mit Quelldateien</param>
-        /// <param name="Targetfolder">Zielordner</param>
-        /// <param name="renameyoungest">Die jüngste Datei als zusätzlich umbennante Kopie speichern</param>
-        /// <param name="renameTo">Neue Bezeichnung für die umbenannte Kopie</param>
-        /// <param name="overwrite">Existierende Dateien überschreiben.</param>
-        /// <returns></returns>
+        /// Creates a thread that downloads the file list bit by bit from a CIFS share
+        /// </ summary>
+        /// <param name = "Files"> list of source files </ param>
+        /// <param name = "Targetfolder"> destination folder </ param>
+        /// <param name = "renameyoungest"> Save the most recent file as an additional rename copy </ param>
+        /// <param name = "renameTo"> New name for the renamed copy </ param>
+        /// <param name = "overwrite"> Overwrite existing files. </ param>
+        /// <returns> </ returns>
         public System.Threading.Thread CopyMultipleFilesFromCIFS(List<FileInfo> Files, DirectoryInfo Targetfolder, bool renameyoungest = false, String renameTo = "", bool overwrite = true)
-        {            //Erzeugt einen Thread welcher, die Dateiliste nach und nach mittels DownloadFile herunterlädt
+        {// Create a thread which downloads the file list using DownloadFile
             var t = new System.Threading.Thread(() => CopyFilesFromCIFSWorker(Files, Targetfolder, renameyoungest, renameTo, overwrite));
             t.Start();
             return t;
         }
 
         /// <summary>
-        /// Workermethode für das Kopieren der Dateien aus einer CIFS-Freigabe
-        /// </summary>
-        /// <param name="Files">Liste mit Quelldateien</param>
-        /// <param name="Targetfolder">Zielordner</param>
-        /// <param name="duplicateRenameYoungest">Die jüngste Datei als zusätzlich umbennante Kopie speichern</param>
-        /// <param name="DuplicateRenameYoungestTo">Neue Bezeichnung für die umbenannte Kopie</param>
-        /// <param name="overwrite">Existierende Dateien überschreiben.</param>
+        /// worker method for copying the files from a CIFS share
+        /// </ summary>
+        /// <param name = "Files"> list of source files </ param>
+        /// <param name = "Targetfolder"> destination folder </ param>
+        /// <param name = "duplicateRenameYoungest"> Save the most recent file as an additional copy </ param>
+        /// <param name = "DuplicateRenameYoungestTo"> New name for the renamed copy </ param>
+        /// <param name = "overwrite"> Overwrite existing files. </ param>
         private void CopyFilesFromCIFSWorker(List<FileInfo> Files, DirectoryInfo Targetfolder, bool duplicateRenameYoungest, String DuplicateRenameYoungestTo, bool overwrite)
-        {//Workermethode für das Kopieren der Dateien
+        {// worker method for copying the files
             int Filecount = Files.Count();
             int Filestransfered = 0;
             double percentcomplete = 0;
@@ -571,19 +572,19 @@ namespace Co0nUtilZ
 
                 if (duplicateRenameYoungest && isYoungest && !DuplicateRenameYoungestTo.Equals(""))
                 {
-                    //Wenn die jüngste Datei als zusätzliche, umbenannte Kopie abgestellt werden soll
+                    
+                    //if the youngest file should be saved as an additional, renamed copy
                     success = this.CopyFileFromCIFS(File, Targetfolder, DuplicateRenameYoungestTo, true);
                 }
-                //else
-                //{//Datei soll nicht umbenannt werden
-                success = this.CopyFileFromCIFS(File, Targetfolder, "", true); //Datei kopieren (Jede Datei auch etwaige zuvor umbenannte, da wir beide haben wollen
-                                                                               //}
+                
+                success = this.CopyFileFromCIFS(File, Targetfolder, "", true);// copy file (any file, also any previously renamed, because we want both)
+
 
                 if (!success)
-                {//Fehler
+                {//Error
 
                 }
-                //Fortschritt aktualisieren.
+                // Update progress.
                 Filestransfered += 1;
                 percentcomplete = 100.0 / Filecount * Filestransfered;
 
@@ -595,16 +596,16 @@ namespace Co0nUtilZ
                         new ProgressEventArgs(
                             (int)Math.Round(percentcomplete, 0),
                         "Datei " + File.FullName + " (" + ((double)File.Length / 1024).ToString() + " kBytes) wurde nach " + Targetfolder.FullName + " kopiert.")
-                            ); //Event auslösen falls abboniert und den aktuellen Fortschritt mitgeben
+                            ); // trigger event if subscribed and give the current progress
                 }
 
 
             }
 
-            //Fertig:
+            //Completed:
             if (this.CopyProgressComplete != null)
             {
-                this.CopyProgressComplete();//Event auslösen falls abboniert
+                this.CopyProgressComplete();// trigger event if subscribed
             }
 
         }
