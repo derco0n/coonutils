@@ -9,9 +9,12 @@ using System.Threading.Tasks;
 namespace Co0nUtilZ
 {
     /// <summary>
-    /// Diese Klasse stellt den Zugriff auf eine Netzwerkfreigabe mittels API-Zugriffen her
-    /// Erstellt:           08/2017
-    /// Autor:              D. Marx
+    /// This Class connects to network shares (samba/cifs)
+    /// Created:           08/2017
+    /// Author:              D. Marx
+    /// License: 
+    /// GPLv3 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
+    /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-3.0.de.html
     /// </summary>
     public class C_NetworkConnection : IDisposable
     { 

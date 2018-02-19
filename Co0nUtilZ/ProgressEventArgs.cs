@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 namespace Co0nUtilZ
 {
     /// <summary>
-    /// Eventargumente für Prozessfortschritt
-    /// </summary>
+    /// Eventargs for process-progress
+    /// License: 
+    /// GPLv3 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
+    /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-3.0.de.html
+    ///</summary>
     public class ProgressEventArgs
-    {//Eventargumente für Prozessfortschritt
+    {
         /// <summary>
         /// Eventargumente for Fortschritt
         /// </summary>

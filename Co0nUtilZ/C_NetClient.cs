@@ -11,8 +11,11 @@ using System.Net.Sockets;
 namespace Co0nUtilZ
 {
     /// <summary>
-    /// Klasse welchen einen TCP-Client darstellt
-    /// Autor: Dennis Marx
+    /// This class represents a TCP-Client
+    /// Author: D. Marx
+    /// License: 
+    /// GPLv3 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
+    /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-3.0.de.html
     /// </summary>
     public class C_NetClient
     { 

@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="C_BasicSettingsTemplate.cs" />
     <Compile Include="C_CIFSClient.cs" />
     <Compile Include="C_Crypto.cs" />
     <Compile Include="C_FTPClient.cs" />

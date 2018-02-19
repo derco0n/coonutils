@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 namespace Co0nUtilZ
 {
     /// <summary>
-    /// Eventargumente für Fehler
+    /// Eventargs for errors
+    /// License: 
+    /// GPLv3 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
+    /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-3.0.de.html
     /// </summary>
     public class ErrorEventArgs
-    {//Eventargumente für Fehler, 31.08.2017
+    {
         public ErrorEventArgs(String Error)
         {
             Err = Error;
