@@ -16,8 +16,10 @@ namespace Co0nUtilZ
     /// Created:           08/2017
     /// Author:              D. Marx
     /// License: 
-    /// GPLv3 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
-    /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-3.0.de.html
+    /// License: 
+    /// GPLv2 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
+    /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-2.0.de.html
+
     /// </summary>
     public class C_FTPClient
     {
@@ -134,7 +136,7 @@ namespace Co0nUtilZ
         /// <summary>
         /// Ereignis: Dateiliste komplett empfangen
         /// </summary>
-        public event CompleteEventhandler ReceivedFileListComplete;
+        //public event CompleteEventhandler ReceivedFileListComplete;
 
         public delegate void MultiLoadProgressEventHandler(object sender, ProgressEventArgs Args);
         public delegate void ErrorEventHandler(object sender, ErrorEventArgs Fehler);

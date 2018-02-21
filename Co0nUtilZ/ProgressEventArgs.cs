@@ -9,8 +9,9 @@ namespace Co0nUtilZ
     /// <summary>
     /// Eventargs for process-progress
     /// License: 
-    /// GPLv3 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
-    /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-3.0.de.html
+    /// GPLv2 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
+    /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-2.0.de.html
+
     ///</summary>
     public class ProgressEventArgs
     {

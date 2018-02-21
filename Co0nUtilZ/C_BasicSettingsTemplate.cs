@@ -12,15 +12,15 @@ namespace Co0nUtilZ
     /// This will save settings to the registry and reads them from there
     /// Author: D. Marx
     /// License: 
-    /// GPLv3 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
-    /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-3.0.de.html
+    /// GPLv2 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
+    /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-2.0.de.html 
 
     /// </summary>
     public abstract class C_BasicSettingsTemplate
     {
         #region objects
         private C_RegistryHelper myRegHelper;
-        private String _instancename;
+        protected String _instancename;
         #endregion
 
         #region Constructor
@@ -58,11 +58,51 @@ namespace Co0nUtilZ
         #region delegatesandevent
         public delegate void CompleteEventhandler(); 
         public delegate void SettingChangedHandler(ProgressEventArgs e); 
-        public delegate void ErrorEventHandler(object sender, ErrorEventArgs Fehler); 
+        public delegate void ErrorEventHandler(object sender, ErrorEventArgs Fehler);
 
-        public event SettingChangedHandler SettingChanged; //Should raise this, everytime a setting has changed
         public event CompleteEventhandler JobCompleted; //Should raise this when jobrun is complete
+        public event SettingChangedHandler SettingChanged; //Should raise this, everytime a setting has changed        
         public event ErrorEventHandler ErrorOccured; //Should raise this in case of an error
+
+        //Following is needed because we want that events to be raised in childclasses
+        //https://docs.microsoft.com/de-de/dotnet/csharp/programming-guide/events/how-to-raise-base-class-events-in-derived-classes
+
+        protected virtual void OnSettingChanged(ProgressEventArgs e)
+        {
+            // Make a temporary copy of the event to avoid possibility of
+            // a race condition if the last subscriber unsubscribes
+            // immediately after the null check and before the event is raised.
+            SettingChangedHandler handler = SettingChanged;
+            if (handler != null)
+            {
+                handler(e);
+            }
+        }
+
+        protected virtual void OnJobCompleted()
+        {
+            // Make a temporary copy of the event to avoid possibility of
+            // a race condition if the last subscriber unsubscribes
+            // immediately after the null check and before the event is raised.
+            CompleteEventhandler handler = JobCompleted;
+            if (handler != null)
+            {
+                handler();
+            }
+        }
+
+        protected virtual void OnErrorOccured(object sender, ErrorEventArgs e)
+        {
+            // Make a temporary copy of the event to avoid possibility of
+            // a race condition if the last subscriber unsubscribes
+            // immediately after the null check and before the event is raised.
+            ErrorEventHandler handler = ErrorOccured;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
         #endregion
 
         #region methods
@@ -75,11 +115,16 @@ namespace Co0nUtilZ
         }
 
         /// <summary>
-        /// Override this method to red settings from registry
+        /// Override this method to read settings from registry
         /// </summary>
         public virtual void readSettingsFromRegistry()
         {
 
+        }
+
+        protected String readOneSettingFromRegistry(String Setting)
+        {
+           return this.myRegHelper.ReadSettingFromRegistry(this._instancename, Setting);
         }
 
         /// <summary>

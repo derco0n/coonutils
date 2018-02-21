@@ -14,8 +14,10 @@ namespace Co0nUtilZ
     /// Created:           08/2017
     /// Author:              D. Marx
     /// License: 
-    /// GPLv3 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
-    /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-3.0.de.html
+    /// License: 
+    /// GPLv2 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
+    /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-2.0.de.html
+
     /// </summary>
     public class C_CIFSClient 
     {
@@ -23,7 +25,7 @@ namespace Co0nUtilZ
         public static String AUTHTYPE_BASIC = "Basic";
 
 
-        private C_NetworkConnection nc;
+        //private C_NetworkConnection nc;
 
         private NetworkCredential _NetworkCredential;
         private CredentialCache _NetCache;

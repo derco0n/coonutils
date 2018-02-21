@@ -11,12 +11,13 @@ namespace Co0nUtilZ
     /// <summary>
     /// This Class connects to network shares (samba/cifs)
     /// Created:           08/2017
-    /// Author:              D. Marx
+    /// Author:            D. Marx
     /// License: 
-    /// GPLv3 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
-    /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-3.0.de.html
+    /// GPLv2 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
+    /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-2.0.de.html
+
     /// </summary>
-    public class C_NetworkConnection : IDisposable
+    class C_NetworkConnection : IDisposable
     { 
 
         #region Objects
@@ -69,12 +70,12 @@ namespace Co0nUtilZ
         /// <returns>Ergebnis des Verbindugsversuchs</returns>
         public String Connect()
         {
-            var netResource = new NetResource()
+            var netResource = new NetworkResource()
             {
-                Scope = ResourceScope.GlobalNetwork,
-                ResourceType = ResourceType.Disk,
-                DisplayType = ResourceDisplaytype.Share,
-                RemoteName = this._networkName
+                _Scope = ResourceScope.GlobalNetwork,
+                _ResourceType = ResourceType.Disk,
+                _DisplayType = ResourceDisplaytype.Share,
+                _RemoteName = this._networkName
             };
 
             var userName = string.IsNullOrEmpty(this._credentials.Domain)
@@ -121,7 +122,7 @@ namespace Co0nUtilZ
         #region Statics
 
         [DllImport("mpr.dll")]
-        private static extern int WNetAddConnection2(NetResource netResource,
+        private static extern int WNetAddConnection2(NetworkResource netResource,
             string password, string username, int flags);
 
         [DllImport("mpr.dll")]
@@ -136,16 +137,16 @@ namespace Co0nUtilZ
     /// 
     #region Konstruktor
     [StructLayout(LayoutKind.Sequential)]
-    public class NetResource
+    public class NetworkResource
     {
-        public ResourceScope Scope;
-        public ResourceType ResourceType;
-        public ResourceDisplaytype DisplayType;
-        public int Usage;
-        public string LocalName;
-        public string RemoteName;
-        public string Comment;
-        public string Provider;
+        public ResourceScope _Scope;
+        public ResourceType _ResourceType;
+        public ResourceDisplaytype _DisplayType;
+        public int _Usage;
+        public string _LocalName;
+        public string _RemoteName;
+        public string _Comment;
+        public string _Provider;
     }
     #endregion
 
