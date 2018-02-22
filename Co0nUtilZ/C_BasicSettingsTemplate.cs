@@ -39,7 +39,7 @@ namespace Co0nUtilZ
         /// <summary>
         /// List with daily Start-Times
         /// </summary>
-        public String[] Startzeitpunkte
+        public String[] Starttimes
         {
             get
             {
