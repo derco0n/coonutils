@@ -19,8 +19,10 @@ namespace Co0nUtilZ
     public abstract class C_BasicSettingsTemplate
     {
         #region objects
-        private C_RegistryHelper myRegHelper;
+        protected C_RegistryHelper myRegHelper;
         protected String _instancename;
+        protected const String _StartSearchString = "Start"; //Starttimes begin with the word "Start"
+        protected String[] _Starttimes;
         #endregion
 
         #region Constructor
@@ -32,6 +34,28 @@ namespace Co0nUtilZ
         #endregion
 
         #region properties
+
+        
+        /// <summary>
+        /// List with daily Start-Times
+        /// </summary>
+        public String[] Startzeitpunkte
+        {
+            get
+            {
+                return this._Starttimes;
+            }
+            set
+            {
+                this._Starttimes = value;
+                if (this.SettingChanged != null)
+                {
+                    this.SettingChanged(new ProgressEventArgs(0, "Startzeitpunkte"));
+                }
+            }
+        }
+
+
         public RegistryKey Rootkey
         {
             get
@@ -48,6 +72,20 @@ namespace Co0nUtilZ
             }
         }
 
+        public virtual String Instancename
+        {
+            get
+            {
+                return this._instancename;
+            }
+
+           
+            set
+            {//Override Set if needed
+
+            }
+            
+        }
 
 
         /*
@@ -119,7 +157,31 @@ namespace Co0nUtilZ
         /// </summary>
         public virtual void readSettingsFromRegistry()
         {
+            List<String> Starts = new List<string>(); //make a new string-list
 
+            try
+            {//Determine Starttimes
+             
+                List<String> valuenames = this.myRegHelper.ListValues(this._instancename); //Get a list with all valuenames of the current subkey
+                
+                foreach (String valnam in valuenames) //recurse all valuenames
+                {
+                    if (valnam.StartsWith(_StartSearchString)) //if valuename begins with seachrstring for startimes ("Start")...
+                    {
+                        String val = this.myRegHelper.ReadSettingFromRegistry(this._instancename, valnam); //fetch the value from current value
+                        Starts.Add(val); //add that value to our starts-list
+                    }
+                }                
+
+            }
+            catch (Exception ex)
+            {//not readable from registry
+                this.OnErrorOccured(this, new ErrorEventArgs("Error while fetching starttime-values from registry.\r\n\r\nDetails:\r\n"+ex.ToString()+ "\r\n\r\nStacktrace:\r\n"+ex.StackTrace));                
+            }
+            finally
+            {
+                this._Starttimes = Starts.ToArray<String>(); //Alle ermittelten Startzeitpunkte in ein Stringarray konvertieren und dem Klassenarray
+            }
         }
 
         protected String readOneSettingFromRegistry(String Setting)
@@ -131,12 +193,40 @@ namespace Co0nUtilZ
         /// Override this Method to Write all your Settings to the registry
         /// </summary>
         /// <returns></returns>
-        public virtual bool writeAllSettingsToRegistry()
+        protected virtual bool writeAllSettingsToRegistry()
         {
 
+            //Write Starttimes to registry as well
+            bool StarttimesSuccess = false;
+
+            UInt32 StartNrCounter = 1;
+
+            if (this._Starttimes.Count() > 0)
+            {//minimum one entry existing in Starttimes-array
+                foreach (String Start in this._Starttimes)
+                {//go through the starttimes-list...
+                 //write every start with its unique number (StartX, StartY, ...)
+                    if (StartNrCounter == 1)
+                    {
+                        StarttimesSuccess = this.writeSettingToRegistry("Start" + StartNrCounter.ToString(), Start);
+                    }
+                    else
+                    {
+                        StarttimesSuccess = StarttimesSuccess & this.writeSettingToRegistry("Start" + StartNrCounter.ToString(), Start); //& => Boolean Operator &(bool x, bool y); the result of x & y is true if x AND y are both TRUE. If not it is FALSE
+                    }
+                    StartNrCounter++; //increase Startcounter
+                }
+            }
+            else
+            {//No Starttime defined, therefore success
+                StarttimesSuccess = true;
+            }
 
 
-            return false;
+            //End Starttimes...
+
+             return StarttimesSuccess;
+            
         }
 
 
@@ -151,27 +241,28 @@ namespace Co0nUtilZ
             return this.myRegHelper.WriteSettingToRegistry(this._instancename, valuename, value);
         }
 
-        /*
+        
         /// <summary>
-        /// Renames this instance in the registry
+        /// Override this to rename this instance in the registry
         /// </summary>
         /// <param name="newName">new Name</param>
-        public void renameInstance(String newName)
+        protected virtual bool renameInstance(String newName)
         {
             String oldinstancename = this._instancename; //save old name
             if (!oldinstancename.Equals(newName)) //if new and old name are different
             {
-                this._instancename = newName; //
+                this._instancename = newName; //set instancename to new name
 
                 if (this.writeAllSettingsToRegistry())
                 {//Neue Werte schreiben...
 
                     //... und bei Erfolg: Alten Instanzschlüssel löschen
-                    this.myRegHelper.dropInstance(oldinstancename);
+                    return this.myRegHelper.dropInstance(oldinstancename);                    
                 }
             }
+            return false;
         }
-        */
+        
 
         /// <summary>
         /// deletes the complete jobinstance from registry.
