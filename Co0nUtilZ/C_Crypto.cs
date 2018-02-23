@@ -12,7 +12,7 @@ namespace Co0nUtilZ
     /// Encryptionhelper-Class.
     /// Created:           10/2017
     /// Author:              D. Marx 
-    /// License: 
+    /// Project: https://github.com/derco0n/coonutils   
     /// License: 
     /// GPLv2 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
     /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-2.0.de.html

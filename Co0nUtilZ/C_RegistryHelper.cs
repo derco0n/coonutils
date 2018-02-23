@@ -11,6 +11,7 @@ namespace Co0nUtilZ
     /// This is a helper class which manages to read from and write to windows registry
     /// Created:           06/2017
     /// Author:              D. Marx
+    /// Project: https://github.com/derco0n/coonutils   
     /// License: 
     /// GPLv2 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
     /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-2.0.de.html

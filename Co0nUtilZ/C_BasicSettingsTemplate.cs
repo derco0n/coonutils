@@ -9,12 +9,12 @@ namespace Co0nUtilZ
 {
     /// <summary>
     /// Template for Settingsclasses
-    /// This will save settings to the registry and reads them from there
+    /// This abstract class will hold settings, save them to the registry and reads them from registry.
     /// Author: D. Marx
+    /// Project: https://github.com/derco0n/coonutils
     /// License: 
     /// GPLv2 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
     /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-2.0.de.html 
-
     /// </summary>
     public abstract class C_BasicSettingsTemplate
     {
@@ -50,7 +50,7 @@ namespace Co0nUtilZ
                 this._Starttimes = value;
                 if (this.SettingChanged != null)
                 {
-                    this.SettingChanged(new ProgressEventArgs(0, "Startzeitpunkte"));
+                    this.SettingChanged(new ProgressEventArgs(0, "Starttimes"));
                 }
             }
         }
