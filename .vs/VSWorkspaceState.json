@@ -1,8 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Co0nUtilZ"
+    "\\Co0nUtilZ",
+    "\\Co0nUtilZ\\bin",
+    "\\Co0nUtilZ\\bin\\Debug",
+    "\\Co0nUtilZ\\bin\\Release",
+    "\\Co0nUtilZ\\obj",
+    "\\Co0nUtilZ\\Properties"
   ],
-  "SelectedNode": "\\Co0nUtilZ\\C_BasicSettingsTemplate.cs",
+  "SelectedNode": "\\Co0nUtilZ\\bin\\Release",
   "PreviewInSolutionExplorer": false
 }

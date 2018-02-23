@@ -87,10 +87,51 @@ namespace Co0nUtilZ
             
         }
 
+        /// <summary>
+        /// returns the hour-part of starttimes
+        /// </summary>
+        public String[] StartHours 
+        {
+            get
+            {
+                List<String> myreturn = new List<String>();
+                if (this._Starttimes != null)
+                {
+                    foreach (String Starttime in this._Starttimes)
+                    {
+                        int colonindex = Starttime.IndexOf(":");
+                        myreturn.Add(Starttime.Substring(0, colonindex));
+                    }
+                }
+                return myreturn.ToArray();
+            }
+        }
 
+        /// <summary>
+        /// returns the minute-part of starttimes
+        /// </summary>
+        public String[] StartMinutes 
+        {
+            get
+            {
+                List<String> myreturn = new List<String>();
+                if (this._Starttimes != null)
+                {
+                    foreach (String Starttime in this._Starttimes)
+                    {
+                        int colonindex = Starttime.IndexOf(":");
+                        myreturn.Add(Starttime.Substring(colonindex + 1));
+                    }
+                }
+                return myreturn.ToArray();
+            }
+        }
+
+        
         /*
-         Insert properties in derived class...         
+         Insert more specific properties in derived class...         
          */
+
         #endregion
 
         #region delegatesandevent
@@ -195,8 +236,25 @@ namespace Co0nUtilZ
         /// <returns></returns>
         protected virtual bool writeAllSettingsToRegistry()
         {
+            /*
+             * Starttimes.
+             * ###########
+             * We first need to drop all starttimes from registry, so that we will have no startentry there.
+             * After that we recurse our current starttimes and write each of them to the registry
+             */
 
-            //Write Starttimes to registry as well
+            List<String> valuenames = this.myRegHelper.ListValues(this._instancename); //fetch a lists with all ValueNames in current subkey
+
+            foreach (String valnam in valuenames) //recurse all value-names
+            {
+                if (valnam.StartsWith(_StartSearchString)) //if the value matches the searchstring for starttimes
+                {
+                    this.DeleteValue(valnam); //delete value
+                }
+            }
+
+
+            //Write Starttimes to registry
             bool StarttimesSuccess = false;
 
             UInt32 StartNrCounter = 1;
@@ -223,9 +281,12 @@ namespace Co0nUtilZ
             }
 
 
-            //End Starttimes...
+            /*
+             * End Starttimes...
+             *################## 
+             */
 
-             return StarttimesSuccess;
+             return StarttimesSuccess; //& someothersuccess & anotheronesuccess....
             
         }
 
