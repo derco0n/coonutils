@@ -20,4 +20,3 @@ C:\Users\made\Source\Repos\coonutils\Co0nUtilZ\bin\Debug\Co0nUtilZ.pdb
 C:\Users\made\Source\Repos\coonutils\Co0nUtilZ\obj\Debug\Co0nUtilZ.csproj.CoreCompileInputs.cache
 C:\Users\made\Source\Repos\coonutils\Co0nUtilZ\obj\Debug\Co0nUtilZ.dll
 C:\Users\made\Source\Repos\coonutils\Co0nUtilZ\obj\Debug\Co0nUtilZ.pdb
-C:\Users\made\Source\Repos\coonutils\Co0nUtilZ\obj\Debug\Co0nUtilZ.csprojResolveAssemblyReference.cache

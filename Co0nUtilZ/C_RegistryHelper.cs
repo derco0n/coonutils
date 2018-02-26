@@ -160,22 +160,24 @@ namespace Co0nUtilZ
         /// <returns>Gibt bei Erfolg TRUE zurück.</returns>
         public bool WriteSettingToRegistry(String Instancename, String valuename, String value)
         {
-            //Schreibt einen Wert in die Windows Registry
-            try
-            {
-                string keyName = this._rootkey.Name + "\\" + this._subkey + "\\" + Instancename;
-                Registry.SetValue(keyName, valuename, value);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                if (this.GeneralError != null)
+            //Writes a value in the registry
+            if (Instancename != null && valuename !=null && value !=null){
+                //Only if all needed values are given
+                try
                 {
-                    this.GeneralError(this, new ErrorEventArgs("Fehler beim Schreiben in die Registry: " + ex.ToString()));
+                    string keyName = this._rootkey.Name + "\\" + this._subkey + "\\" + Instancename;
+                    Registry.SetValue(keyName, valuename, value);
+                    return true;
                 }
-                //Console.WriteLine("Fehler beim Schreiben in die Registrierungsdatenbank. " + ex.ToString() + " " + ex.StackTrace);
+                catch (Exception ex)
+                {
+                    if (this.GeneralError != null)
+                    {
+                        this.GeneralError(this, new ErrorEventArgs("Error writing to registry: " + ex.ToString()));
+                    }
+                    //Console.WriteLine("Fehler beim Schreiben in die Registrierungsdatenbank. " + ex.ToString() + " " + ex.StackTrace);
+                }
             }
-
 
             return false;
         }

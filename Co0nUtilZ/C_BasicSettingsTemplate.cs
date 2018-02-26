@@ -243,27 +243,37 @@ namespace Co0nUtilZ
              * After that we recurse our current starttimes and write each of them to the registry
              */
 
-            List<String> valuenames = this.myRegHelper.ListValues(this._instancename); //fetch a lists with all ValueNames in current subkey
+            if (this._instancename!=null){              
+            
 
-            foreach (String valnam in valuenames) //recurse all value-names
-            {
-                if (valnam.StartsWith(_StartSearchString)) //if the value matches the searchstring for starttimes
-                {
-                    this.DeleteValue(valnam); //delete value
+                List<String> valuenames = this.myRegHelper.ListValues(this._instancename); //fetch a lists with all ValueNames in current subkey
+            
+                if (valuenames.Count > 0){
+                    //Recurse all values and try to delete them if thex exist
+             
+                    foreach (String valnam in valuenames) //recurse all value-names
+                    {
+                        if (valnam.StartsWith(_StartSearchString)) //if the value matches the searchstring for starttimes
+                        {
+                            this.DeleteValue(valnam); //delete value
+                        }
+                    }
                 }
             }
-
 
             //Write Starttimes to registry
             bool StarttimesSuccess = false;
 
             UInt32 StartNrCounter = 1;
 
-            if (this._Starttimes.Count() > 0)
-            {//minimum one entry existing in Starttimes-array
+            
+            if (this._Starttimes != null && this._Starttimes.Count() > 0)
+            { 
+            //_Stattimes must be initilized
+            //minimum one entry existing in Starttimes-array
                 foreach (String Start in this._Starttimes)
                 {//go through the starttimes-list...
-                 //write every start with its unique number (StartX, StartY, ...)
+                    //write every start with its unique number (StartX, StartY, ...)
                     if (StartNrCounter == 1)
                     {
                         StarttimesSuccess = this.writeSettingToRegistry("Start" + StartNrCounter.ToString(), Start);
@@ -279,7 +289,8 @@ namespace Co0nUtilZ
             {//No Starttime defined, therefore success
                 StarttimesSuccess = true;
             }
-
+            
+            
 
             /*
              * End Starttimes...
