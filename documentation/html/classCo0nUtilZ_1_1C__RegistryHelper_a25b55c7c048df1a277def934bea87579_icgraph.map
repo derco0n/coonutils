@@ -1,0 +1,5 @@
+<map id="Co0nUtilZ.C_RegistryHelper.ListValues" name="Co0nUtilZ.C_RegistryHelper.ListValues">
+<area shape="rect" id="node2" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#a490cf1dcf321a7db7cff9f28b9c0aa73" title="Override this method to read settings from registry " alt="" coords="240,5,471,47"/>
+<area shape="rect" id="node3" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#aeecec831de1be4ffccb5dc4b7e86231a" title="Override this Method to Write all your Settings to the registry " alt="" coords="240,71,471,112"/>
+<area shape="rect" id="node4" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#a71f956fb2ad7de478ac7a8a07ba31d3b" title="Override this to rename this instance in the registry " alt="" coords="519,71,697,112"/>
+</map>

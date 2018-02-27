@@ -1,0 +1,5 @@
+<map id="Co0nUtilZ.C_CIFSClient.isYoungestFile" name="Co0nUtilZ.C_CIFSClient.isYoungestFile">
+<area shape="rect" id="node2" href="$classCo0nUtilZ_1_1C__NetworkConnection.html#a2a644092c09962137ccd9b6a35661db5" title="Verbindet die zuvor definierte Netzwerkfreigabe. Im Fehlerfall ein das Event NetworkError ausgelöst..." alt="" coords="744,31,959,72"/>
+<area shape="rect" id="node3" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a4c02eac856bb2a1d4bcae365a109e936" title="Determines the youngest file (last writetime) of a folder " alt="" coords="228,38,467,65"/>
+<area shape="rect" id="node4" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a653035d74a0ccf6dedee3f295c3515da" title="Determines all Files of a Folder " alt="" coords="515,89,696,131"/>
+</map>

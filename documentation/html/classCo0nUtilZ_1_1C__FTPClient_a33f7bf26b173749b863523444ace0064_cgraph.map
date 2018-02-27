@@ -1,0 +1,6 @@
+<map id="Co0nUtilZ.C_FTPClient.GetFileListByRegex" name="Co0nUtilZ.C_FTPClient.GetFileListByRegex">
+<area shape="rect" id="node2" href="$classCo0nUtilZ_1_1C__RegExHelper.html#ababfe7cdb170baa547ba3882876005ed" title="Filtert aus einer Liste mit Strings, die Einträge heraus die mit dem angegebenen Filter übereinstimme..." alt="" coords="234,5,413,47"/>
+<area shape="rect" id="node5" href="$classCo0nUtilZ_1_1C__FTPClient.html#a9a32be08bc36faf2a86517620d5a491c" title="Liefert eine Liste von Dateien/Ordnern zurück " alt="" coords="233,71,413,112"/>
+<area shape="rect" id="node3" href="$classCo0nUtilZ_1_1C__RegExHelper.html#aa2625c5a024270916d80cc7003f6c48a" title="Testet ob ein RegEx&#45;Filter gültig ist " alt="" coords="688,5,867,47"/>
+<area shape="rect" id="node4" href="$classCo0nUtilZ_1_1C__RegExHelper.html#af059ce7bd2153bdd082a361d9e430a05" title="Prüft ob eine Zeichenfolge vom Filter erfasst wird. " alt="" coords="461,35,640,76"/>
+</map>

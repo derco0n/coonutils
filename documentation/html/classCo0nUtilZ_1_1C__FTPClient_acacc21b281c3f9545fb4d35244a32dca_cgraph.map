@@ -1,0 +1,9 @@
+<map id="Co0nUtilZ.C_FTPClient.DownloadMultipleFiles" name="Co0nUtilZ.C_FTPClient.DownloadMultipleFiles">
+<area shape="rect" id="node2" href="$classCo0nUtilZ_1_1C__FTPClient.html#ab6fe842d7c9cd3c9c40e8510138c6461" title="Löscht eine Datei vom FTP Server " alt="" coords="277,5,495,32"/>
+<area shape="rect" id="node3" href="$classCo0nUtilZ_1_1C__FTPClient.html#abf730b6fecfbc88c50c7294326cb07e7" title="Lädt eine Datei vom FTP Server herunter " alt="" coords="268,56,504,83"/>
+<area shape="rect" id="node5" href="$classCo0nUtilZ_1_1C__FTPClient.html#abd2538a82311d30f37e0dbb34b1594fe" title="Prüft ob ein Pfad auf dem Server existiert " alt="" coords="293,107,479,149"/>
+<area shape="rect" id="node8" href="$classCo0nUtilZ_1_1C__FTPClient.html#afab7af51d3e4ac48ce72bf87c3f0eb3d" title="Lädt eine Datei auf einen FTP Server hoch " alt="" coords="276,173,496,200"/>
+<area shape="rect" id="node4" href="$classCo0nUtilZ_1_1C__FTPClient.html#aeb187799fb5e38d110c68be852114a83" title="Ermittelt den Zeitpunkt an dem eine Remotedatei zuletzt verändert wurde. " alt="" coords="575,49,759,90"/>
+<area shape="rect" id="node6" href="$classCo0nUtilZ_1_1C__FTPClient.html#a9a32be08bc36faf2a86517620d5a491c" title="Liefert eine Liste von Dateien/Ordnern zurück " alt="" coords="831,133,1011,174"/>
+<area shape="rect" id="node7" href="$classCo0nUtilZ_1_1C__FTPClient.html#ac0987a1cb67778b1672c543879db793a" title="Gibt den auf dem Server existierenden Teil eines Pfads zurück " alt="" coords="552,165,783,192"/>
+</map>

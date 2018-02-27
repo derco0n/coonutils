@@ -1,0 +1,6 @@
+<map id="Co0nUtilZ.C_BasicSettingsTemplate.readSettingsFromRegistry" name="Co0nUtilZ.C_BasicSettingsTemplate.readSettingsFromRegistry">
+<area shape="rect" id="node2" href="$classCo0nUtilZ_1_1C__RegistryHelper.html#a25b55c7c048df1a277def934bea87579" title="Ermittelt alle Wertenamen eines Unterschlüssels " alt="" coords="284,5,471,47"/>
+<area shape="rect" id="node3" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#a2f9065dcfd5b2c73f923c779d5d06329" title="Co0nUtilZ.C_BasicSettings\lTemplate.OnErrorOccured" alt="" coords="288,71,467,112"/>
+<area shape="rect" id="node5" href="$classCo0nUtilZ_1_1C__RegistryHelper.html#a8b987ba37d218b62a5de2f3a66a6945b" title="Liest einen Wert auf einem Wertefeld aus " alt="" coords="284,136,471,177"/>
+<area shape="rect" id="node4" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#a066e2a2af45ae9f77f76e7d2e3d37f7c" title="Override this method to run a self defined job with current settings " alt="" coords="519,71,697,112"/>
+</map>

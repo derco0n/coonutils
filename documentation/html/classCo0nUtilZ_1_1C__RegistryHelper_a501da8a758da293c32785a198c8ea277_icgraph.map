@@ -1,0 +1,5 @@
+<map id="Co0nUtilZ.C_RegistryHelper.dropValue" name="Co0nUtilZ.C_RegistryHelper.dropValue">
+<area shape="rect" id="node2" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#a418998685256430e72f7ad206c8d5922" title="Deletes a value of the current instance from the registry... " alt="" coords="265,5,444,47"/>
+<area shape="rect" id="node3" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#aeecec831de1be4ffccb5dc4b7e86231a" title="Override this Method to Write all your Settings to the registry " alt="" coords="492,5,723,47"/>
+<area shape="rect" id="node4" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#a71f956fb2ad7de478ac7a8a07ba31d3b" title="Override this to rename this instance in the registry " alt="" coords="771,5,949,47"/>
+</map>

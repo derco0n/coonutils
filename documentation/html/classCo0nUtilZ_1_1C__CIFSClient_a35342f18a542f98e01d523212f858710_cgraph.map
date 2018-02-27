@@ -1,0 +1,8 @@
+<map id="Co0nUtilZ.C_CIFSClient.MoveFileFromCIFS" name="Co0nUtilZ.C_CIFSClient.MoveFileFromCIFS">
+<area shape="rect" id="node2" href="$classCo0nUtilZ_1_1C__NetworkConnection.html#a2a644092c09962137ccd9b6a35661db5" title="Verbindet die zuvor definierte Netzwerkfreigabe. Im Fehlerfall ein das Event NetworkError ausgelöst..." alt="" coords="1007,89,1221,130"/>
+<area shape="rect" id="node3" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a99521a2c170fe5f7074a6403453a7d3a" title="Kopiert eine Datei aus einer CIFS&#45;Freigabe " alt="" coords="513,30,707,72"/>
+<area shape="rect" id="node4" href="$classCo0nUtilZ_1_1C__CIFSClient.html#ac1ef769fa926253e54ac4ca742333273" title="Erzeugt einen Thread welcher, die Dateiliste nach und nach in eine CIFS&#45;Freigabe hochlädt ..." alt="" coords="248,81,443,122"/>
+<area shape="rect" id="node5" href="$classCo0nUtilZ_1_1C__CIFSClient.html#aa45921f3469895f5fa55c1148196503e" title="Checks if a file is the youngest in the specified folder " alt="" coords="258,146,433,188"/>
+<area shape="rect" id="node6" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a4c02eac856bb2a1d4bcae365a109e936" title="Determines the youngest file (last writetime) of a folder " alt="" coords="491,154,729,180"/>
+<area shape="rect" id="node7" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a653035d74a0ccf6dedee3f295c3515da" title="Determines all Files of a Folder " alt="" coords="777,198,959,240"/>
+</map>

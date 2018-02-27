@@ -1,0 +1,5 @@
+<map id="Co0nUtilZ.C_NetworkConnection.InitializeErrorhints" name="Co0nUtilZ.C_NetworkConnection.InitializeErrorhints">
+<area shape="rect" id="node2" href="$classCo0nUtilZ_1_1C__NetworkConnection.html#a3b1cb570b39025a5a33a73ff6200751c" title="Diese Klasse stellt den Zugriff auf eine Netzwerkfreigabe mittels API&#45;Zugriffen her ..." alt="" coords="268,5,483,47"/>
+<area shape="rect" id="node3" href="$classCo0nUtilZ_1_1C__NetworkConnection.html#a2a644092c09962137ccd9b6a35661db5" title="Verbindet die zuvor definierte Netzwerkfreigabe. Im Fehlerfall ein das Event NetworkError ausgelöst..." alt="" coords="268,71,483,112"/>
+<area shape="rect" id="node4" href="$classCo0nUtilZ_1_1C__NetworkConnection.html#a1d7a8868b43d69ec7492d9f6ce9b9768" title="Co0nUtilZ.C_NetworkConnection.\lDispose" alt="" coords="268,136,483,177"/>
+</map>

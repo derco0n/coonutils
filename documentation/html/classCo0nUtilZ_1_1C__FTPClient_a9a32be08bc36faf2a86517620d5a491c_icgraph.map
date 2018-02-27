@@ -1,0 +1,7 @@
+<map id="Co0nUtilZ.C_FTPClient.GetFileList" name="Co0nUtilZ.C_FTPClient.GetFileList">
+<area shape="rect" id="node2" href="$classCo0nUtilZ_1_1C__FTPClient.html#ac0987a1cb67778b1672c543879db793a" title="Gibt den auf dem Server existierenden Teil eines Pfads zurück " alt="" coords="233,5,464,32"/>
+<area shape="rect" id="node3" href="$classCo0nUtilZ_1_1C__FTPClient.html#abd2538a82311d30f37e0dbb34b1594fe" title="Prüft ob ein Pfad auf dem Server existiert " alt="" coords="512,23,699,65"/>
+<area shape="rect" id="node5" href="$classCo0nUtilZ_1_1C__FTPClient.html#adfaea2878eab8d1c6e99f6bde189ad26" title="Prüft ob eine angebende Datei im Zielordner existiert " alt="" coords="259,107,439,149"/>
+<area shape="rect" id="node6" href="$classCo0nUtilZ_1_1C__FTPClient.html#a33f7bf26b173749b863523444ace0064" title="Co0nUtilZ.C_FTPClient.Get\lFileListByRegex" alt="" coords="259,173,439,214"/>
+<area shape="rect" id="node4" href="$classCo0nUtilZ_1_1C__FTPClient.html#acacc21b281c3f9545fb4d35244a32dca" title="Lädt eine kompletten Ordner (nicht rekursiv) vom Server herunter. Die Aktion wird in einem neuen Thre..." alt="" coords="747,23,961,65"/>
+</map>

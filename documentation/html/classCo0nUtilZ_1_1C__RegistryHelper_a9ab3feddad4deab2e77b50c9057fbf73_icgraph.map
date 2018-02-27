@@ -1,0 +1,4 @@
+<map id="Co0nUtilZ.C_RegistryHelper.dropInstance" name="Co0nUtilZ.C_RegistryHelper.dropInstance">
+<area shape="rect" id="node2" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#a0cf72f935dc12a2a7e021ee94db11f85" title="deletes the complete jobinstance from registry. " alt="" coords="265,5,444,47"/>
+<area shape="rect" id="node3" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#a71f956fb2ad7de478ac7a8a07ba31d3b" title="Override this to rename this instance in the registry " alt="" coords="265,71,444,112"/>
+</map>

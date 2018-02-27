@@ -1,0 +1,5 @@
+<map id="Co0nUtilZ.C_RegistryHelper.WriteSettingToRegistry" name="Co0nUtilZ.C_RegistryHelper.WriteSettingToRegistry">
+<area shape="rect" id="node2" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#a1fc188dd5d351d03c7215c3df7e9662e" title="Writes one setting to Registry " alt="" coords="240,5,449,47"/>
+<area shape="rect" id="node3" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#aeecec831de1be4ffccb5dc4b7e86231a" title="Override this Method to Write all your Settings to the registry " alt="" coords="497,5,728,47"/>
+<area shape="rect" id="node4" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#a71f956fb2ad7de478ac7a8a07ba31d3b" title="Override this to rename this instance in the registry " alt="" coords="776,5,955,47"/>
+</map>

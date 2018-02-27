@@ -1,0 +1,8 @@
+<map id="Co0nUtilZ.C_CIFSClient.listFiles" name="Co0nUtilZ.C_CIFSClient.listFiles">
+<area shape="rect" id="node2" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a4c02eac856bb2a1d4bcae365a109e936" title="Determines the youngest file (last writetime) of a folder " alt="" coords="235,101,473,127"/>
+<area shape="rect" id="node3" href="$classCo0nUtilZ_1_1C__CIFSClient.html#aa45921f3469895f5fa55c1148196503e" title="Checks if a file is the youngest in the specified folder " alt="" coords="521,93,696,135"/>
+<area shape="rect" id="node4" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a35342f18a542f98e01d523212f858710" title="Verschiebt eine Datei aus einer Netzwerkfreigabe in einen lokalen Ordner " alt="" coords="744,5,939,47"/>
+<area shape="rect" id="node5" href="$classCo0nUtilZ_1_1C__CIFSClient.html#af94cf1a5c77c4b4ae6f44c1a5a4285fe" title="Verschiebt mehrere Dateien einer CIFS&#45;Freigabe in einen lokalen ordner " alt="" coords="987,35,1181,76"/>
+<area shape="rect" id="node6" href="$classCo0nUtilZ_1_1C__CIFSClient.html#aeb30a85e98f94bda19c5e50421a21e36" title="Verschiebt mehrere Dateien von einem lokalen Ordner in eine CIFS&#45;Freigabe " alt="" coords="744,123,939,164"/>
+<area shape="rect" id="node7" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a99851a44191b20189c1aa632262e819a" title="Checks if a connection to the destination folder is possible &lt;/ summary&gt; subfolder on server &lt;/ param..." alt="" coords="747,188,936,229"/>
+</map>

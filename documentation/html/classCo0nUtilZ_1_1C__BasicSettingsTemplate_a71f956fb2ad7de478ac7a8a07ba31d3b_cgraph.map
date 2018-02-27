@@ -1,0 +1,9 @@
+<map id="Co0nUtilZ.C_BasicSettingsTemplate.renameInstance" name="Co0nUtilZ.C_BasicSettingsTemplate.renameInstance">
+<area shape="rect" id="node2" href="$classCo0nUtilZ_1_1C__RegistryHelper.html#a9ab3feddad4deab2e77b50c9057fbf73" title="Löscht eine komplette Instanz (Unterschlüssel des aktuellen Registry&#45;Schlüssels) " alt="" coords="241,5,453,47"/>
+<area shape="rect" id="node3" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#aeecec831de1be4ffccb5dc4b7e86231a" title="Override this Method to Write all your Settings to the registry " alt="" coords="232,71,463,112"/>
+<area shape="rect" id="node4" href="$classCo0nUtilZ_1_1C__RegistryHelper.html#a25b55c7c048df1a277def934bea87579" title="Ermittelt alle Wertenamen eines Unterschlüssels " alt="" coords="522,5,709,47"/>
+<area shape="rect" id="node5" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#a418998685256430e72f7ad206c8d5922" title="Deletes a value of the current instance from the registry... " alt="" coords="526,71,705,112"/>
+<area shape="rect" id="node7" href="$classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#a1fc188dd5d351d03c7215c3df7e9662e" title="Writes one setting to Registry " alt="" coords="511,136,720,177"/>
+<area shape="rect" id="node6" href="$classCo0nUtilZ_1_1C__RegistryHelper.html#a501da8a758da293c32785a198c8ea277" title="Löscht einen Wert in einem Instanzunterschlüssel " alt="" coords="768,71,980,112"/>
+<area shape="rect" id="node8" href="$classCo0nUtilZ_1_1C__RegistryHelper.html#ada64f8b9b6be0b35462b3fe4231db3a1" title="Schreibt einen Wert in die Registry " alt="" coords="781,136,967,177"/>
+</map>

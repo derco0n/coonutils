@@ -1,0 +1,15 @@
+<map id="Co0nUtilZ.C_NetworkConnection.Connect" name="Co0nUtilZ.C_NetworkConnection.Connect">
+<area shape="rect" id="node2" href="$classCo0nUtilZ_1_1C__CIFSClient.html#aca6f93edd1fa9f781c7a44c0ae218b81" title="Kopiert eine Datei aus einer CIFS&#45;Freigabe " alt="" coords="817,22,1012,64"/>
+<area shape="rect" id="node4" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a99851a44191b20189c1aa632262e819a" title="Checks if a connection to the destination folder is possible &lt;/ summary&gt; subfolder on server &lt;/ param..." alt="" coords="1063,81,1252,122"/>
+<area shape="rect" id="node5" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a99521a2c170fe5f7074a6403453a7d3a" title="Kopiert eine Datei aus einer CIFS&#45;Freigabe " alt="" coords="553,470,747,512"/>
+<area shape="rect" id="node6" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a35342f18a542f98e01d523212f858710" title="Verschiebt eine Datei aus einer Netzwerkfreigabe in einen lokalen Ordner " alt="" coords="1060,440,1255,481"/>
+<area shape="rect" id="node7" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a63abcdaec58a0f64ac6b77390d167655" title="Return the Folderinformation of a Subfolder " alt="" coords="284,241,467,282"/>
+<area shape="rect" id="node8" href="$classCo0nUtilZ_1_1C__NetworkConnection.html#ab90c9b23856beeec846fbbcb8b5f4e21" title="Co0nUtilZ.C_NetworkConnection.\lInitializeErrorhints" alt="" coords="268,306,483,348"/>
+<area shape="rect" id="node9" href="$classCo0nUtilZ_1_1C__CIFSClient.html#aa45921f3469895f5fa55c1148196503e" title="Checks if a file is the youngest in the specified folder " alt="" coords="827,269,1002,310"/>
+<area shape="rect" id="node11" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a653035d74a0ccf6dedee3f295c3515da" title="Determines all Files of a Folder " alt="" coords="285,372,466,413"/>
+<area shape="rect" id="node12" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a4c02eac856bb2a1d4bcae365a109e936" title="Determines the youngest file (last writetime) of a folder " alt="" coords="531,276,769,303"/>
+<area shape="rect" id="node13" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a2c39a55d197363720198d7c0527f65ff" title="Gets all folders of a given subfolder " alt="" coords="285,540,466,581"/>
+<area shape="rect" id="node14" href="$classCo0nUtilZ_1_1C__CIFSClient.html#a84306aa2e52440f8a565bb3286f0f0e3" title="Verschiebt eine Datei aus einem lokalen Ordner in eine Netzwerkfreigabe " alt="" coords="553,361,747,402"/>
+<area shape="rect" id="node3" href="$classCo0nUtilZ_1_1C__CIFSClient.html#af94cf1a5c77c4b4ae6f44c1a5a4285fe" title="Verschiebt mehrere Dateien einer CIFS&#45;Freigabe in einen lokalen ordner " alt="" coords="1303,269,1497,310"/>
+<area shape="rect" id="node10" href="$classCo0nUtilZ_1_1C__CIFSClient.html#aeb30a85e98f94bda19c5e50421a21e36" title="Verschiebt mehrere Dateien von einem lokalen Ordner in eine CIFS&#45;Freigabe " alt="" coords="1060,330,1255,372"/>
+</map>
