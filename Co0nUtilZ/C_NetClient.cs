@@ -239,7 +239,7 @@ namespace Co0nUtilZ
 
                     if (this.Connected != null)
                     {
-                        this.Connected(this, new ProgressEventArgs(30, "Verbunden."));
+                        this.Connected(this, new ProgressEventArgs(30, "Connected."));
                     }
 
 
@@ -250,8 +250,8 @@ namespace Co0nUtilZ
 
                         if (this._isConnected)
                         {
-                            TimerCallback tick = new TimerCallback(CheckConnection); //Bei jedem Timertick die Methode "CheckAndDoWork" aufrufen
-                            this.timer = new System.Threading.Timer(tick, null, 0, 1000); //Neuen Timer Initialisieren - Intervall in ms
+                            TimerCallback tick = new TimerCallback(CheckConnection); //Call method "CheckConnection" with every TimetrTick
+                            this.timer = new System.Threading.Timer(tick, null, 0, 1000); //Initialize new timer - intervall in ms
                         }
                     }
 
@@ -262,7 +262,7 @@ namespace Co0nUtilZ
                 {
                     if (this.OnError != null)
                     {
-                        this.OnError(this, new ErrorEventArgs("Fehler beim Verbindungsaufbau (Callback).\r\n" + ex.ToString()));
+                        this.OnError(this, new ErrorEventArgs("Error while establishing a connection (Callback).\r\n" + ex.ToString()));
                     }
                 }
             }
@@ -271,7 +271,7 @@ namespace Co0nUtilZ
                 if (this.OnError != null)
                 {
                     this.OnError(this, new ErrorEventArgs(
-                        "Die Verbindung konnte nicht hergestellt werden. Ist der Server erreichbar?"
+                        "Connection could not be established.\r\nIs the Server reachable?\r\nPlease make sure no firewall is blocking the connection to \"" + this._ip + ":" + this._port.ToString()+"\""
                             )
                         );
                 }
