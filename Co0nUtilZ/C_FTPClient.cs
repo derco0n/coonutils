@@ -30,6 +30,7 @@ namespace Co0nUtilZ
 
         #region === Properties
 
+       
         private Exception _lastException = new Exception("No Exception so far");
         /// <summary>
         /// Gibt die letzte Exception zurück

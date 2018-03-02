@@ -26,6 +26,7 @@ namespace Co0nUtilZ
         private Socket mySocket;
         private int _port;
         private String _ip;
+        
 
         //private Encoding m_encoding = Encoding.ASCII;
         private Encoding m_encoding = Encoding.UTF8;
@@ -50,6 +51,22 @@ namespace Co0nUtilZ
             return Dns.GetHostAddresses(Hostname)[0].ToString();
         }
 
+
+        private int _connect_timeout=5000; //Default: Wait 5 Second while trying to connect to server
+        public int ConnectTimeout
+        {
+            get
+            {
+                return this._connect_timeout;
+            }
+            set
+            {
+               if (value > 0)
+                {
+                    this._connect_timeout = value;
+                } 
+            }
+        }
 
         private bool _isConnected = false;
         public bool IsConnected
@@ -104,7 +121,7 @@ namespace Co0nUtilZ
 
                 //Start the async connect operation   
 
-                this.mySocket.BeginConnect(
+                IAsyncResult result = this.mySocket.BeginConnect(
                     this._ip,
                     this._port,
                     new AsyncCallback(
@@ -112,6 +129,19 @@ namespace Co0nUtilZ
                         ),
                     mySocket
                     );
+
+                bool success = result.AsyncWaitHandle.WaitOne(this._connect_timeout, true);
+
+                if (this.mySocket.Connected)
+                {
+                    this.mySocket.EndConnect(result);
+                }
+                else
+                {
+                    // NOTE, MUST CLOSE THE SOCKET
+                    this.Disconnect();                    
+                    throw new ApplicationException("\r\nTimeout while connecting to Server (Timeout: "+this._connect_timeout+"ms).\r\nIs the server ("+this._ip+":"+this._port.ToString()+") reachable and the service running?\r\nPlease check connection( -settings) and Firewallsettings or try to increase Timeout.\r\n");
+                }
 
 
             }
@@ -125,7 +155,7 @@ namespace Co0nUtilZ
 
                 if (this.OnError != null)
                 {
-                    this.OnError(this, new ErrorEventArgs("Fehler beim Verbindungsaufbau:\r\n" + ex.ToString()));
+                    this.OnError(this, new ErrorEventArgs("Error while connecting:\r\n" + ex.ToString()));
                 }
             }
         }
