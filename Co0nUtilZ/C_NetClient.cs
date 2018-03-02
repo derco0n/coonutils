@@ -265,16 +265,16 @@ namespace Co0nUtilZ
                 if (this.mySocket != null && this.mySocket.Connected)
                 {
 
-                    //Sämtliche aktiven Übertragungen beenden
-                    this.mySocket.Shutdown(SocketShutdown.Send);
+                this._isConnected = false; //tell that connection is not disconnected
+
+                //Sämtliche aktiven Übertragungen beenden
+                this.mySocket.Shutdown(SocketShutdown.Send);
                     Thread.Sleep(50);
                     this.mySocket.Shutdown(SocketShutdown.Receive);
                     Thread.Sleep(50);
                     this.mySocket.Disconnect(false); //Das Socket trennen und nicht wieder benutzen (Dispose())
                     if (!this.mySocket.Connected)
                     {
-                        this._isConnected = false;
-
                         if (this.Disconnected != null)
                         {
                             this.Disconnected(this, new Co0nUtilZ.ProgressEventArgs(10, "Connection closed by client."));
@@ -283,6 +283,10 @@ namespace Co0nUtilZ
                         {
                             this.timer.Dispose();
                         }
+                    }
+                    else
+                    {
+                        this._isConnected = true; //Connection. however ist still alive
                     }
 
                 }
