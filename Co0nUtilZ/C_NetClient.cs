@@ -10,18 +10,7 @@ using System.Net.Sockets;
 
 namespace Co0nUtilZ
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Threading;
-    using System.Net;
-    using System.Net.NetworkInformation;
-    using System.Net.Sockets;
-
-    namespace TorLED
-    {
+    
         /// <summary>
         /// This class represents a TCP-Client
         /// Author: D. Marx
@@ -496,6 +485,6 @@ namespace Co0nUtilZ
                 }
             }
         }
-    }
+    
 
 }
