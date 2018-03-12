@@ -141,6 +141,7 @@ namespace Co0nUtilZ
 
         public delegate void MultiLoadProgressEventHandler(object sender, ProgressEventArgs Args);
         public delegate void ErrorEventHandler(object sender, ErrorEventArgs Fehler);
+        public delegate void FileTransferredHandler(object sender, String Filename);
 
         /// <summary>
         /// Ereignis: Uploadfortschritt hat sich geändert
@@ -166,6 +167,16 @@ namespace Co0nUtilZ
         /// Ereignis: Dateiübertragunsfehler
         /// </summary>
         public event ErrorEventHandler FileTransferError;
+
+        /// <summary>
+        /// Ereignis: Datei Erfolgreich übertragen. - Nur beim Übertragenen mehrerer Dateien!
+        /// </summary>
+        public event FileTransferredHandler FileTransferredSuccessfully;
+
+        /// <summary>
+        /// Ereignis: Datei nicht Erfolgreich übertragen. - Nur beim Übertragenen mehrerer Dateien!
+        /// </summary>
+        public event FileTransferredHandler FileTransferredUnsuccessfully;
 
         #endregion
 
@@ -391,7 +402,7 @@ namespace Co0nUtilZ
                             this.FileTransferError(
                             this,
                             new ErrorEventArgs(
-                                "Fehler beim Übertragen der Datei: " + File + " nach " + localfolder + ". Ausnahme: " + this._lastException + "  => Versuche erneut...")
+                                "Fehler beim 1. Übertragungsversuch der Datei: " + File + " nach " + localfolder + ". Ausnahme: " + this._lastException + "  => Versuche erneut...")
                                 );//Event auslösen falls abboniert
                             retry = DownloadFile(File, localfolder, true); //Datei erneut versuchen
                             if (!retry) //Erneuter Versuch ebenfalls fehlgeschlagen
@@ -402,18 +413,35 @@ namespace Co0nUtilZ
                                     this.FileTransferError(
                                     this,
                                     new ErrorEventArgs(
-                                        "Fehler beim Übertragen der Datei: " + File + " nach " + localfolder + ". Ausnahme: " + this._lastException + "  => Erneuter Versuch auch fehlgeschlagen!")
+                                        "Fehler beim 2. Übertragungsversuch der Datei: " + File + " nach " + localfolder + ". Ausnahme: " + this._lastException + "  => Überspringe Datei!")
                                         );//Event auslösen falls abboniert
                                 }
                             }
                         }
                     }
 
+
                     if (removeFileAfterTransfer && (success | retry))
                     {
                         //Wenn die Datei nach erfolgreichem Transfer gelöscht werden soll und der erste oder der zweite Kopierversuch erfolgreich waren
                         this.DeleteFile(File, true); //Remotedatei nach Übertragung löschen
                     }
+
+                    if (success | retry)
+                    {
+                        if (this.FileTransferredSuccessfully != null)
+                        {
+                            this.FileTransferredSuccessfully(this, File);
+                        }
+                    }
+                    else
+                    {
+                        if (this.FileTransferredUnsuccessfully != null)
+                        {
+                            this.FileTransferredUnsuccessfully(this, File);
+                        }
+                    }
+
 
                     //Fortschritt aktualisieren.
                     FileInfo TargetInfo = new FileInfo(localfolder + "\\" + File);
@@ -515,7 +543,7 @@ namespace Co0nUtilZ
                             this.FileTransferError(
                             this,
                             new ErrorEventArgs(
-                                "Fehler beim Übertragen von: " + File + " nach " + remoteFolder + " Ausnahme: " + this._lastException + " => Versuche erneut...")
+                                "Fehler beim 1. Übertragungsversuch von: " + File.FullName + " nach " + remoteFolder + " Ausnahme: " + this._lastException + " => Versuche erneut...")
                                 );//Event auslösen falls abboniert
                             retry = UploadFile(remoteFolder, File, true); //Datei erneut versuchen
                             if (!retry) //Erneuter Versuch ebenfalls fehlgeschlagen
@@ -526,7 +554,7 @@ namespace Co0nUtilZ
                                     this.FileTransferError(
                                     this,
                                     new ErrorEventArgs(
-                                        "Fehler beim erneuten Übertragen von: " + File + " nach " + remoteFolder + " Ausnahme: " + this._lastException + "  => Erneuter Versuch auch fehlgeschlagen!")
+                                        "Fehler beim 2. Übertragungsversuch von: " + File.FullName + " nach " + remoteFolder + " Ausnahme: " + this._lastException + " !  => Überspringe Datei...")
                                         );//Event auslösen falls abboniert
                                 }
                             }
@@ -546,10 +574,25 @@ namespace Co0nUtilZ
                             this.FileTransferError(
                                    this,
                                    new ErrorEventArgs(
-                                       "Fehler beim löschen der Quelldatei: " + File + " - Details: " + ex.ToString())
+                                       "Fehler beim löschen der Quelldatei: " + File.FullName + " - Details: " + ex.ToString())
                                        );//Event auslösen falls abboniert
                         }
 
+                    }
+
+                    if (success | retry)
+                    {
+                        if (this.FileTransferredSuccessfully != null)
+                        {
+                            this.FileTransferredSuccessfully(this, File.FullName);
+                        }
+                    }
+                    else
+                    {
+                        if (this.FileTransferredUnsuccessfully != null)
+                        {
+                            this.FileTransferredUnsuccessfully(this, File.FullName);
+                        }
                     }
 
 
