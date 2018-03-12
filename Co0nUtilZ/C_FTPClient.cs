@@ -348,7 +348,7 @@ namespace Co0nUtilZ
                 this.FileTransferError(
                    this,
                    new ErrorEventArgs(
-                       "Fehler beim Download nach " + localfolder + ". Zielordner nicht gefunden!! - Abbruch der Übertragung!")
+                       "Fehler beim Download nach " + localfolder + ". Zielordner (auf lokaler Maschine) wurde nicht gefunden!! - Abbruch der Übertragung!")
                        );//Event auslösen falls abboniert
 
             }
@@ -472,7 +472,7 @@ namespace Co0nUtilZ
                 this.FileTransferError(
                    this,
                    new ErrorEventArgs(
-                       "Fehler beim Upload nach " + remoteFolder + ". Zielordner nicht gefunden!! - Abbruch der Übertragung!")
+                       "Fehler beim Upload nach " + remoteFolder + ". Zielordner (auf dem Server) wurde nicht gefunden!! - Abbruch der Übertragung!")
                        );//Event auslösen falls abboniert
 
             }
