@@ -342,13 +342,13 @@ namespace Co0nUtilZ
 
 
 
-            if (new System.IO.DirectoryInfo(localfolder).Exists == false)
-            { //Zielordner existiert nicht
+            if (new System.IO.DirectoryInfo(localfolder).Exists == false) //Zielordner existiert nicht
+            { 
               //Datei existiert nicht
                 this.FileTransferError(
                    this,
                    new ErrorEventArgs(
-                       "Fehler beim Übertragen nach " + localfolder + ". Quellordner nicht gefunden!! - Abbruch der Übertragung!")
+                       "Fehler beim Download nach " + localfolder + ". Zielordner nicht gefunden!! - Abbruch der Übertragung!")
                        );//Event auslösen falls abboniert
 
             }
@@ -466,13 +466,13 @@ namespace Co0nUtilZ
             double percentcomplete = 0;
 
 
-            if (!this.PathExists(remoteFolder))
-            { //Zielordner existiert nicht
+            if (!this.PathExists(remoteFolder)) //Zielordner existiert nicht
+            { 
               //Datei existiert nicht
                 this.FileTransferError(
                    this,
                    new ErrorEventArgs(
-                       "Fehler beim Übertragen nach " + remoteFolder + ". Zielordner nicht gefunden!! - Abbruch der Übertragung!")
+                       "Fehler beim Upload nach " + remoteFolder + ". Zielordner nicht gefunden!! - Abbruch der Übertragung!")
                        );//Event auslösen falls abboniert
 
             }
