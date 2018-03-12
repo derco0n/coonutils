@@ -169,6 +169,11 @@ namespace Co0nUtilZ
         public event ErrorEventHandler FileTransferError;
 
         /// <summary>
+        /// Ereignis: Allgmeiner Fehler
+        /// </summary>
+        public event ErrorEventHandler GeneralError;
+
+        /// <summary>
         /// Ereignis: Datei Erfolgreich übertragen. - Nur beim Übertragenen mehrerer Dateien!
         /// </summary>
         public event FileTransferredHandler FileTransferredSuccessfully;
@@ -210,6 +215,10 @@ namespace Co0nUtilZ
                 }
                 this._lastException = ex;
                 //throw;
+                if (this.GeneralError != null)
+                {
+                    this.GeneralError(this, new ErrorEventArgs("Error creating folder: " + ex.ToString()));
+                }
                 myReturn = false;
             }
             finally
@@ -253,6 +262,12 @@ namespace Co0nUtilZ
                     // Console.WriteLine(error + " Zertifikat ist abgelaufen, Hostname entspricht nicht dem im Zertifikat, der ausstellenden CA wird nicht vertraut oder es handelt sich um ein selbst erstelltes Zertifikat.");
                 }
                 this._lastException = ex;
+
+                if (this.GeneralError != null)
+                {
+                    this.GeneralError(this, new ErrorEventArgs("Error checking connection: "+ex.ToString()));
+                }
+
                 myReturn = false;
             }
             finally
@@ -263,7 +278,7 @@ namespace Co0nUtilZ
                     {
                         webResponse.Close();
                     }
-                    catch (Exception ex)
+                    catch (Exception /*ex*/)
                     {
                         myReturn = false;
                     }
@@ -319,7 +334,10 @@ namespace Co0nUtilZ
 
                 catch (Exception ex)
                 {
-
+                    if (this.GeneralError != null)
+                    {
+                        this.GeneralError(this, new ErrorEventArgs("Error aborting Download: " + ex.ToString()));
+                    }
                 }
             }
 
@@ -332,7 +350,10 @@ namespace Co0nUtilZ
 
                 catch (Exception ex)
                 {
-
+                    if (this.GeneralError != null)
+                    {
+                        this.GeneralError(this, new ErrorEventArgs("Error closing FTP-Stream: " + ex.ToString()));
+                    }
                 }
             }
 
@@ -369,14 +390,9 @@ namespace Co0nUtilZ
                 int TotalKBCount = 0;
                 Stopwatch sW = new Stopwatch();
                 sW.Start();
-
-
-
+                
                 foreach (String File in RemoteFiles)
                 {//Alle Dateien des Quellordners durchgehen
-
-
-
 
                     /*
                     if (this.FileExists("????",File) == false)
@@ -683,7 +699,10 @@ namespace Co0nUtilZ
 
                 catch (Exception ex)
                 {
-
+                    if (this.GeneralError != null)
+                    {
+                        this.GeneralError(this, new ErrorEventArgs("Error aborting Upload: " + ex.ToString()));
+                    }
                 }
             }
 
@@ -696,7 +715,10 @@ namespace Co0nUtilZ
 
                 catch (Exception ex)
                 {
-
+                    if (this.GeneralError != null)
+                    {
+                        this.GeneralError(this, new ErrorEventArgs("Error closing FTP-Stream: " + ex.ToString()));
+                    }
                 }
             }
 
@@ -783,6 +805,10 @@ namespace Co0nUtilZ
                 }
 
                 this._lastException = ex;
+                if (this.GeneralError != null)
+                {
+                    this.GeneralError(this, new ErrorEventArgs("Error uploading file: " + ex.ToString()));
+                }
                 myReturn = false; //Fehler beim kopieren: Rückgabewert=FALSE
 
             }
@@ -799,7 +825,7 @@ namespace Co0nUtilZ
                     {
                         ftpStream.Close(); //Den Zieldatenstrom schließen
                     }
-                    catch (Exception ex)
+                    catch (Exception /*ex*/)
                     {
                         //  this._lastException = ex;
                     }
@@ -822,32 +848,21 @@ namespace Co0nUtilZ
             List<String> CurrentLevelContent = this.GetFileList(FullServerPath); //Wenn Ordner existiert aber keinen Inhalt halt, hat die Liste dennoch einen Eintrag
 
 
-            if (this.existingPath(FullServerPath).Equals(FullServerPath)) //Wenn der Angegebene Ordner auf dem Server existiert.
+            String existingPath = this.existingPath(FullServerPath);
+
+            if (existingPath.Equals(FullServerPath)) //Wenn der Angegebene Ordner auf dem Server existiert.
             {
                 return true; //ordner existiert
+            }
+
+            if (this.GeneralError != null)
+            {
+                this.GeneralError(this, new ErrorEventArgs("Serverpath not found. Found partial path \"" + existingPath+"\""));
             }
 
             return false; //Ordner existiert nicht
 
         }
-
-        /*
-        public bool OLD_PathExists(String FullServerPath)
-        {//Prüft ob ein bestimmter Ordner auf dem Server existiert:
-            //Zunächst prüfen ob der gesuchte Ordner einen Inhalt hat
-            List<String> CurrentLevelContent = this.GetFileList(FullServerPath); //Wenn Ordner existiert aber keinen Inhalt halt, hat die Liste dennoch einen Eintrag
-            
-           
-            if (CurrentLevelContent!=null && CurrentLevelContent.Count > 0) 
-            {
-                return true; //ordner existiert
-            }
-
-            return false; //Ordner existiert nicht
-            
-        }
-        */
-
 
         /// <summary>
         /// Gibt den auf dem Server existierenden Teil eines Pfads zurück
@@ -973,6 +988,10 @@ namespace Co0nUtilZ
                     */
                 }
                 this._lastException = ex;
+                if (this.GeneralError != null)
+                {
+                    this.GeneralError(this, new ErrorEventArgs("Error getting file list: " + ex.ToString()));
+                }
                 return new List<string>();
             }
 
@@ -1121,6 +1140,10 @@ namespace Co0nUtilZ
                     }
                     catch (Exception ex)
                     {
+                        if (this.GeneralError != null)
+                        {
+                            this.GeneralError(this, new ErrorEventArgs("Error while setting File-Timestamp: " + ex.ToString()));
+                        }   
                         this._lastException = ex;
 
                         myreturn = false;
@@ -1161,6 +1184,10 @@ namespace Co0nUtilZ
             catch (Exception ex)
             {
                 this._lastException = ex;
+                if (this.GeneralError != null)
+                {
+                    this.GeneralError(this, new ErrorEventArgs("Error getting last modify time: " + ex.ToString()));
+                }
 
             }
 
@@ -1196,6 +1223,10 @@ namespace Co0nUtilZ
             }
             catch (Exception ex)
             {
+                if (this.GeneralError != null)
+                {
+                    this.GeneralError(this, new ErrorEventArgs("Error deleting file: " + ex.ToString()));
+                }
                 this._lastException = ex;
 
             }
