@@ -348,7 +348,7 @@ namespace Co0nUtilZ
                 this.FileTransferError(
                    this,
                    new ErrorEventArgs(
-                       "Fehler beim Übertragen nach " + localfolder + ". Zielordner nicht gefunden!! - Abbruch der Übertragung!")
+                       "Fehler beim Übertragen nach " + localfolder + ". Quellordner nicht gefunden!! - Abbruch der Übertragung!")
                        );//Event auslösen falls abboniert
 
             }
