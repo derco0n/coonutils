@@ -737,7 +737,7 @@ namespace Co0nUtilZ
         {
              
 
-            System.Threading.Thread.Sleep(PAUSEMS); //Kurz warten, damit Server und Netzwerk bei vielen Dateien hintereinander wieder bereits sind.
+            System.Threading.Thread.Sleep(PAUSEMS); //Kurz warten, damit Server und Netzwerk bei vielen Dateien hintereinander wieder bereit sind.
 
             Stream ftpStream = null;
             FileStream file = null;
@@ -1166,7 +1166,7 @@ namespace Co0nUtilZ
         public DateTime LastModifiedTime(string RemoteFileFullPath)
         {
             DateTime myReturn = new DateTime();
-            System.Threading.Thread.Sleep(PAUSEMS); //Kurz warten, damit Server und Netzwerk beim vielen Dateien hintereinander wieder bereits sind.
+            System.Threading.Thread.Sleep(PAUSEMS); //Kurz warten, damit Server und Netzwerk bei vielen Dateien hintereinander wieder bereits sind.
 
             try
             {
