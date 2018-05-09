@@ -12,6 +12,6 @@ var searchData=
   ['resourcescope',['ResourceScope',['../namespaceCo0nUtilZ.html#a2f53a8b5fdd6d37b041119a70ee080e8',1,'Co0nUtilZ']]],
   ['resourcetype',['ResourceType',['../namespaceCo0nUtilZ.html#a4fd57ceed7b55ee8a5f0f5fcd41fd2b5',1,'Co0nUtilZ']]],
   ['root',['Root',['../namespaceCo0nUtilZ.html#ab43ba53d7a0e52e22afea70d8b278feeafa03eb688ad8aa1db593d33dabd89bad',1,'Co0nUtilZ']]],
-  ['rootkey',['rootkey',['../classCo0nUtilZ_1_1C__RegistryHelper.html#a24cb9d6f2b711723d8af78dacf6a69c2',1,'Co0nUtilZ.C_RegistryHelper.rootkey()'],['../classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#a418f397b95667ef821a6bf0930fb4e2e',1,'Co0nUtilZ.C_BasicSettingsTemplate.Rootkey()']]],
+  ['rootkey',['Rootkey',['../classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#a418f397b95667ef821a6bf0930fb4e2e',1,'Co0nUtilZ.C_BasicSettingsTemplate.Rootkey()'],['../classCo0nUtilZ_1_1C__RegistryHelper.html#a24cb9d6f2b711723d8af78dacf6a69c2',1,'Co0nUtilZ.C_RegistryHelper.rootkey()']]],
   ['runjob',['runJob',['../classCo0nUtilZ_1_1C__BasicSettingsTemplate.html#a066e2a2af45ae9f77f76e7d2e3d37f7c',1,'Co0nUtilZ::C_BasicSettingsTemplate']]]
 ];

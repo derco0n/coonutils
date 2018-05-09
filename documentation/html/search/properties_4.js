@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['message',['Message',['../classCo0nUtilZ_1_1ProgressEventArgs.html#a64a1ed511bc43b967caa3580cc79bd0b',1,'Co0nUtilZ::ProgressEventArgs']]],
-  ['msgprefix',['MsgPrefix',['../classCo0nUtilZ_1_1C__LoggingHelper.html#a93d1d686778388447c506b539781c020',1,'Co0nUtilZ::C_LoggingHelper']]]
+  ['lastexception',['lastException',['../classCo0nUtilZ_1_1C__FTPClient.html#ab6eac7aec25b1491234977fd0fc89348',1,'Co0nUtilZ::C_FTPClient']]],
+  ['logname',['Logname',['../classCo0nUtilZ_1_1C__LoggingHelper.html#a8113ce777c3c2078d2a9d9c4f25557e5',1,'Co0nUtilZ::C_LoggingHelper']]],
+  ['logsourcename',['Logsourcename',['../classCo0nUtilZ_1_1C__LoggingHelper.html#a606642d10b3d4c93afb61fe03e01eff3',1,'Co0nUtilZ::C_LoggingHelper']]]
 ];

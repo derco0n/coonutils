@@ -965,6 +965,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>FileTransferredHandler</Name>
+      <APILanguage>csharp</APILanguage>
+      <Type>instm</Type>
+      <Scope>Co0nUtilZ.C_FTPClient</Scope>
+    </TokenIdentifier>
+    <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
+    <Anchor>a549d777eeb052b3176e75aa63a2ce690</Anchor>
+    <DeclaredIn>C_FTPClient.cs</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>CreateFolder</Name>
       <APILanguage>csharp</APILanguage>
       <Type>instm</Type>
@@ -1307,6 +1318,39 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>GeneralError</Name>
+      <APILanguage>csharp</APILanguage>
+      <Type>event</Type>
+      <Scope>Co0nUtilZ.C_FTPClient</Scope>
+    </TokenIdentifier>
+    <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
+    <Anchor>aa5e95deae2bd06cfa4e3f35662e630d2</Anchor>
+    <Abstract>Ereignis: Allgmeiner Fehler </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>FileTransferredSuccessfully</Name>
+      <APILanguage>csharp</APILanguage>
+      <Type>event</Type>
+      <Scope>Co0nUtilZ.C_FTPClient</Scope>
+    </TokenIdentifier>
+    <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
+    <Anchor>a82c7d263a627f0960b1d8a2f79a1663f</Anchor>
+    <Abstract>Ereignis: Datei Erfolgreich übertragen. - Nur beim Übertragenen mehrerer Dateien! ...</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>FileTransferredUnsuccessfully</Name>
+      <APILanguage>csharp</APILanguage>
+      <Type>event</Type>
+      <Scope>Co0nUtilZ.C_FTPClient</Scope>
+    </TokenIdentifier>
+    <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
+    <Anchor>a5a91170c242249d213b929c69981c7e8</Anchor>
+    <Abstract>Ereignis: Datei nicht Erfolgreich übertragen. - Nur beim Übertragenen mehrerer Dateien! ...</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>Co0nUtilZ::C_LoggingHelper</Name>
       <APILanguage>csharp</APILanguage>
       <Type>cl</Type>
@@ -1486,7 +1530,7 @@
       <Scope>Co0nUtilZ.C_NetClient</Scope>
     </TokenIdentifier>
     <Path>classCo0nUtilZ_1_1C__NetClient.html</Path>
-    <Anchor>aeab8cf4ca4108f0679fd61da7ccca42a</Anchor>
+    <Anchor>ab036439ba36fc4fe3c34db96965d4dd7</Anchor>
     <DeclaredIn>C_NetClient.cs</DeclaredIn>
   </Token>
   <Token>
@@ -1497,7 +1541,7 @@
       <Scope>Co0nUtilZ.C_NetClient</Scope>
     </TokenIdentifier>
     <Path>classCo0nUtilZ_1_1C__NetClient.html</Path>
-    <Anchor>acabbc09d43a83262dcae2f95afd5e895</Anchor>
+    <Anchor>a8206837c7f9bee85f11f3147d94e0f33</Anchor>
     <DeclaredIn>C_NetClient.cs</DeclaredIn>
   </Token>
   <Token>
@@ -1571,6 +1615,16 @@
     <Anchor>ad3852bbf13b00a0a74c0eefe7040de9f</Anchor>
     <Abstract>Löst einen Hostnamen in eine IP auf </Abstract>
     <DeclaredIn>C_NetClient.cs</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>ConnectTimeout</Name>
+      <APILanguage>csharp</APILanguage>
+      <Type>instp</Type>
+      <Scope>Co0nUtilZ.C_NetClient</Scope>
+    </TokenIdentifier>
+    <Path>classCo0nUtilZ_1_1C__NetClient.html</Path>
+    <Anchor>a4138c6694c02ba3d214a3c8eeb380f75</Anchor>
   </Token>
   <Token>
     <TokenIdentifier>

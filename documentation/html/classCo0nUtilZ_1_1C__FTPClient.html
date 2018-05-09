@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="coonutils.ico"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">coonutils
-   &#160;<span id="projectnumber">rolling (20180227)</span>
+   &#160;<span id="projectnumber">rolling (20180509)</span>
    </div>
    <div id="projectbrief">coonutils-Library</div>
   </td>
@@ -101,6 +102,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aee00345edf11952e705b21efc32f30bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cfd0ae3e64b8a757be6d297ee23a8ab"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a7cfd0ae3e64b8a757be6d297ee23a8ab">ErrorEventHandler</a> (object sender, <a class="el" href="classCo0nUtilZ_1_1ErrorEventArgs.html">ErrorEventArgs</a> Fehler)</td></tr>
 <tr class="separator:a7cfd0ae3e64b8a757be6d297ee23a8ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a549d777eeb052b3176e75aa63a2ce690"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a549d777eeb052b3176e75aa63a2ce690">FileTransferredHandler</a> (object sender, String Filename)</td></tr>
+<tr class="separator:a549d777eeb052b3176e75aa63a2ce690"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e7eb667489b4448c93e17cf724c114c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a9e7eb667489b4448c93e17cf724c114c">CreateFolder</a> (String Path)</td></tr>
 <tr class="memdesc:a9e7eb667489b4448c93e17cf724c114c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Erstellt einen Ordner auf dem FTP-Server  <a href="#a9e7eb667489b4448c93e17cf724c114c">More...</a><br /></td></tr>
 <tr class="separator:a9e7eb667489b4448c93e17cf724c114c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -199,6 +202,15 @@ Events</h2></td></tr>
 <tr class="memitem:a8d5401028f4792e2b099d04eef939349"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a7cfd0ae3e64b8a757be6d297ee23a8ab">ErrorEventHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a8d5401028f4792e2b099d04eef939349">FileTransferError</a></td></tr>
 <tr class="memdesc:a8d5401028f4792e2b099d04eef939349"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ereignis: Dateiübertragunsfehler  <a href="#a8d5401028f4792e2b099d04eef939349">More...</a><br /></td></tr>
 <tr class="separator:a8d5401028f4792e2b099d04eef939349"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5e95deae2bd06cfa4e3f35662e630d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a7cfd0ae3e64b8a757be6d297ee23a8ab">ErrorEventHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#aa5e95deae2bd06cfa4e3f35662e630d2">GeneralError</a></td></tr>
+<tr class="memdesc:aa5e95deae2bd06cfa4e3f35662e630d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ereignis: Allgmeiner Fehler  <a href="#aa5e95deae2bd06cfa4e3f35662e630d2">More...</a><br /></td></tr>
+<tr class="separator:aa5e95deae2bd06cfa4e3f35662e630d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82c7d263a627f0960b1d8a2f79a1663f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a549d777eeb052b3176e75aa63a2ce690">FileTransferredHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a82c7d263a627f0960b1d8a2f79a1663f">FileTransferredSuccessfully</a></td></tr>
+<tr class="memdesc:a82c7d263a627f0960b1d8a2f79a1663f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ereignis: Datei Erfolgreich übertragen. - Nur beim Übertragenen mehrerer Dateien!  <a href="#a82c7d263a627f0960b1d8a2f79a1663f">More...</a><br /></td></tr>
+<tr class="separator:a82c7d263a627f0960b1d8a2f79a1663f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a91170c242249d213b929c69981c7e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a549d777eeb052b3176e75aa63a2ce690">FileTransferredHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a5a91170c242249d213b929c69981c7e8">FileTransferredUnsuccessfully</a></td></tr>
+<tr class="memdesc:a5a91170c242249d213b929c69981c7e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ereignis: Datei nicht Erfolgreich übertragen. - Nur beim Übertragenen mehrerer Dateien!  <a href="#a5a91170c242249d213b929c69981c7e8">More...</a><br /></td></tr>
+<tr class="separator:a5a91170c242249d213b929c69981c7e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Diese Klasse ist ein FTP-Client, welcher es ermöglicht Dateien mit einem FTP-Server Auszutauschen Created: 08/2017 Author: D. Marx Project: <a href="https://github.com/derco0n/coonutils">https://github.com/derco0n/coonutils</a> License: GPLv2 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge You should have received a copy of that license: If not look here: <a href="https://www.gnu.org/licenses/gpl-2.0.de.html">https://www.gnu.org/licenses/gpl-2.0.de.html</a> </p>
@@ -247,9 +259,9 @@ Events</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00102">102</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00103">103</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00048">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00058">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00053">Co0nUtilZ.C_FTPClient.User</a>.</p>
+<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00049">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00059">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00054">Co0nUtilZ.C_FTPClient.User</a>.</p>
 
 </div>
 </div>
@@ -316,9 +328,9 @@ Events</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00119">119</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00120">120</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00048">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a63a4a2e558726b13bea5bfcd1f1ed5ba">Co0nUtilZ.C_FTPClient.CompleteEventhandler()</a>, <a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a7cfd0ae3e64b8a757be6d297ee23a8ab">Co0nUtilZ.C_FTPClient.ErrorEventHandler()</a>, <a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#aee00345edf11952e705b21efc32f30bf">Co0nUtilZ.C_FTPClient.MultiLoadProgressEventHandler()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00058">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00053">Co0nUtilZ.C_FTPClient.User</a>.</p>
+<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00049">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a63a4a2e558726b13bea5bfcd1f1ed5ba">Co0nUtilZ.C_FTPClient.CompleteEventhandler()</a>, <a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a7cfd0ae3e64b8a757be6d297ee23a8ab">Co0nUtilZ.C_FTPClient.ErrorEventHandler()</a>, <a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a549d777eeb052b3176e75aa63a2ce690">Co0nUtilZ.C_FTPClient.FileTransferredHandler()</a>, <a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#aee00345edf11952e705b21efc32f30bf">Co0nUtilZ.C_FTPClient.MultiLoadProgressEventHandler()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00059">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00054">Co0nUtilZ.C_FTPClient.User</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -326,7 +338,8 @@ Here is the call graph for this function:</div>
 <map name="classCo0nUtilZ_1_1C__FTPClient_a234667476ad2160b7ecadff4099a34d7_cgraph" id="classCo0nUtilZ_1_1C__FTPClient_a234667476ad2160b7ecadff4099a34d7_cgraph">
 <area shape="rect" id="node2" href="classCo0nUtilZ_1_1C__FTPClient.html#a63a4a2e558726b13bea5bfcd1f1ed5ba" title="Co0nUtilZ.C_FTPClient.Complete\lEventhandler" alt="" coords="221,5,436,47"/>
 <area shape="rect" id="node3" href="classCo0nUtilZ_1_1C__FTPClient.html#a7cfd0ae3e64b8a757be6d297ee23a8ab" title="Co0nUtilZ.C_FTPClient.Error\lEventHandler" alt="" coords="235,71,422,112"/>
-<area shape="rect" id="node4" href="classCo0nUtilZ_1_1C__FTPClient.html#aee00345edf11952e705b21efc32f30bf" title="Ereignis: Dateiliste komplett empfangen " alt="" coords="235,136,422,177"/>
+<area shape="rect" id="node4" href="classCo0nUtilZ_1_1C__FTPClient.html#a549d777eeb052b3176e75aa63a2ce690" title="Co0nUtilZ.C_FTPClient.File\lTransferredHandler" alt="" coords="239,136,419,177"/>
+<area shape="rect" id="node5" href="classCo0nUtilZ_1_1C__FTPClient.html#aee00345edf11952e705b21efc32f30bf" title="Ereignis: Dateiliste komplett empfangen " alt="" coords="235,201,422,243"/>
 </map>
 </div>
 
@@ -350,9 +363,9 @@ Here is the call graph for this function:</div>
 
 <p>Überprüft ob eine Verbindung zum FTP Server besteht. Gibt bei Erfolg TRUE zurück </p>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00217">217</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00238">238</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00048">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00058">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00053">Co0nUtilZ.C_FTPClient.User</a>.</p>
+<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00049">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00174">Co0nUtilZ.C_FTPClient.GeneralError</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00059">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00054">Co0nUtilZ.C_FTPClient.User</a>.</p>
 
 </div>
 </div>
@@ -371,7 +384,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00119">Co0nUtilZ.C_FTPClient.C_FTPClient()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00120">Co0nUtilZ.C_FTPClient.C_FTPClient()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -407,9 +420,9 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00177">177</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00194">194</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00048">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00058">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00053">Co0nUtilZ.C_FTPClient.User</a>.</p>
+<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00049">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00174">Co0nUtilZ.C_FTPClient.GeneralError</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00059">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00054">Co0nUtilZ.C_FTPClient.User</a>.</p>
 
 </div>
 </div>
@@ -449,11 +462,11 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l01135">1135</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l01206">1206</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00048">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00027">Co0nUtilZ.C_FTPClient.CONNECTIONTIMEOUT</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00058">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00053">Co0nUtilZ.C_FTPClient.User</a>.</p>
+<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00049">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00027">Co0nUtilZ.C_FTPClient.CONNECTIONTIMEOUT</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00174">Co0nUtilZ.C_FTPClient.GeneralError</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00059">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00054">Co0nUtilZ.C_FTPClient.User</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l01165">Co0nUtilZ.C_FTPClient.DeleteFile()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00271">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l01240">Co0nUtilZ.C_FTPClient.DeleteFile()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00298">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -501,9 +514,9 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l01165">1165</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l01240">1240</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l01135">Co0nUtilZ.C_FTPClient.DeleteFile()</a>.</p>
+<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l01206">Co0nUtilZ.C_FTPClient.DeleteFile()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -558,11 +571,11 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Gibt bei Erfolg TRUE zurück.</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00993">993</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l01056">1056</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00048">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00028">Co0nUtilZ.C_FTPClient.BUFFERSIZE</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00027">Co0nUtilZ.C_FTPClient.CONNECTIONTIMEOUT</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00167">Co0nUtilZ.C_FTPClient.FileTransferError</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01099">Co0nUtilZ.C_FTPClient.LastModifiedTime()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00058">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00053">Co0nUtilZ.C_FTPClient.User</a>.</p>
+<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00049">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00028">Co0nUtilZ.C_FTPClient.BUFFERSIZE</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00027">Co0nUtilZ.C_FTPClient.CONNECTIONTIMEOUT</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00169">Co0nUtilZ.C_FTPClient.FileTransferError</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00174">Co0nUtilZ.C_FTPClient.GeneralError</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01166">Co0nUtilZ.C_FTPClient.LastModifiedTime()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00059">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00054">Co0nUtilZ.C_FTPClient.User</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00271">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00298">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -623,9 +636,9 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00271">271</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00298">298</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l01135">Co0nUtilZ.C_FTPClient.DeleteFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00162">Co0nUtilZ.C_FTPClient.DownloadComplete</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00993">Co0nUtilZ.C_FTPClient.DownloadFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00157">Co0nUtilZ.C_FTPClient.DownloadProgressChanged</a>, <a class="el" href="namespaceCo0nUtilZ.html#ab43ba53d7a0e52e22afea70d8b278feea0b27918290ff5323bea1e3b78a9cf04e">Co0nUtilZ.File</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00167">Co0nUtilZ.C_FTPClient.FileTransferError</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00775">Co0nUtilZ.C_FTPClient.PathExists()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00152">Co0nUtilZ.C_FTPClient.UploadComplete</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00670">Co0nUtilZ.C_FTPClient.UploadFile()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00147">Co0nUtilZ.C_FTPClient.UploadProgressChanged</a>.</p>
+<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l01206">Co0nUtilZ.C_FTPClient.DeleteFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00164">Co0nUtilZ.C_FTPClient.DownloadComplete</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01056">Co0nUtilZ.C_FTPClient.DownloadFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00159">Co0nUtilZ.C_FTPClient.DownloadProgressChanged</a>, <a class="el" href="namespaceCo0nUtilZ.html#ab43ba53d7a0e52e22afea70d8b278feea0b27918290ff5323bea1e3b78a9cf04e">Co0nUtilZ.File</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00169">Co0nUtilZ.C_FTPClient.FileTransferError</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00179">Co0nUtilZ.C_FTPClient.FileTransferredSuccessfully</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00184">Co0nUtilZ.C_FTPClient.FileTransferredUnsuccessfully</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00174">Co0nUtilZ.C_FTPClient.GeneralError</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00845">Co0nUtilZ.C_FTPClient.PathExists()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00154">Co0nUtilZ.C_FTPClient.UploadComplete</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00736">Co0nUtilZ.C_FTPClient.UploadFile()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00149">Co0nUtilZ.C_FTPClient.UploadProgressChanged</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -669,7 +682,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00119">Co0nUtilZ.C_FTPClient.C_FTPClient()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00120">Co0nUtilZ.C_FTPClient.C_FTPClient()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -706,11 +719,11 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Gibt den existierenden Teilpfad zurück</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00813">813</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00872">872</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00981">Co0nUtilZ.C_FTPClient.GetFileList()</a>.</p>
+<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l01044">Co0nUtilZ.C_FTPClient.GetFileList()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00775">Co0nUtilZ.C_FTPClient.PathExists()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00845">Co0nUtilZ.C_FTPClient.PathExists()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -774,15 +787,53 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE wenn die Datei gefunden wurde, ansonsten FALSE</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00874">874</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00933">933</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00981">Co0nUtilZ.C_FTPClient.GetFileList()</a>.</p>
+<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l01044">Co0nUtilZ.C_FTPClient.GetFileList()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCo0nUtilZ_1_1C__FTPClient_adfaea2878eab8d1c6e99f6bde189ad26_cgraph.png" border="0" usemap="#classCo0nUtilZ_1_1C__FTPClient_adfaea2878eab8d1c6e99f6bde189ad26_cgraph" alt=""/></div>
 <map name="classCo0nUtilZ_1_1C__FTPClient_adfaea2878eab8d1c6e99f6bde189ad26_cgraph" id="classCo0nUtilZ_1_1C__FTPClient_adfaea2878eab8d1c6e99f6bde189ad26_cgraph">
 <area shape="rect" id="node2" href="classCo0nUtilZ_1_1C__FTPClient.html#a9a32be08bc36faf2a86517620d5a491c" title="Liefert eine Liste von Dateien/Ordnern zurück " alt="" coords="233,5,413,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a549d777eeb052b3176e75aa63a2ce690"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a549d777eeb052b3176e75aa63a2ce690">&#9670;&nbsp;</a></span>FileTransferredHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">delegate void Co0nUtilZ.C_FTPClient.FileTransferredHandler </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>Filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00120">Co0nUtilZ.C_FTPClient.C_FTPClient()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCo0nUtilZ_1_1C__FTPClient_a549d777eeb052b3176e75aa63a2ce690_icgraph.png" border="0" usemap="#classCo0nUtilZ_1_1C__FTPClient_a549d777eeb052b3176e75aa63a2ce690_icgraph" alt=""/></div>
+<map name="classCo0nUtilZ_1_1C__FTPClient_a549d777eeb052b3176e75aa63a2ce690_icgraph" id="classCo0nUtilZ_1_1C__FTPClient_a549d777eeb052b3176e75aa63a2ce690_icgraph">
+<area shape="rect" id="node2" href="classCo0nUtilZ_1_1C__FTPClient.html#a234667476ad2160b7ecadff4099a34d7" title="Initialisiert eine neue Instanz der FTP Helper Klasse anhand von gegebenen Werten ..." alt="" coords="233,5,401,47"/>
 </map>
 </div>
 
@@ -824,9 +875,9 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Gibt eine Liste mit gefundenen Dateien zurück</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00895">895</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00954">954</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00048">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00027">Co0nUtilZ.C_FTPClient.CONNECTIONTIMEOUT</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00058">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00053">Co0nUtilZ.C_FTPClient.User</a>.</p>
+<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00049">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00027">Co0nUtilZ.C_FTPClient.CONNECTIONTIMEOUT</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00174">Co0nUtilZ.C_FTPClient.GeneralError</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00059">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00054">Co0nUtilZ.C_FTPClient.User</a>.</p>
 
 </div>
 </div>
@@ -848,9 +899,9 @@ Here is the call graph for this function:</div>
 <p>Liefert eine Liste von Dateien/Ordnern zurück </p>
 <dl class="section return"><dt>Returns</dt><dd>Gibt eine Liste aller Dateien und Ordner zurück</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00981">981</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l01044">1044</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00813">Co0nUtilZ.C_FTPClient.existingPath()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00874">Co0nUtilZ.C_FTPClient.FileExists()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01171">Co0nUtilZ.C_FTPClient.GetFileListByRegex()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00775">Co0nUtilZ.C_FTPClient.PathExists()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00872">Co0nUtilZ.C_FTPClient.existingPath()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00933">Co0nUtilZ.C_FTPClient.FileExists()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01246">Co0nUtilZ.C_FTPClient.GetFileListByRegex()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00845">Co0nUtilZ.C_FTPClient.PathExists()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -892,9 +943,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l01171">1171</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l01246">1246</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">References <a class="el" href="C__RegExHelper_8cs_source.html#l00046">Co0nUtilZ.C_RegExHelper.FilterStringListByRegex()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00981">Co0nUtilZ.C_FTPClient.GetFileList()</a>.</p>
+<p class="reference">References <a class="el" href="C__RegExHelper_8cs_source.html#l00046">Co0nUtilZ.C_RegExHelper.FilterStringListByRegex()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l01044">Co0nUtilZ.C_FTPClient.GetFileList()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -934,11 +985,11 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l01099">1099</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l01166">1166</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00048">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00027">Co0nUtilZ.C_FTPClient.CONNECTIONTIMEOUT</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00058">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00053">Co0nUtilZ.C_FTPClient.User</a>.</p>
+<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00049">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00027">Co0nUtilZ.C_FTPClient.CONNECTIONTIMEOUT</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00174">Co0nUtilZ.C_FTPClient.GeneralError</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00059">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00054">Co0nUtilZ.C_FTPClient.User</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00993">Co0nUtilZ.C_FTPClient.DownloadFile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l01056">Co0nUtilZ.C_FTPClient.DownloadFile()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -979,7 +1030,7 @@ Here is the caller graph for this function:</div>
 
 <p>Ereignis: Dateiliste komplett empfangen </p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00119">Co0nUtilZ.C_FTPClient.C_FTPClient()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00120">Co0nUtilZ.C_FTPClient.C_FTPClient()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1016,11 +1067,11 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Gibt True zurück, wenn der Ordner existiert.</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00775">775</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00845">845</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00813">Co0nUtilZ.C_FTPClient.existingPath()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00981">Co0nUtilZ.C_FTPClient.GetFileList()</a>.</p>
+<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00872">Co0nUtilZ.C_FTPClient.existingPath()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00174">Co0nUtilZ.C_FTPClient.GeneralError</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l01044">Co0nUtilZ.C_FTPClient.GetFileList()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00271">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00298">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1099,7 +1150,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l01186">1186</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l01261">1261</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
 </div>
 </div>
@@ -1146,11 +1197,11 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00670">670</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00736">736</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00048">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00028">Co0nUtilZ.C_FTPClient.BUFFERSIZE</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00027">Co0nUtilZ.C_FTPClient.CONNECTIONTIMEOUT</a>, <a class="el" href="namespaceCo0nUtilZ.html#ab43ba53d7a0e52e22afea70d8b278feea0b27918290ff5323bea1e3b78a9cf04e">Co0nUtilZ.File</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00058">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00053">Co0nUtilZ.C_FTPClient.User</a>.</p>
+<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00049">Co0nUtilZ.C_FTPClient.Adress</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00028">Co0nUtilZ.C_FTPClient.BUFFERSIZE</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00027">Co0nUtilZ.C_FTPClient.CONNECTIONTIMEOUT</a>, <a class="el" href="namespaceCo0nUtilZ.html#ab43ba53d7a0e52e22afea70d8b278feea0b27918290ff5323bea1e3b78a9cf04e">Co0nUtilZ.File</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00174">Co0nUtilZ.C_FTPClient.GeneralError</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00059">Co0nUtilZ.C_FTPClient.Password</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00054">Co0nUtilZ.C_FTPClient.User</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00271">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00298">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1204,7 +1255,9 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00603">603</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00663">663</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+
+<p class="reference">References <a class="el" href="C__FTPClient_8cs_source.html#l00174">Co0nUtilZ.C_FTPClient.GeneralError</a>.</p>
 
 </div>
 </div>
@@ -1231,7 +1284,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00028">28</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00993">Co0nUtilZ.C_FTPClient.DownloadFile()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00670">Co0nUtilZ.C_FTPClient.UploadFile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l01056">Co0nUtilZ.C_FTPClient.DownloadFile()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00736">Co0nUtilZ.C_FTPClient.UploadFile()</a>.</p>
 
 </div>
 </div>
@@ -1257,7 +1310,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00027">27</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l01135">Co0nUtilZ.C_FTPClient.DeleteFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00993">Co0nUtilZ.C_FTPClient.DownloadFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00895">Co0nUtilZ.C_FTPClient.GetFileList()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01099">Co0nUtilZ.C_FTPClient.LastModifiedTime()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00670">Co0nUtilZ.C_FTPClient.UploadFile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l01206">Co0nUtilZ.C_FTPClient.DeleteFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01056">Co0nUtilZ.C_FTPClient.DownloadFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00954">Co0nUtilZ.C_FTPClient.GetFileList()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01166">Co0nUtilZ.C_FTPClient.LastModifiedTime()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00736">Co0nUtilZ.C_FTPClient.UploadFile()</a>.</p>
 
 </div>
 </div>
@@ -1308,9 +1361,9 @@ Here is the caller graph for this function:</div>
 
 <p>FTP-Server-Adresse </p>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00048">48</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00049">49</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00102">Co0nUtilZ.C_FTPClient.C_FTPClient()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00217">Co0nUtilZ.C_FTPClient.CheckConnection()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00177">Co0nUtilZ.C_FTPClient.CreateFolder()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01135">Co0nUtilZ.C_FTPClient.DeleteFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00993">Co0nUtilZ.C_FTPClient.DownloadFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00895">Co0nUtilZ.C_FTPClient.GetFileList()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01099">Co0nUtilZ.C_FTPClient.LastModifiedTime()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00670">Co0nUtilZ.C_FTPClient.UploadFile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00103">Co0nUtilZ.C_FTPClient.C_FTPClient()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00238">Co0nUtilZ.C_FTPClient.CheckConnection()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00194">Co0nUtilZ.C_FTPClient.CreateFolder()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01206">Co0nUtilZ.C_FTPClient.DeleteFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01056">Co0nUtilZ.C_FTPClient.DownloadFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00954">Co0nUtilZ.C_FTPClient.GetFileList()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01166">Co0nUtilZ.C_FTPClient.LastModifiedTime()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00736">Co0nUtilZ.C_FTPClient.UploadFile()</a>.</p>
 
 </div>
 </div>
@@ -1336,7 +1389,7 @@ Here is the caller graph for this function:</div>
 
 <p>Gibt die letzte Exception zurück </p>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00038">38</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00039">39</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
 </div>
 </div>
@@ -1362,9 +1415,9 @@ Here is the caller graph for this function:</div>
 
 <p>FTP-Passwort </p>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00058">58</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00059">59</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00102">Co0nUtilZ.C_FTPClient.C_FTPClient()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00217">Co0nUtilZ.C_FTPClient.CheckConnection()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00177">Co0nUtilZ.C_FTPClient.CreateFolder()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01135">Co0nUtilZ.C_FTPClient.DeleteFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00993">Co0nUtilZ.C_FTPClient.DownloadFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00895">Co0nUtilZ.C_FTPClient.GetFileList()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01099">Co0nUtilZ.C_FTPClient.LastModifiedTime()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00670">Co0nUtilZ.C_FTPClient.UploadFile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00103">Co0nUtilZ.C_FTPClient.C_FTPClient()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00238">Co0nUtilZ.C_FTPClient.CheckConnection()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00194">Co0nUtilZ.C_FTPClient.CreateFolder()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01206">Co0nUtilZ.C_FTPClient.DeleteFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01056">Co0nUtilZ.C_FTPClient.DownloadFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00954">Co0nUtilZ.C_FTPClient.GetFileList()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01166">Co0nUtilZ.C_FTPClient.LastModifiedTime()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00736">Co0nUtilZ.C_FTPClient.UploadFile()</a>.</p>
 
 </div>
 </div>
@@ -1390,7 +1443,7 @@ Here is the caller graph for this function:</div>
 
 <p>FTP-Passive-Modus. </p>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00064">64</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00065">65</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
 </div>
 </div>
@@ -1416,9 +1469,9 @@ Here is the caller graph for this function:</div>
 
 <p>FTP-Benutzer </p>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00053">53</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00054">54</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00102">Co0nUtilZ.C_FTPClient.C_FTPClient()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00217">Co0nUtilZ.C_FTPClient.CheckConnection()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00177">Co0nUtilZ.C_FTPClient.CreateFolder()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01135">Co0nUtilZ.C_FTPClient.DeleteFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00993">Co0nUtilZ.C_FTPClient.DownloadFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00895">Co0nUtilZ.C_FTPClient.GetFileList()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01099">Co0nUtilZ.C_FTPClient.LastModifiedTime()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00670">Co0nUtilZ.C_FTPClient.UploadFile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00103">Co0nUtilZ.C_FTPClient.C_FTPClient()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00238">Co0nUtilZ.C_FTPClient.CheckConnection()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00194">Co0nUtilZ.C_FTPClient.CreateFolder()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01206">Co0nUtilZ.C_FTPClient.DeleteFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01056">Co0nUtilZ.C_FTPClient.DownloadFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00954">Co0nUtilZ.C_FTPClient.GetFileList()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01166">Co0nUtilZ.C_FTPClient.LastModifiedTime()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00736">Co0nUtilZ.C_FTPClient.UploadFile()</a>.</p>
 
 </div>
 </div>
@@ -1444,7 +1497,7 @@ Here is the caller graph for this function:</div>
 
 <p>FTP über TLS benutzen </p>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00079">79</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00080">80</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
 </div>
 </div>
@@ -1463,9 +1516,9 @@ Here is the caller graph for this function:</div>
 
 <p>Ereignis: Download abgeschlossen </p>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00162">162</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00164">164</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00271">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00298">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
 
 </div>
 </div>
@@ -1483,9 +1536,9 @@ Here is the caller graph for this function:</div>
 
 <p>Ereignis: Downloadfortschritt hat sich geändert </p>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00157">157</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00159">159</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00271">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00298">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
 
 </div>
 </div>
@@ -1503,9 +1556,69 @@ Here is the caller graph for this function:</div>
 
 <p>Ereignis: Dateiübertragunsfehler </p>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00167">167</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00169">169</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00993">Co0nUtilZ.C_FTPClient.DownloadFile()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00271">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l01056">Co0nUtilZ.C_FTPClient.DownloadFile()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00298">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
+
+</div>
+</div>
+<a id="a82c7d263a627f0960b1d8a2f79a1663f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82c7d263a627f0960b1d8a2f79a1663f">&#9670;&nbsp;</a></span>FileTransferredSuccessfully</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a549d777eeb052b3176e75aa63a2ce690">FileTransferredHandler</a> Co0nUtilZ.C_FTPClient.FileTransferredSuccessfully</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ereignis: Datei Erfolgreich übertragen. - Nur beim Übertragenen mehrerer Dateien! </p>
+
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00179">179</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00298">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
+
+</div>
+</div>
+<a id="a5a91170c242249d213b929c69981c7e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a91170c242249d213b929c69981c7e8">&#9670;&nbsp;</a></span>FileTransferredUnsuccessfully</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a549d777eeb052b3176e75aa63a2ce690">FileTransferredHandler</a> Co0nUtilZ.C_FTPClient.FileTransferredUnsuccessfully</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ereignis: Datei nicht Erfolgreich übertragen. - Nur beim Übertragenen mehrerer Dateien! </p>
+
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00184">184</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00298">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
+
+</div>
+</div>
+<a id="aa5e95deae2bd06cfa4e3f35662e630d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5e95deae2bd06cfa4e3f35662e630d2">&#9670;&nbsp;</a></span>GeneralError</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCo0nUtilZ_1_1C__FTPClient.html#a7cfd0ae3e64b8a757be6d297ee23a8ab">ErrorEventHandler</a> Co0nUtilZ.C_FTPClient.GeneralError</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ereignis: Allgmeiner Fehler </p>
+
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00174">174</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00238">Co0nUtilZ.C_FTPClient.CheckConnection()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00194">Co0nUtilZ.C_FTPClient.CreateFolder()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01206">Co0nUtilZ.C_FTPClient.DeleteFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01056">Co0nUtilZ.C_FTPClient.DownloadFile()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00298">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00954">Co0nUtilZ.C_FTPClient.GetFileList()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l01166">Co0nUtilZ.C_FTPClient.LastModifiedTime()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00845">Co0nUtilZ.C_FTPClient.PathExists()</a>, <a class="el" href="C__FTPClient_8cs_source.html#l00736">Co0nUtilZ.C_FTPClient.UploadFile()</a>, and <a class="el" href="C__FTPClient_8cs_source.html#l00663">Co0nUtilZ.C_FTPClient.UploadMultipleFiles()</a>.</p>
 
 </div>
 </div>
@@ -1523,9 +1636,9 @@ Here is the caller graph for this function:</div>
 
 <p>Ereignis: Upload abgeschlossen </p>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00152">152</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00154">154</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00271">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00298">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
 
 </div>
 </div>
@@ -1543,9 +1656,9 @@ Here is the caller graph for this function:</div>
 
 <p>Ereignis: Uploadfortschritt hat sich geändert </p>
 
-<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00147">147</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="C__FTPClient_8cs_source.html#l00149">149</a> of file <a class="el" href="C__FTPClient_8cs_source.html">C_FTPClient.cs</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00271">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="C__FTPClient_8cs_source.html#l00298">Co0nUtilZ.C_FTPClient.DownloadMultipleFiles()</a>.</p>
 
 </div>
 </div>

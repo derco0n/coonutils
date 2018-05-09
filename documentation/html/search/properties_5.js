@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['password',['Password',['../classCo0nUtilZ_1_1C__FTPClient.html#ab93377c044bcae20854c3d0738476ca5',1,'Co0nUtilZ::C_FTPClient']]],
-  ['progval',['ProgVal',['../classCo0nUtilZ_1_1ProgressEventArgs.html#a4822b60b5a05fb7d08e4a6dab3a70dd6',1,'Co0nUtilZ::ProgressEventArgs']]]
+  ['message',['Message',['../classCo0nUtilZ_1_1ProgressEventArgs.html#a64a1ed511bc43b967caa3580cc79bd0b',1,'Co0nUtilZ::ProgressEventArgs']]],
+  ['msgprefix',['MsgPrefix',['../classCo0nUtilZ_1_1C__LoggingHelper.html#a93d1d686778388447c506b539781c020',1,'Co0nUtilZ::C_LoggingHelper']]]
 ];

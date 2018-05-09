@@ -8,7 +8,7 @@
      <key>CFBundleIdentifier</key>
      <string>org.doxygen.Project</string>
      <key>CFBundleVersion</key>
-     <string>rolling (20180227)</string>
+     <string>rolling (20180509)</string>
      <key>DocSetFeedName</key>
      <string>Doxygen generated docs</string>
      <key>DocSetPublisherIdentifier</key>

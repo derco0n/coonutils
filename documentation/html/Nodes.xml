@@ -410,6 +410,11 @@
                 <Anchor>adfaea2878eab8d1c6e99f6bde189ad26</Anchor>
                </Node>
                <Node>
+                <Name>FileTransferredHandler</Name>
+                <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
+                <Anchor>a549d777eeb052b3176e75aa63a2ce690</Anchor>
+               </Node>
+               <Node>
                 <Name>GetFileList</Name>
                 <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
                 <Anchor>a41b12af43a6f8cff4c0a97ab1aa87571</Anchor>
@@ -493,6 +498,21 @@
                 <Name>FileTransferError</Name>
                 <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
                 <Anchor>a8d5401028f4792e2b099d04eef939349</Anchor>
+               </Node>
+               <Node>
+                <Name>FileTransferredSuccessfully</Name>
+                <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
+                <Anchor>a82c7d263a627f0960b1d8a2f79a1663f</Anchor>
+               </Node>
+               <Node>
+                <Name>FileTransferredUnsuccessfully</Name>
+                <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
+                <Anchor>a5a91170c242249d213b929c69981c7e8</Anchor>
+               </Node>
+               <Node>
+                <Name>GeneralError</Name>
+                <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
+                <Anchor>aa5e95deae2bd06cfa4e3f35662e630d2</Anchor>
                </Node>
                <Node>
                 <Name>UploadComplete</Name>
@@ -579,17 +599,22 @@
                <Node>
                 <Name>ErrorEventHandler</Name>
                 <Path>classCo0nUtilZ_1_1C__NetClient.html</Path>
-                <Anchor>acabbc09d43a83262dcae2f95afd5e895</Anchor>
+                <Anchor>a8206837c7f9bee85f11f3147d94e0f33</Anchor>
                </Node>
                <Node>
                 <Name>ProgressEventHandler</Name>
                 <Path>classCo0nUtilZ_1_1C__NetClient.html</Path>
-                <Anchor>aeab8cf4ca4108f0679fd61da7ccca42a</Anchor>
+                <Anchor>ab036439ba36fc4fe3c34db96965d4dd7</Anchor>
                </Node>
                <Node>
                 <Name>SendData</Name>
                 <Path>classCo0nUtilZ_1_1C__NetClient.html</Path>
                 <Anchor>af554e3d06807a50393e6b7af3523e12d</Anchor>
+               </Node>
+               <Node>
+                <Name>ConnectTimeout</Name>
+                <Path>classCo0nUtilZ_1_1C__NetClient.html</Path>
+                <Anchor>a4138c6694c02ba3d214a3c8eeb380f75</Anchor>
                </Node>
                <Node>
                 <Name>IsConnected</Name>
@@ -1389,6 +1414,11 @@
                   <Anchor>adfaea2878eab8d1c6e99f6bde189ad26</Anchor>
                  </Node>
                  <Node>
+                  <Name>FileTransferredHandler</Name>
+                  <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
+                  <Anchor>a549d777eeb052b3176e75aa63a2ce690</Anchor>
+                 </Node>
+                 <Node>
                   <Name>GetFileList</Name>
                   <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
                   <Anchor>a41b12af43a6f8cff4c0a97ab1aa87571</Anchor>
@@ -1472,6 +1502,21 @@
                   <Name>FileTransferError</Name>
                   <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
                   <Anchor>a8d5401028f4792e2b099d04eef939349</Anchor>
+                 </Node>
+                 <Node>
+                  <Name>FileTransferredSuccessfully</Name>
+                  <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
+                  <Anchor>a82c7d263a627f0960b1d8a2f79a1663f</Anchor>
+                 </Node>
+                 <Node>
+                  <Name>FileTransferredUnsuccessfully</Name>
+                  <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
+                  <Anchor>a5a91170c242249d213b929c69981c7e8</Anchor>
+                 </Node>
+                 <Node>
+                  <Name>GeneralError</Name>
+                  <Path>classCo0nUtilZ_1_1C__FTPClient.html</Path>
+                  <Anchor>aa5e95deae2bd06cfa4e3f35662e630d2</Anchor>
                  </Node>
                  <Node>
                   <Name>UploadComplete</Name>
@@ -1570,17 +1615,22 @@
                  <Node>
                   <Name>ErrorEventHandler</Name>
                   <Path>classCo0nUtilZ_1_1C__NetClient.html</Path>
-                  <Anchor>acabbc09d43a83262dcae2f95afd5e895</Anchor>
+                  <Anchor>a8206837c7f9bee85f11f3147d94e0f33</Anchor>
                  </Node>
                  <Node>
                   <Name>ProgressEventHandler</Name>
                   <Path>classCo0nUtilZ_1_1C__NetClient.html</Path>
-                  <Anchor>aeab8cf4ca4108f0679fd61da7ccca42a</Anchor>
+                  <Anchor>ab036439ba36fc4fe3c34db96965d4dd7</Anchor>
                  </Node>
                  <Node>
                   <Name>SendData</Name>
                   <Path>classCo0nUtilZ_1_1C__NetClient.html</Path>
                   <Anchor>af554e3d06807a50393e6b7af3523e12d</Anchor>
+                 </Node>
+                 <Node>
+                  <Name>ConnectTimeout</Name>
+                  <Path>classCo0nUtilZ_1_1C__NetClient.html</Path>
+                  <Anchor>a4138c6694c02ba3d214a3c8eeb380f75</Anchor>
                  </Node>
                  <Node>
                   <Name>IsConnected</Name>

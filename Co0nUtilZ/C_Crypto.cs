@@ -32,7 +32,7 @@ namespace Co0nUtilZ
             byte[] encryptedBytes = null;
 
             // Set your salt here, change it to meet your flavor:
-            // The salt bytes must be at least 8 bytes.
+            // The salt bytes must be at least 8 bytes. If less are given, standard pattern will be used. Warning: This is INSECURE!
             if (saltBytes.Length < 8)
             {
                 saltBytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
@@ -75,7 +75,7 @@ namespace Co0nUtilZ
             byte[] decryptedBytes = null;
 
             // Set your salt here, change it to meet your flavor:
-            // The salt bytes must be at least 8 bytes.
+            // The salt bytes must be at least 8 bytes. If less are given, standard pattern will be used. Warning: This is INSECURE!
             if (saltBytes.Length < 8)
             {
                 saltBytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };

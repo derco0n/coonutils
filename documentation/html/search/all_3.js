@@ -26,6 +26,7 @@ var searchData=
   ['connect',['Connect',['../classCo0nUtilZ_1_1C__NetworkConnection.html#a2a644092c09962137ccd9b6a35661db5',1,'Co0nUtilZ::C_NetworkConnection']]],
   ['connected',['Connected',['../classCo0nUtilZ_1_1C__NetClient.html#aee9a62e02c0f672bb10baae6ff6594aa',1,'Co0nUtilZ.C_NetClient.Connected()'],['../namespaceCo0nUtilZ.html#a2f53a8b5fdd6d37b041119a70ee080e8a2ec0d16e4ca169baedb9b2d50ec5c6d7',1,'Co0nUtilZ.Connected()']]],
   ['connectiontimeout',['CONNECTIONTIMEOUT',['../classCo0nUtilZ_1_1C__FTPClient.html#ac2a7e573e3f3d6f812a38e7504d483da',1,'Co0nUtilZ::C_FTPClient']]],
+  ['connecttimeout',['ConnectTimeout',['../classCo0nUtilZ_1_1C__NetClient.html#a4138c6694c02ba3d214a3c8eeb380f75',1,'Co0nUtilZ::C_NetClient']]],
   ['connecttoserver',['ConnectToServer',['../classCo0nUtilZ_1_1C__NetClient.html#a4e47b783c0d08122e285ed82ff362790',1,'Co0nUtilZ::C_NetClient']]],
   ['context',['Context',['../namespaceCo0nUtilZ.html#a2f53a8b5fdd6d37b041119a70ee080e8aad4e206408c1c59bfb8a057ba7857446',1,'Co0nUtilZ']]],
   ['copyfilefromcifs',['CopyFileFromCIFS',['../classCo0nUtilZ_1_1C__CIFSClient.html#aca6f93edd1fa9f781c7a44c0ae218b81',1,'Co0nUtilZ::C_CIFSClient']]],
