@@ -8,3 +8,8 @@ C:\Users\made\Source\Repos\coonutils\Co0nUtilZ\bin\Release\Co0nUtilZ.pdb
 C:\Users\made\Source\Repos\coonutils\Co0nUtilZ\obj\Release\Co0nUtilZ.csproj.CoreCompileInputs.cache
 C:\Users\made\Source\Repos\coonutils\Co0nUtilZ\obj\Release\Co0nUtilZ.dll
 C:\Users\made\Source\Repos\coonutils\Co0nUtilZ\obj\Release\Co0nUtilZ.pdb
+C:\mitgebrachtes\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\bin\Release\Co0nUtilZ.dll
+C:\mitgebrachtes\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\bin\Release\Co0nUtilZ.pdb
+C:\mitgebrachtes\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Release\Co0nUtilZ.csproj.CoreCompileInputs.cache
+C:\mitgebrachtes\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Release\Co0nUtilZ.dll
+C:\mitgebrachtes\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Release\Co0nUtilZ.pdb

@@ -449,6 +449,13 @@ namespace Co0nUtilZ
                         {
                             this.FileTransferredSuccessfully(this, File);
                         }
+
+                        //Fortschritt aktualisieren.
+                        FileInfo TargetInfo = new FileInfo(localfolder + "\\" + File);
+
+                        TotalKBCount += (int)Math.Round((double)(TargetInfo.Length / 1024), 0); //Statistik: Gesamtzahl übertragener KiB erhöhen
+                       
+                        
                     }
                     else
                     {
@@ -458,14 +465,9 @@ namespace Co0nUtilZ
                         }
                     }
 
-
-                    //Fortschritt aktualisieren.
-                    FileInfo TargetInfo = new FileInfo(localfolder + "\\" + File);
-
-                    TotalKBCount += (int)Math.Round((double)(TargetInfo.Length / 1024), 0); //Statistik: Gesamtzahl übertragener KiB erhöhen
-
-                    Filestransfered += 1; //Zähkler für übertragene Dateien erhöhen
+                    Filestransfered += 1; //Zähler für übertragene Dateien erhöhen
                     percentcomplete = 100.0 / Filecount * Filestransfered; //Prozentsatz des Fortschritts berechnen
+
                     if (this.DownloadProgressChanged != null) //Wenn Event für den Downloadfortschritt abboniert wurde...
                     {
 
@@ -476,6 +478,7 @@ namespace Co0nUtilZ
                             "Datei " + File + " wurde bearbeitet.")
                                 ); //Event auslösen falls abboniert und den aktuellen Fortschritt mitgeben
                     }
+
                     //mit nächster Datei fortfahren
                 }
                 int AverangeRate = (int)Math.Round((TotalKBCount / sW.Elapsed.TotalSeconds), 0); //Errechnet die durchschnittliche Übertragungsrate in KiB/Sekunde                
@@ -1075,6 +1078,22 @@ namespace Co0nUtilZ
                 destination = dstLocalFolder + "\\" + destinationFile;
             }
 
+            /*
+            //Prüfen ob die herunterzuladende Datei kein Ordner ist (Achtung: Dauert verhältnismäßig lange!)
+            if (this.PathExists(RemoteFileFullPath+"/"))
+            {
+                if (this.FileTransferError != null)
+                {
+                    this.FileTransferError(
+                    this,
+                     new ErrorEventArgs("Fehler beim Download von: \"" + RemoteFileFullPath + "\" nach \"" + dstLocalFolder + "\". Das sieht aus wie ein Ordner...")
+                    );
+                }
+                return false;
+            }
+
+            */
+
             try
             {
                 FtpWebRequest request = (FtpWebRequest)WebRequest.Create(new Uri("ftp://" + Adress + "/" + RemoteFileFullPath));
@@ -1104,10 +1123,12 @@ namespace Co0nUtilZ
                     {
                         myreturn = false;
                         this._lastException = ex;
+                        if (this.FileTransferError != null) { 
                         this.FileTransferError(
                             this,
-                            new ErrorEventArgs("Fehler beim Download von: " + RemoteFileFullPath + " nach " + dstLocalFolder + ". Handelt es sich um einen Ordner? Fehlerdetails: " + ex.ToString())
+                            new ErrorEventArgs("Fehler beim Download von: \"" + RemoteFileFullPath + "\" nach \"" + dstLocalFolder + "\". Handelt es sich um einen Ordner? \r\nFehlerdetails: " + ex.ToString())
                             );
+                        }
                         break; //Schleife abbrechen
                     }
                 }
@@ -1119,10 +1140,13 @@ namespace Co0nUtilZ
             {
                 this._lastException = ex;
                 myreturn = false;
-                this.FileTransferError(
+                if (this.FileTransferError != null)
+                {
+                    this.FileTransferError(
                     this,
-                     new ErrorEventArgs("Fehler beim Download von: " + RemoteFileFullPath + " nach " + dstLocalFolder + ". Handelt es sich um einen Ordner? Fehlerdetails: " + ex.ToString())
+                     new ErrorEventArgs("Fehler beim Download von: \"" + RemoteFileFullPath + "\" nach \"" + dstLocalFolder + "\". Handelt es sich um einen Ordner?\r\nFehlerdetails: " + ex.ToString())
                     );
+                }
 
             }
             finally

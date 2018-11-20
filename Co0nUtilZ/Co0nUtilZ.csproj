@@ -29,6 +29,16 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x64|AnyCPU'">
+    <OutputPath>bin\x64\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -44,6 +54,8 @@
     <Compile Include="C_BasicSettingsTemplate.cs" />
     <Compile Include="C_CIFSClient.cs" />
     <Compile Include="C_Crypto.cs" />
+    <Compile Include="C_FilesIndexer-Element.cs" />
+    <Compile Include="C_FilesIndexer.cs" />
     <Compile Include="C_FTPClient.cs" />
     <Compile Include="C_LoggingHelper.cs" />
     <Compile Include="C_NetClient.cs" />
