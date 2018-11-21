@@ -119,21 +119,10 @@ namespace Co0nSearchC
                 this.OnSearchStarted(this, "Search started");
             }
 
-            /*
-             * dynamic paras = parameters;
             
-
-            String Searchfor = paras.Searchfor;
-            String Pathname = paras._Pathname;
-            Boolean SearchForNameOnly = paras.SearchForNameOnly;
-            Boolean Recurse = paras._Recurse;
-
-            */
-
             String Searchpattern = "";
-            //List<System.IO.FileInfo> filesfound = new List<System.IO.FileInfo>();
-            //List<string> founditems = new List<string>();
-            //List<C_FilesIndexerElement> founditems = new List<C_FilesIndexerElement>();
+           
+            this._founditems = new List<C_FilesIndexerElement>(); //Ergebnisliste neu initialisieren
 
             if (this._SearchForNameOnly)
             {

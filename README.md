@@ -7,6 +7,7 @@
 * Windows Eventlogging
 * TCP-Socket-Client
 * Windows Registry Access
+* FileSearcher
 
 ## Help:
 ### How to use:
