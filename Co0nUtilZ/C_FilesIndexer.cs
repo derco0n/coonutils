@@ -23,9 +23,13 @@ namespace Co0nSearchC
         private String _Searchfor="";
         private Boolean _SearchForNameOnly = true;
 
+        //private List<String> foldersprocessed = new List<string>(); //DEBUG
+
 
 
         public int foldersProcessedsoFar = 0;
+        //public int foldersAddedToQueue = 0; //DEBUG
+        //private int skippedfoldersastheyrsymbolic = 0; //DEBUG
 
         public delegate void EventHandler(object sender, String msg);
         //public delegate void ResultEventHandler(object sender, List<String> items);
@@ -103,6 +107,19 @@ namespace Co0nSearchC
         private bool IsSymbolic(string path)
         {
             FileInfo pathInfo = new FileInfo(path);
+
+            /*
+            //DEBUG
+            if (pathInfo.Attributes.HasFlag(FileAttributes.ReparsePoint))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            */
+
             return pathInfo.Attributes.HasFlag(FileAttributes.ReparsePoint);
         }
 
@@ -137,16 +154,17 @@ namespace Co0nSearchC
                 //Iterate through all subdirs...
                 Queue<string> folders = new Queue<string>();
 
-
+                //this.foldersAddedToQueue = 0; //DEBUG
                 //folders.Enqueue(this._Pathname);
                 folders.Enqueue(this._Pathname); // Startordner der Queue hinzufügen
-
+                //this.foldersAddedToQueue++; //DEBUG
 
                 System.DateTime lastFoldereventspawned = System.DateTime.Now;
                 this.foldersProcessedsoFar = 0;
+                
                 while (folders.Count > 0) // Solange Einträge in der Queue sind...
                 {
-                    this.foldersProcessedsoFar++; //Ordnerzähler erhöhen
+                    
                     System.DateTime now = System.DateTime.Now;
                     TimeSpan ts = now - lastFoldereventspawned;
                     if (ts.TotalSeconds > 15) // Zyklisches Event zur Aktualisierung der bearbeiteten Ordner nur maximal alle 15 Sekunden werfen
@@ -159,6 +177,9 @@ namespace Co0nSearchC
                     }
 
                     string currentfolder = folders.Dequeue(); // Holt das erste Objekt aus der Queue (Entfernt es aus der Queue und gibt es als Wert zurück)
+
+                    this.foldersProcessedsoFar++; //Zähler der abgearbeiteten Ordner erhöhen
+
                     try
                     {
                         //var filesInCurrent = System.IO.Directory.EnumerateFiles(currentfolder, Searchpattern, SearchOption.TopDirectoryOnly); //Alle Dateien dieses ordners aufzählen
@@ -173,8 +194,7 @@ namespace Co0nSearchC
                             {
                                 newfilObjs.Add(new C_FilesIndexerElement(fil, C_FilesIndexerElement.TYPE_FILE));
                             }
-                            //founditems.AddRange(newFiles);
-                            //founditems.AddRange(newfilObjs);
+                            
                             lock (this._founditems)
                             {
                                 this._founditems.AddRange(newfilObjs);
@@ -204,14 +224,19 @@ namespace Co0nSearchC
                     }
                     try
                     {
+                        
+
                         //if (this._Recurse)
                         if (this._Recurse)
                         {
-                            //var matchingfoldersInCurrent = System.IO.Directory.EnumerateDirectories(currentfolder, Searchpattern, SearchOption.TopDirectoryOnly);                            
+                            //Unterordner ermitteln die mit den Suchkriterien übereinstimmen
+                            var matchingfoldersInCurrent = System.IO.Directory.EnumerateDirectories(currentfolder, Searchpattern, SearchOption.TopDirectoryOnly).AsParallel();                            
                             //var matchingfoldersInCurrent = System.IO.Directory.EnumerateDirectories(currentfolder, Searchpattern, SearchOption.TopDirectoryOnly).AsParallel().Where(f => !new FileInfo(f).Attributes.HasFlag(FileAttributes.ReparsePoint)); //This is much slower than checking afterwards
-                            var matchingfoldersInCurrent = System.IO.Directory.EnumerateDirectories(currentfolder, Searchpattern, SearchOption.TopDirectoryOnly).AsParallel();
+                            
                             List<String> newFolders = new List<string>();
                             newFolders.AddRange(matchingfoldersInCurrent);
+
+                            
                             
                             if (newFolders.Count() > 0)
                             {//New folder found
@@ -219,15 +244,28 @@ namespace Co0nSearchC
                                 
 
                                 // Add Folders matching searchpattern to result
+                                
                                 foreach (String fol in newFolders)
                                 {
-                                    newFolObjs.Add(new C_FilesIndexerElement(fol, C_FilesIndexerElement.TYPE_FOLDER));
+                                    C_FilesIndexerElement temp = new C_FilesIndexerElement(fol, C_FilesIndexerElement.TYPE_FOLDER);
+                                    newFolObjs.Add(temp);
                                 }
+                                
 
                                 if (this.OnItemsFound != null)
                                 {
                                     //this.OnItemsFound(this, newFolders);
-                                    this.OnItemsFound(this, newFolObjs);
+                                    try
+                                    {
+                                        this.OnItemsFound(this, newFolObjs);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        if (this.OnErrorOccured != null)
+                                        {
+                                            this.OnErrorOccured(this, ex.ToString());
+                                        }
+                                    }
                                 }
                                 
                                 lock (this._founditems)
@@ -235,17 +273,34 @@ namespace Co0nSearchC
                                     this._founditems.AddRange(newFolObjs); // Add Folders matching searchpattern to result
                                 }
                             }
+                            
 
-                            //var foldersInCurrent = System.IO.Directory.EnumerateDirectories(currentfolder, "*"); // Alle Unterordner des aktuellen Ordners ermitteln...    
+                            //this.foldersprocessed.Add(currentfolder); //DEBUG
+
+                            //Alle Unterordner ermitteln um diese der Suche hinzuzufügen                                
+                            var foldersInCurrent = System.IO.Directory.EnumerateDirectories(currentfolder).AsParallel(); // Alle Unterordner des aktuellen Ordners ermitteln...    
                             //var foldersInCurrent = System.IO.Directory.EnumerateDirectories(currentfolder, "*").AsParallel().Where(f => !new FileInfo(f).Attributes.HasFlag(FileAttributes.ReparsePoint)); // Alle Unterordner des aktuellen Ordners ermitteln...                            //This is much slower than checking afterwards
-                            var foldersInCurrent = System.IO.Directory.EnumerateDirectories(currentfolder, "*").AsParallel();
+                            
+                            //String[] DEBUG = foldersInCurrent.ToArray(); //DEBUG
+                            
                             foreach (string subdir in foldersInCurrent)
+                            //foreach (string subdir in DEBUG) //DEBUG
                             {
                                 if (!IsSymbolic(subdir))
                                 {
                                     folders.Enqueue(subdir); //Diese jeweils der Queue hinzufügen
+                                    
+                                    //this.foldersAddedToQueue++; //DEBUG
                                 }
+                                /*
+                                else
+                                {
+                                    Console.WriteLine("\""+subdir + "\"is Symbolic link. Skipping..."); //DEBUG
+                                    skippedfoldersastheyrsymbolic++; //DEBUG
+                                }
+                                */
                             }
+//                            this.foldersprocessed.Add(currentfolder); //DEBUG
                         }
                     }
                     catch (UnauthorizedAccessException ex)

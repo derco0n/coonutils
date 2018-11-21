@@ -10,7 +10,7 @@ namespace Co0nSearchC
     /// <summary>
     /// Defines an Element found
     /// </summary>
-    public class C_FilesIndexerElement
+    public class C_FilesIndexerElement:IComparable<C_FilesIndexerElement>
     {
         #region statics
         public static int TYPE_FOLDER = 1;
@@ -78,6 +78,16 @@ namespace Co0nSearchC
 
 
         #region methods
+        /// <summary>
+        /// Compares one C_FilesIndexElement to another
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public int CompareTo(C_FilesIndexerElement other)
+        {
+            return this._Name.CompareTo(other.Name);
+        }
+
         /// <summary>
         /// Overrides the default toString() and returns Type and Name as String.
         /// </summary>
