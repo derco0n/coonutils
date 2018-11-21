@@ -13,3 +13,4 @@ C:\mitgebrachtes\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\bin\Release\Co0nUtilZ.pdb
 C:\mitgebrachtes\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Release\Co0nUtilZ.csproj.CoreCompileInputs.cache
 C:\mitgebrachtes\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Release\Co0nUtilZ.dll
 C:\mitgebrachtes\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Release\Co0nUtilZ.pdb
+C:\mitgebrachtes\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Release\Co0nUtilZ.csprojAssemblyReference.cache
