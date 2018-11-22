@@ -30,4 +30,3 @@ E:\Entwicklungen\C#\Co0nUtilZ\derco0n\coonutils\Co0nUtilZ\bin\Debug\Co0nUtilZ.pd
 E:\Entwicklungen\C#\Co0nUtilZ\derco0n\coonutils\Co0nUtilZ\obj\Debug\Co0nUtilZ.csproj.CoreCompileInputs.cache
 E:\Entwicklungen\C#\Co0nUtilZ\derco0n\coonutils\Co0nUtilZ\obj\Debug\Co0nUtilZ.dll
 E:\Entwicklungen\C#\Co0nUtilZ\derco0n\coonutils\Co0nUtilZ\obj\Debug\Co0nUtilZ.pdb
-C:\mitgebrachtes\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\obj\Debug\Co0nUtilZ.csprojAssemblyReference.cache

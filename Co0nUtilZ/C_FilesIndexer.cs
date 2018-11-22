@@ -299,8 +299,12 @@ namespace Co0nSearchC
             
             
             String Searchpattern = "";
-           
-            this._founditems = new List<C_FilesIndexerElement>(); //Ergebnisliste neu initialisieren
+
+            lock (this._founditems)
+            {
+
+                this._founditems = new List<C_FilesIndexerElement>(); //Ergebnisliste neu initialisieren
+            }
 
             lock (this.folders)
             {

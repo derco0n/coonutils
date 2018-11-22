@@ -76,7 +76,7 @@ namespace Co0nSearchC
         }
         #endregion
 
-
+        
         #region methods
         /// <summary>
         /// Compares one C_FilesIndexElement to another
@@ -85,7 +85,9 @@ namespace Co0nSearchC
         /// <returns></returns>
         public int CompareTo(C_FilesIndexerElement other)
         {
-            return this._Name.CompareTo(other.Name);
+            int param1 = this._Name.CompareTo(other._Name);
+            int param2 = this._Type.CompareTo(other._Type);
+            return param1 + param2;
         }
 
         /// <summary>
