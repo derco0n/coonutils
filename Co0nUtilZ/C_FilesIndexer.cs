@@ -97,6 +97,7 @@ namespace Co0nSearchC
             //this._SearchThread = new Thread(new ParameterizedThreadStart(findItemsWorker));
             this._SearchThread = new Thread(new ThreadStart(findItemsWorker));
             //this._SearchThread.Start(new { Searchfor, SearchForNameOnly, this._Recurse, this._Pathname });
+            this._SearchThread.Name="FilesSearcher " + this._Pathname;
             this._SearchThread.Start();
 
             return;
