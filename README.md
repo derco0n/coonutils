@@ -1,6 +1,6 @@
 # coonutils
 
-## This is a C#-Libarary based on .Net 4.5 containing classes for:
+## This is a C#-Libarary based on .Net 4.6.1 containing classes for:
 * AES En-/Decryption
 * CIFS-(Samba)-Client
 * FTP-Client
