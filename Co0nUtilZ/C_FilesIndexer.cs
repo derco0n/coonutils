@@ -73,12 +73,15 @@ namespace Co0nSearchC
         {
             if (this._SearchThread != null)
             {
-                if (this._SearchThread.IsAlive && this._SearchThread.ThreadState == ThreadState.Running)
-                {
-                    this._SearchThread.Abort();
-                    if (this.OnSearchAborted != null)
+                lock (this._SearchThread) {
+                    //if (this._SearchThread.IsAlive && this._SearchThread.ThreadState == ThreadState.Running)
+                    if (this._SearchThread.ThreadState == ThreadState.Running)
                     {
-                        this.OnSearchAborted(this);
+                        this._SearchThread.Abort();
+                        if (this.OnSearchAborted != null)
+                        {
+                            this.OnSearchAborted(this);
+                        }
                     }
                 }
             }
@@ -92,12 +95,20 @@ namespace Co0nSearchC
         /// <param name="SearchForNameOnly">NOT IN USE (YET). Default=True</param>
         public void FindItems(String Searchfor, Boolean SearchForNameOnly = true)
         {
+            
             this._Searchfor = Searchfor;
             this._SearchForNameOnly = SearchForNameOnly;
             //this._SearchThread = new Thread(new ParameterizedThreadStart(findItemsWorker));
             this._SearchThread = new Thread(new ThreadStart(findItemsWorker));
             //this._SearchThread.Start(new { Searchfor, SearchForNameOnly, this._Recurse, this._Pathname });
             this._SearchThread.Name="FilesSearcher " + this._Pathname;
+            lock (this._SearchThread)
+            {
+                if (this.OnSearchStarted != null)
+                {
+                    this.OnSearchStarted(this, "Search started");
+                }
+            }
             this._SearchThread.Start();
 
             return;
@@ -285,11 +296,7 @@ namespace Co0nSearchC
         /// <param name="parameters"></param>
         private void findItemsWorker(/*object parameters*/ /*String Searchfor, Boolean SearchForNameOnly=true*/)
         {
-            if (this.OnSearchStarted != null)
-            {
-                this.OnSearchStarted(this, "Search started");
-            }
-
+            
             
             String Searchpattern = "";
            
@@ -364,6 +371,10 @@ namespace Co0nSearchC
                 {
                     this.OnErrorOccured(this, ex.ToString());
                 }
+            }
+            catch (ThreadAbortException ex)
+            {
+
             }
             catch (Exception ex) {
                 if (this.OnErrorOccured != null)
