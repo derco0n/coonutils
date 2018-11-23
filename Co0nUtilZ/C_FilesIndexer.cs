@@ -23,6 +23,7 @@ namespace Co0nSearchC
         public Thread _SearchThread;
         private String _Searchfor="";
         private Boolean _SearchForNameOnly = true;
+        private Boolean _includehiddenelement=false; //Also find hidden files?
 
         //private List<String> foldersprocessed = new List<string>(); //DEBUG
 
@@ -47,9 +48,11 @@ namespace Co0nSearchC
         /// Creates a new FileSearcher-instance
         /// </summary>
         /// <param name="Pathname">Path to Searchbase-Directory</param>
+        /// <param name="showhiddenfiles">Include hiddenfiles in result (Default: FALSE)</param>
         /// <param name="Recurse">NOT IN USE (YET) (Default:TRUE)</param>
-        public C_FilesIndexer(String Pathname, Boolean Recurse = true)
+        public C_FilesIndexer(String Pathname, Boolean showhiddenfiles=false, Boolean Recurse = true)
         {
+            this._includehiddenelement = showhiddenfiles;
             this._Pathname = Pathname;
             this._Recurse = Recurse;
         }
@@ -141,6 +144,30 @@ namespace Co0nSearchC
         }
 
         /// <summary>
+        /// Checks if Hidden-Attribute is set
+        /// </summary>
+        /// <param name="path">PATH to Fiile or Folder</param>
+        /// <returns>True if object is hidden, otherwise false</returns>
+        private bool Ishidden(string path)
+        {
+            FileInfo pathInfo = new FileInfo(path);
+
+            /*
+            //DEBUG
+            if (pathInfo.Attributes.HasFlag(FileAttributes.ReparsePoint))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            */
+
+            return pathInfo.Attributes.HasFlag(FileAttributes.Hidden);
+        }
+
+        /// <summary>
         /// Parses a Directory
         /// </summary>
         /// <param name="currentfolder">Directory to parse</param>
@@ -157,20 +184,46 @@ namespace Co0nSearchC
                 {
                     // Add files matching pattern to result
                     List<C_FilesIndexerElement> newfilObjs = new List<C_FilesIndexerElement>();
+                    bool newobjectsreallyfound = false; //This indicates that an event should be raised or not
+
                     foreach (String fil in newFiles)
                     {
-                        newfilObjs.Add(new C_FilesIndexerElement(fil, C_FilesIndexerElement.TYPE_FILE));
+                        if (!this._includehiddenelement)
+                        {
+                            //Hidden objects should not be shown. first check if attribute is set...
+                            if (!this.Ishidden(fil))
+                            {//Object is not hidden...
+                                newfilObjs.Add(new C_FilesIndexerElement(fil, C_FilesIndexerElement.TYPE_FILE)); //Add object to result
+                                newobjectsreallyfound = true;
+                            }
+                            /*
+                            else
+                            {
+                                //Object is hidden and hidden objects should not be shown....
+                            }
+                            */
+                        }
+                        else
+                        {//Hidden objects should also be shown. no further checking necessary...
+                            newfilObjs.Add(new C_FilesIndexerElement(fil, C_FilesIndexerElement.TYPE_FILE)); //Add object to result
+                            newobjectsreallyfound = true;
+                        }                       
+
                     }
 
-                    lock (this._founditems)
+                    if (newobjectsreallyfound /*Will be false if all found items are hidden*/)
                     {
-                        this._founditems.AddRange(newfilObjs);
-                    }
-                    //New folder found
-                    if (this.OnItemsFound != null)
-                    {
-                        //this.OnItemsFound(this, newFiles);
-                        this.OnItemsFound(this, newfilObjs);
+                    
+                        lock (this._founditems)
+                        {
+                            this._founditems.AddRange(newfilObjs);
+                        }
+                        //New folder found
+                        if (this.OnItemsFound != null)
+                        {
+                            //this.OnItemsFound(this, newFiles);
+                            this.OnItemsFound(this, newfilObjs);
+                        }
                     }
 
                 }
@@ -202,42 +255,66 @@ namespace Co0nSearchC
 
                     List<String> newFolders = new List<string>();
                     newFolders.AddRange(matchingfoldersInCurrent);
-
+                   
 
 
                     if (newFolders.Count() > 0)
                     {//New folder found
                         List<C_FilesIndexerElement> newFolObjs = new List<C_FilesIndexerElement>();
-
+                        bool newobjectsreallyfound = false; //This indicates that an event should be raised or not
 
                         // Add Folders matching searchpattern to result
 
                         foreach (String fol in newFolders)
                         {
-                            C_FilesIndexerElement temp = new C_FilesIndexerElement(fol, C_FilesIndexerElement.TYPE_FOLDER);
-                            newFolObjs.Add(temp);
+                            if (!this._includehiddenelement)
+                            {
+                                //Hidden objects should not be shown. first check if attribute is set...
+                                if (!this.Ishidden(fol))
+                                {//Object is not hidden...
+                                    C_FilesIndexerElement temp = new C_FilesIndexerElement(fol, C_FilesIndexerElement.TYPE_FOLDER); //Add object to result
+                                    newFolObjs.Add(temp);
+                                    newobjectsreallyfound = true;
+                                }
+                                /*
+                                else
+                                {
+                                    //Object is hidden and hidden objects should not be shown....
+                                }
+                                */
+                            }
+                            else
+                            {//Hidden objects should also be shown. no further checking necessary...
+                                C_FilesIndexerElement temp = new C_FilesIndexerElement(fol, C_FilesIndexerElement.TYPE_FOLDER); //Add object to result
+                                newFolObjs.Add(temp);
+                                newobjectsreallyfound = true;
+                            }
+                            
                         }
 
-
-                        if (this.OnItemsFound != null)
+                        if (newobjectsreallyfound /*Will be false if all found items are hidden*/)
                         {
-                            //this.OnItemsFound(this, newFolders);
-                            try
+
+                            if (this.OnItemsFound != null)
                             {
-                                this.OnItemsFound(this, newFolObjs);
-                            }
-                            catch (Exception ex)
-                            {
-                                if (this.OnErrorOccured != null)
+                                //this.OnItemsFound(this, newFolders);
+                                try
                                 {
-                                    this.OnErrorOccured(this, ex.ToString());
+                                    this.OnItemsFound(this, newFolObjs);
+                                }
+                                catch (Exception ex)
+                                {
+                                    if (this.OnErrorOccured != null)
+                                    {
+                                        this.OnErrorOccured(this, ex.ToString());
+                                    }
                                 }
                             }
-                        }
 
-                        lock (this._founditems)
-                        {
-                            this._founditems.AddRange(newFolObjs); // Add Folders matching searchpattern to result
+                            lock (this._founditems)
+                            {
+                                this._founditems.AddRange(newFolObjs); // Add Folders matching searchpattern to result
+                            }
                         }
                     }
 
@@ -246,10 +323,8 @@ namespace Co0nSearchC
 
                     //Alle Unterordner ermitteln um diese der Suche hinzuzufügen                                
                     var foldersInCurrent = System.IO.Directory.EnumerateDirectories(currentfolder).AsParallel(); // Alle Unterordner des aktuellen Ordners ermitteln...    
-                                                                                                                 //var foldersInCurrent = System.IO.Directory.EnumerateDirectories(currentfolder, "*").AsParallel().Where(f => !new FileInfo(f).Attributes.HasFlag(FileAttributes.ReparsePoint)); // Alle Unterordner des aktuellen Ordners ermitteln...                            //This is much slower than checking afterwards
-
-                    //String[] DEBUG = foldersInCurrent.ToArray(); //DEBUG
-
+                    
+                    
                     foreach (string subdir in foldersInCurrent)
                     //foreach (string subdir in DEBUG) //DEBUG
                     {
