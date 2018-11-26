@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Co0nSearchC
+namespace Co0nUtilZ
 {
     /// <summary>
     /// Defines an Element found

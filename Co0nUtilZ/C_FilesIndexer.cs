@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace Co0nSearchC
+namespace Co0nUtilZ
 {
     /// <summary>
     /// Sucht in einem separaten Thread nach Dateien in einer bestimmten Ordnerstruktur
