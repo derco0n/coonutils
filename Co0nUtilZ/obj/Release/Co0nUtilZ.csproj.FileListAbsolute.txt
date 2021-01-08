@@ -18,3 +18,9 @@ E:\Entwicklungen\C#\Co0nUtilZ\derco0n\coonutils\Co0nUtilZ\bin\Release\Co0nUtilZ.
 E:\Entwicklungen\C#\Co0nUtilZ\derco0n\coonutils\Co0nUtilZ\obj\Release\Co0nUtilZ.csproj.CoreCompileInputs.cache
 E:\Entwicklungen\C#\Co0nUtilZ\derco0n\coonutils\Co0nUtilZ\obj\Release\Co0nUtilZ.dll
 E:\Entwicklungen\C#\Co0nUtilZ\derco0n\coonutils\Co0nUtilZ\obj\Release\Co0nUtilZ.pdb
+C:\Users\dmarx\source\repos\derco0n\coonutils\Co0nUtilZ\bin\Release\Co0nUtilZ.dll
+C:\Users\dmarx\source\repos\derco0n\coonutils\Co0nUtilZ\bin\Release\Co0nUtilZ.pdb
+C:\Users\dmarx\source\repos\derco0n\coonutils\Co0nUtilZ\obj\Release\Co0nUtilZ.csproj.CoreCompileInputs.cache
+C:\Users\dmarx\source\repos\derco0n\coonutils\Co0nUtilZ\obj\Release\Co0nUtilZ.dll
+C:\Users\dmarx\source\repos\derco0n\coonutils\Co0nUtilZ\obj\Release\Co0nUtilZ.pdb
+C:\Users\dmarx\source\repos\derco0n\coonutils\Co0nUtilZ\obj\Release\Co0nUtilZ.csprojAssemblyReference.cache

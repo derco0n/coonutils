@@ -33,6 +33,7 @@ namespace Co0nUtilZ
         private String _Logsourcename;
         private String _Logname; //System oder Anwendungslog
         private String _MsgPrefix; // Prefix welches Nachrichten vorangestellt werden soll
+        private List<Int32> NumbersInUse;
 
         #endregion
 
@@ -96,10 +97,16 @@ namespace Co0nUtilZ
             this._Logsourcename = Sourcename;
             this._Logname = Log;
             this._MsgPrefix = MsgPrefix;
+            this.NumbersInUse = new List<Int32>();
 
             if (!EventLog.SourceExists(this._Logsourcename))
             {
-                EventLog.CreateEventSource(this._Logsourcename, this._Logname); //Eventlogquelle registrieren falls nicht vorhanden.
+                try
+                {
+                    EventLog.CreateEventSource(this._Logsourcename, this._Logname); //Eventlogquelle registrieren falls nicht vorhanden.
+                }
+                catch { 
+                }
             }
 
 
@@ -119,6 +126,12 @@ namespace Co0nUtilZ
         /// <returns>Gibt im Fehlerfall FALSE zurück</returns>
         public bool Log(String Message, EventLogEntryType Type, Int32 Messagenumber)
         {
+            //Keep track of the messagenumbers used
+            if (!this.NumbersInUse.Contains(Messagenumber))
+            {
+                this.NumbersInUse.Add(Messagenumber);
+            }
+
             try
             {
                 Message = this._MsgPrefix + Message; //Prefix voranstellen
@@ -181,6 +194,24 @@ namespace Co0nUtilZ
         public bool LogInfo(String Message, Int32 Messagenumber)
         {
             return this.Log(Message, C_LoggingHelper.TYPE_INFO, Messagenumber);
+        }
+
+        /// <summary>
+        /// Will return a Number which has not been used yet
+        /// </summary>
+        /// <returns></returns>
+        public Int32 NextFreeNumber()
+        {
+            Int32 maxValue = this.NumbersInUse.Max();
+
+            if (maxValue < UInt16.MaxValue)
+            {
+                return maxValue;
+            }
+            else
+            {
+                return 0;
+            }
         }
         #endregion
 
