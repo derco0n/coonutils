@@ -4,6 +4,8 @@
 
 ./vs
 ./bin
+./obj
 ./Co0nUtilZ/bin
-/bin/Debug
-/Co0nUtilZ/obj/Debug
+./Co0nUtilZ/obj
+
+
