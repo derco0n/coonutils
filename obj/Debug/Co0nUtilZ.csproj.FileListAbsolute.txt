@@ -1,0 +1,5 @@
+C:\Users\dmarx\Source\Repos\Kontaktumspritzung_0_4\lib_cu\bin\Debug\Co0nUtilZ.dll
+C:\Users\dmarx\Source\Repos\Kontaktumspritzung_0_4\lib_cu\bin\Debug\Co0nUtilZ.pdb
+C:\Users\dmarx\Source\Repos\Kontaktumspritzung_0_4\lib_cu\obj\Debug\Co0nUtilZ.csproj.CoreCompileInputs.cache
+C:\Users\dmarx\Source\Repos\Kontaktumspritzung_0_4\lib_cu\obj\Debug\Co0nUtilZ.dll
+C:\Users\dmarx\Source\Repos\Kontaktumspritzung_0_4\lib_cu\obj\Debug\Co0nUtilZ.pdb

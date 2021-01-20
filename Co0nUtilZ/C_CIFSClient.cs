@@ -12,6 +12,7 @@ namespace Co0nUtilZ
     /// <summary>
     /// This Class grants Access to a Samba/CIFS-Share
     /// Created:           08/2017
+    /// Last Change:       11/2020
     /// Author:              D. Marx
     /// Project: https://github.com/derco0n/coonutils   
     /// License: 
@@ -113,27 +114,53 @@ namespace Co0nUtilZ
         /// Return the Folderinformation of a Subfolder
         /// </summary>
         /// <param name="Subdir">Path on the server (everything after "\\Server\")</param>
+        /// <param name="createifnotexist">If TRUE will try to create directory</param>
         /// <returns>List with all containing subfolders</returns>
-        public DirectoryInfo getFolderInfo(String Subdir)
+        public DirectoryInfo getFolderInfo(String Subdir, bool createifnotexists=false)
         {
             DirectoryInfo myReturn = null;
             String Searchpath = this._Server + @"\" + @Subdir;
             try
             {
+                String connectpath = Searchpath;
+                if (createifnotexists)
+                { // If we should try to create any non existing folder, we probably cannot use the whole path to create a session. Try connecting to the servers root instead...
+                    connectpath = this._Server;
+                }
 
-
-                using (C_NetworkConnection nc = new C_NetworkConnection(Searchpath, this._NetworkCredential))
+                using (C_NetworkConnection nc = new C_NetworkConnection(connectpath, this._NetworkCredential))
                 {
 
                     nc.NetworkError += this.Handle_UnderlyingNetworkError; //subscribe Eventhandler 
-                    if (!nc.Connect().Equals("0")) //Establish connection
+                    if (!nc.Connect(true).Equals("0")) //Establish connection and disconnect any existing
                     {//If the result was not "0" (OK)...
                         return myReturn; //Abort                  
 
                     }
 
+                    if (createifnotexists)
+                    {                        
+                        //Try to create the target directory if it does not exist already.
+                        try
+                        {
+                            System.IO.Directory.CreateDirectory(Searchpath);
+                        }
+                        catch (Exception ex)
+                        {
+                            if (this.GeneralError != null)
+                            {
+                                this.GeneralError(
+                                        this,
+                                        new ErrorEventArgs(
+                                            "getFolderInfo: Suchordner: \"" + Searchpath + "\" existiert nicht und kann nicht erstellt werden! Abbruch des Vorgangs. => " + ex.ToString())
+                                            );
+                            }                            
+                        }
+
+                    }
 
                     myReturn = new DirectoryInfo(Searchpath);
+                    nc.NetworkError -= this.Handle_UnderlyingNetworkError; //unsubscribe Eventhandler 
                 }
 
             }
@@ -168,8 +195,7 @@ namespace Co0nUtilZ
                         nc.NetworkError += this.Handle_UnderlyingNetworkError; //subscribe Eventhandler 
                         if (!nc.Connect().Equals("0")) //Establish connection
                         {//If the result was not "0" (OK)...
-                            return myReturn; //Abort                         
-
+                            return myReturn; //Abort
                         }
 
                         string[] Folders = Directory.GetDirectories(@Searchpath);
@@ -996,6 +1022,25 @@ namespace Co0nUtilZ
 
                 }
 
+                /*
+                //Try to create the target directory if it does not exist already.
+                try
+                {
+                    System.IO.Directory.CreateDirectory(Targetfolder.FullName);
+                }
+                catch (Exception ex)
+                {
+                    if (this.FileTransferError != null)
+                    {
+                        this.FileTransferError(
+                                this,
+                                new ErrorEventArgs(
+                                    "CopyFileToCIFS: Zielordner: \"" + Targetfolder.FullName + "\" existiert nicht und kann nicht erstellt werden! Abbruch des Kopiervorgangs. => "+ex.ToString())
+                                    );
+                    }
+                    myreturn = false;
+                }
+                */
 
                 try
                 {
@@ -1191,6 +1236,26 @@ namespace Co0nUtilZ
                         Target = Targetfolder.FullName + @"\" + TargetFilename;
                     }
 
+                    /*
+                    //Try to create the target directory if it does not exist already.
+                    try
+                    {
+                        System.IO.Directory.CreateDirectory(Targetfolder.FullName);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (this.FileTransferError != null)
+                        {
+                            this.FileTransferError(
+                                    this,
+                                    new ErrorEventArgs(
+                                        "MoveFileToCIFS: Zielordner: \"" + Targetfolder.FullName + "\" existiert nicht und kann nicht erstellt werden! Abbruch des Verschiebevorgangs. => " + ex.ToString())
+                                        );
+                        }
+                        myreturn = false;
+                    }
+                    */
+
                     if (System.IO.File.Exists(Target) && overwrite == true)
                     {
                         try
@@ -1225,7 +1290,7 @@ namespace Co0nUtilZ
                     }
 
 
-                    File.MoveTo(Target); //Verschieben
+                    File.MoveTo(Target); //Verschieben. Caution! After this file had been moved, the new location will be written back to the FileInfo-Object!!
                     myreturn = true;
                 }
 

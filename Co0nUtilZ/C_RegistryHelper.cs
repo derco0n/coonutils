@@ -77,19 +77,22 @@ namespace Co0nUtilZ
                 SubKey = this._subkey; //Den Klassenweiten verwenden.
             }
 
-
-            using (RegistryKey
-                tempKey = this._rootkey.OpenSubKey(SubKey))
-            {
+            RegistryKey tempKey = this._rootkey.OpenSubKey(SubKey); 
+            //using (RegistryKey tempKey = this._rootkey.OpenSubKey(SubKey))
+            //{
                 String[] ValueNames = null;
-                try
-                {
+                //try
+                //{
+                if (tempKey != null) { 
                     ValueNames = tempKey.GetValueNames();
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
+                //else
+          
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine(ex.ToString());
+                //}
 
                 if (ValueNames != null && ValueNames.Length > 0)
                 {
@@ -99,7 +102,7 @@ namespace Co0nUtilZ
                     }
                 }
 
-            }
+            //}
 
             return myreturn;
         }
