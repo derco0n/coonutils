@@ -2,15 +2,10 @@
 # Diese .gitignore-Datei wurde von Microsoft(R) Visual Studio automatisch erstellt.
 ################################################################################
 
-./vs
-./bin
-./obj
-./Co0nUtilZ/bin
-./Co0nUtilZ/obj
-
-# Visual Studio 2015/2017 cache/options directory
-.vs/
+/vs
+/bin
 /Co0nUtilZ/.vs/
+/obj
 
 # User-specific files
 *.rsuser
