@@ -8,15 +8,34 @@
 ./Co0nUtilZ/bin
 ./Co0nUtilZ/obj
 
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+/Co0nUtilZ/.vs/
 
-/Co0nUtilZ/obj/x64/.NETFramework,Version=v4.8.AssemblyAttributes.cs
-/Co0nUtilZ/obj/Release/Co0nUtilZ.csprojAssemblyReference.cache
-/Co0nUtilZ/obj/Release/.NETFramework,Version=v4.8.AssemblyAttributes.cs
-/Co0nUtilZ/obj/Debug/Co0nUtilZ.pdb
-/Co0nUtilZ/obj/Debug/Co0nUtilZ.dll
-/Co0nUtilZ/obj/Debug/Co0nUtilZ.csprojAssemblyReference.cache
-/Co0nUtilZ/obj/Debug/Co0nUtilZ.csproj.FileListAbsolute.txt
-/Co0nUtilZ/obj/Debug/Co0nUtilZ.csproj.CoreCompileInputs.cache
-/Co0nUtilZ/obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs
-/Co0nUtilZ/bin/Debug/Co0nUtilZ.pdb
-/Co0nUtilZ/bin/Debug/Co0nUtilZ.dll
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Mono auto generated files
+mono_crash.*
+
+# Build results
+/Co0nUtilZ/[Dd]ebug/
+/Co0nUtilZ/[Dd]ebugPublic/
+/Co0nUtilZ/[Rr]elease/
+/Co0nUtilZ/[Rr]eleases/
+/Co0nUtilZ/x64/
+/Co0nUtilZ/x86/
+/Co0nUtilZ/[Aa][Rr][Mm]/
+/Co0nUtilZ/[Aa][Rr][Mm]64/
+/Co0nUtilZ/bld/
+/Co0nUtilZ/[Bb]in/
+/Co0nUtilZ/[Oo]bj/
+/Co0nUtilZ/[Ll]og/
+/Co0nUtilZ/[Ll]ogs/
