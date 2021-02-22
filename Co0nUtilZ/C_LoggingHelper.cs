@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Co0nUtilZ
 {
@@ -18,7 +16,7 @@ namespace Co0nUtilZ
 
     /// </summary>
     public class C_LoggingHelper
-    { 
+    {
 
         #region === Statics
         public static String LOG_APPLICATION = "Application";
@@ -105,7 +103,8 @@ namespace Co0nUtilZ
                 {
                     EventLog.CreateEventSource(this._Logsourcename, this._Logname); //Eventlogquelle registrieren falls nicht vorhanden.
                 }
-                catch { 
+                catch
+                {
                 }
             }
 
@@ -141,7 +140,7 @@ namespace Co0nUtilZ
                     List<String> Messageparts;
                     C_RegExHelper myRegEx = new C_RegExHelper();
 
-                    double dchunks = (double)Message.Length / (double)MESSAGE_MAXLENGTH;
+                    double dchunks = Message.Length / (double)MESSAGE_MAXLENGTH;
                     int chunks = (int)Math.Floor(dchunks);
 
                     Messageparts = myRegEx.SplitString(Message, chunks);

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Co0nUtilZ
 {
@@ -20,7 +18,7 @@ namespace Co0nUtilZ
     /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-2.0.de.html
 
     /// </summary>
-    public class C_CIFSClient 
+    public class C_CIFSClient
     {
         public static String AUTHTYPE_DIGEST = "Digest";
         public static String AUTHTYPE_BASIC = "Basic";
@@ -35,7 +33,7 @@ namespace Co0nUtilZ
 
 
         #region properties
-        
+
         #endregion
 
 
@@ -116,7 +114,7 @@ namespace Co0nUtilZ
         /// <param name="Subdir">Path on the server (everything after "\\Server\")</param>
         /// <param name="createifnotexist">If TRUE will try to create directory</param>
         /// <returns>List with all containing subfolders</returns>
-        public DirectoryInfo getFolderInfo(String Subdir, bool createifnotexists=false)
+        public DirectoryInfo getFolderInfo(String Subdir, bool createifnotexists = false)
         {
             DirectoryInfo myReturn = null;
             String Searchpath = this._Server + @"\" + @Subdir;
@@ -139,7 +137,7 @@ namespace Co0nUtilZ
                     }
 
                     if (createifnotexists)
-                    {                        
+                    {
                         //Try to create the target directory if it does not exist already.
                         try
                         {
@@ -154,7 +152,7 @@ namespace Co0nUtilZ
                                         new ErrorEventArgs(
                                             "getFolderInfo: Suchordner: \"" + Searchpath + "\" existiert nicht und kann nicht erstellt werden! Abbruch des Vorgangs. => " + ex.ToString())
                                             );
-                            }                            
+                            }
                         }
 
                     }
@@ -601,11 +599,11 @@ namespace Co0nUtilZ
 
                 if (duplicateRenameYoungest && isYoungest && !DuplicateRenameYoungestTo.Equals(""))
                 {
-                    
+
                     //if the youngest file should be saved as an additional, renamed copy
                     success = this.CopyFileFromCIFS(File, Targetfolder, DuplicateRenameYoungestTo, true);
                 }
-                
+
                 success = this.CopyFileFromCIFS(File, Targetfolder, "", true);// copy file (any file, also any previously renamed, because we want both)
 
 

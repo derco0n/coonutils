@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Co0nUtilZ
 {
@@ -19,7 +16,7 @@ namespace Co0nUtilZ
     /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-2.0.de.html
     /// </summary>
     class C_NetworkConnection : IDisposable
-    { 
+    {
 
         #region Objects
         private string _networkName;
@@ -72,7 +69,7 @@ namespace Co0nUtilZ
         /// Verbindet die zuvor definierte Netzwerkfreigabe. Im Fehlerfall ein das Event NetworkError ausgelöst.
         /// </summary>
         /// <returns>Ergebnis des Verbindugsversuchs</returns>
-        public String Connect(bool forcedisconnectother=false)
+        public String Connect(bool forcedisconnectother = false)
         {
             var netResource = new NetworkResource()
             {
@@ -90,13 +87,14 @@ namespace Co0nUtilZ
                 netResource,
                 this._credentials.Password,
                 userName,
-                0);            
+                0);
 
             if (result != 0)
             {
                 if (result == 1219 /*0x4c3*/)
                 {
-                    if (forcedisconnectother) {
+                    if (forcedisconnectother)
+                    {
                         /*
                         https://docs.microsoft.com/en-us/windows/win32/debug/system-error-codes--1000-1299-
                         ERROR_SESSION_CREDENTIAL_CONFLICT
@@ -112,7 +110,8 @@ namespace Co0nUtilZ
                         {
                             WNetCancelConnection2(this._networkName, 0, true);  //Force close an active SMB-Session to that resource
                         }
-                        catch { 
+                        catch
+                        {
                         }
                         /*
                         disconnecttry++;
@@ -133,11 +132,11 @@ namespace Co0nUtilZ
                         Errorhint += "\r\n" + this.Errorhints[result.ToString()];
                     }
 
-                    
+
                     this.NetworkError(this, new ErrorEventArgs("Error connecting to remote share \"" + this._networkName + "\" as user \"" + this._credentials.UserName + "@" + this._credentials.Domain + "\". Errorcode is: " + result.ToString() + Errorhint)); //Wieder einkommentieren
                     //this.NetworkError(this, new ErrorEventArgs("Error connecting to remote share \"" + this._networkName + "\" as user \"" + this._credentials.UserName + "@" + this._credentials.Domain + "\" using Password \"" + this._credentials.Password + "\". Errorcode is: " + result.ToString())); //DEBUG!! //Auskommentieren!!
                 }
-            }           
+            }
 
             return result.ToString();
         }

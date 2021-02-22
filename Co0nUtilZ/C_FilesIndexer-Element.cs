@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace Co0nUtilZ
@@ -10,7 +6,7 @@ namespace Co0nUtilZ
     /// <summary>
     /// Defines an Element found
     /// </summary>
-    public class C_FilesIndexerElement:IComparable<C_FilesIndexerElement>
+    public class C_FilesIndexerElement : IComparable<C_FilesIndexerElement>
     {
         #region statics
         public static int TYPE_FOLDER = 1;
@@ -76,7 +72,7 @@ namespace Co0nUtilZ
         }
         #endregion
 
-        
+
         #region methods
         /// <summary>
         /// Compares one C_FilesIndexElement to another
@@ -106,7 +102,7 @@ namespace Co0nUtilZ
             {
                 myreturn = "[V]";
             }
-            myreturn = myreturn + " "+ this._Name ;
+            myreturn = myreturn + " " + this._Name;
 
             /*
             try
@@ -124,7 +120,7 @@ namespace Co0nUtilZ
             {
 
             }
-            */ 
+            */
             return myreturn;
         }
         #endregion

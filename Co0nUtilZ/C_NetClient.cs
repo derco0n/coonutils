@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
 using System.Net;
-using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Text;
+using System.Threading;
 
 namespace Co0nUtilZ
 {
@@ -489,10 +485,10 @@ namespace Co0nUtilZ
                     return;
                 }
                 Int32 BytesReceived = networkStream.EndRead(result);
-                byte[] buffer={ };
+                byte[] buffer = { };
                 try
                 {
-                    buffer= result.AsyncState as byte[];
+                    buffer = result.AsyncState as byte[];
                 }
                 catch (ArgumentNullException ex)
                 {
@@ -517,13 +513,13 @@ namespace Co0nUtilZ
 
 
                 string data = "";
-                if (BytesReceived >0)
+                if (BytesReceived > 0)
                 {//Less Bytes than Buffer were sent... seems something ist missing
                     data = ASCIIEncoding.ASCII.GetString(buffer, 0, buffer.Length);
                     data = data.Substring(BytesReceived);
                 }
 
-                
+
 
                 //Do something with the data object here.
                 if (this.DataReceived != null)

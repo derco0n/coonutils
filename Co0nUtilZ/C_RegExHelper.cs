@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 namespace Co0nUtilZ
@@ -18,7 +15,7 @@ namespace Co0nUtilZ
 
     /// </summary>
     public class C_RegExHelper
-    { 
+    {
 
         public List<String> SplitString(String str, int chunks)
         {

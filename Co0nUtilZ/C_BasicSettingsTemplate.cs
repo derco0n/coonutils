@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Co0nUtilZ
 {
@@ -35,7 +33,7 @@ namespace Co0nUtilZ
 
         #region properties
 
-        
+
         /// <summary>
         /// List with daily Start-Times
         /// </summary>
@@ -79,18 +77,18 @@ namespace Co0nUtilZ
                 return this._instancename;
             }
 
-           
+
             set
             {//Override Set if needed
 
             }
-            
+
         }
 
         /// <summary>
         /// returns the hour-part of starttimes
         /// </summary>
-        public String[] StartHours 
+        public String[] StartHours
         {
             get
             {
@@ -110,7 +108,7 @@ namespace Co0nUtilZ
         /// <summary>
         /// returns the minute-part of starttimes
         /// </summary>
-        public String[] StartMinutes 
+        public String[] StartMinutes
         {
             get
             {
@@ -127,7 +125,7 @@ namespace Co0nUtilZ
             }
         }
 
-        
+
         /*
          Insert more specific properties in derived class...         
          */
@@ -135,8 +133,8 @@ namespace Co0nUtilZ
         #endregion
 
         #region delegatesandevent
-        public delegate void CompleteEventhandler(); 
-        public delegate void SettingChangedHandler(ProgressEventArgs e); 
+        public delegate void CompleteEventhandler();
+        public delegate void SettingChangedHandler(ProgressEventArgs e);
         public delegate void ErrorEventHandler(object sender, ErrorEventArgs Fehler);
 
         public event CompleteEventhandler JobCompleted; //Should raise this when jobrun is complete
@@ -202,9 +200,9 @@ namespace Co0nUtilZ
 
             try
             {//Determine Starttimes
-             
+
                 List<String> valuenames = this.myRegHelper.ListValues(this._instancename); //Get a list with all valuenames of the current subkey
-                
+
                 foreach (String valnam in valuenames) //recurse all valuenames
                 {
                     if (valnam.StartsWith(_StartSearchString)) //if valuename begins with seachrstring for startimes ("Start")...
@@ -212,12 +210,12 @@ namespace Co0nUtilZ
                         String val = this.myRegHelper.ReadSettingFromRegistry(this._instancename, valnam); //fetch the value from current value
                         Starts.Add(val); //add that value to our starts-list
                     }
-                }                
+                }
 
             }
             catch (Exception ex)
             {//not readable from registry
-                this.OnErrorOccured(this, new ErrorEventArgs("Error while fetching starttime-values from registry.\r\n\r\nDetails:\r\n"+ex.ToString()+ "\r\n\r\nStacktrace:\r\n"+ex.StackTrace));                
+                this.OnErrorOccured(this, new ErrorEventArgs("Error while fetching starttime-values from registry.\r\n\r\nDetails:\r\n" + ex.ToString() + "\r\n\r\nStacktrace:\r\n" + ex.StackTrace));
             }
             finally
             {
@@ -227,7 +225,7 @@ namespace Co0nUtilZ
 
         protected String readOneSettingFromRegistry(String Setting)
         {
-           return this.myRegHelper.ReadSettingFromRegistry(this._instancename, Setting);
+            return this.myRegHelper.ReadSettingFromRegistry(this._instancename, Setting);
         }
 
         /// <summary>
@@ -243,14 +241,16 @@ namespace Co0nUtilZ
              * After that we recurse our current starttimes and write each of them to the registry
              */
 
-            if (this._instancename!=null){              
-            
+            if (this._instancename != null)
+            {
+
 
                 List<String> valuenames = this.myRegHelper.ListValues(this._instancename); //fetch a lists with all ValueNames in current subkey
-            
-                if (valuenames.Count > 0){
+
+                if (valuenames.Count > 0)
+                {
                     //Recurse all values and try to delete them if thex exist
-             
+
                     foreach (String valnam in valuenames) //recurse all value-names
                     {
                         if (valnam.StartsWith(_StartSearchString)) //if the value matches the searchstring for starttimes
@@ -266,11 +266,11 @@ namespace Co0nUtilZ
 
             UInt32 StartNrCounter = 1;
 
-            
+
             if (this._Starttimes != null && this._Starttimes.Count() > 0)
-            { 
-            //_Stattimes must be initilized
-            //minimum one entry existing in Starttimes-array
+            {
+                //_Stattimes must be initilized
+                //minimum one entry existing in Starttimes-array
                 foreach (String Start in this._Starttimes)
                 {//go through the starttimes-list...
                     //write every start with its unique number (StartX, StartY, ...)
@@ -289,16 +289,16 @@ namespace Co0nUtilZ
             {//No Starttime defined, therefore success
                 StarttimesSuccess = true;
             }
-            
-            
+
+
 
             /*
              * End Starttimes...
              *################## 
              */
 
-             return StarttimesSuccess; //& someothersuccess & anotheronesuccess....
-            
+            return StarttimesSuccess; //& someothersuccess & anotheronesuccess....
+
         }
 
 
@@ -313,7 +313,7 @@ namespace Co0nUtilZ
             return this.myRegHelper.WriteSettingToRegistry(this._instancename, valuename, value);
         }
 
-        
+
         /// <summary>
         /// Override this to rename this instance in the registry
         /// </summary>
@@ -329,12 +329,12 @@ namespace Co0nUtilZ
                 {//Neue Werte schreiben...
 
                     //... und bei Erfolg: Alten Instanzschlüssel löschen
-                    return this.myRegHelper.dropInstance(oldinstancename);                    
+                    return this.myRegHelper.dropInstance(oldinstancename);
                 }
             }
             return false;
         }
-        
+
 
         /// <summary>
         /// deletes the complete jobinstance from registry.

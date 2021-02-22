@@ -1,9 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Co0nUtilZ
 {
@@ -18,7 +15,7 @@ namespace Co0nUtilZ
 
     /// </summary>
     public class C_RegistryHelper
-    { 
+    {
 
         private RegistryKey _rootkey;
         private String _subkey;
@@ -77,30 +74,31 @@ namespace Co0nUtilZ
                 SubKey = this._subkey; //Den Klassenweiten verwenden.
             }
 
-            RegistryKey tempKey = this._rootkey.OpenSubKey(SubKey); 
+            RegistryKey tempKey = this._rootkey.OpenSubKey(SubKey);
             //using (RegistryKey tempKey = this._rootkey.OpenSubKey(SubKey))
             //{
-                String[] ValueNames = null;
-                //try
-                //{
-                if (tempKey != null) { 
-                    ValueNames = tempKey.GetValueNames();
-                }
-                //else
-          
-                //}
-                //catch (Exception ex)
-                //{
-                //    Console.WriteLine(ex.ToString());
-                //}
+            String[] ValueNames = null;
+            //try
+            //{
+            if (tempKey != null)
+            {
+                ValueNames = tempKey.GetValueNames();
+            }
+            //else
 
-                if (ValueNames != null && ValueNames.Length > 0)
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.ToString());
+            //}
+
+            if (ValueNames != null && ValueNames.Length > 0)
+            {
+                foreach (String valnam in ValueNames)
                 {
-                    foreach (String valnam in ValueNames)
-                    {
-                        myreturn.Add(valnam);
-                    }
+                    myreturn.Add(valnam);
                 }
+            }
 
             //}
 
@@ -143,7 +141,7 @@ namespace Co0nUtilZ
         public String ReadSettingFromRegistry(String Instancename, String valuename)
         {
             //Liest einen Wert aus der Windows Registry
-            string keyName = this._rootkey.Name + "\\" + this._subkey + "\\" + Instancename; 
+            string keyName = this._rootkey.Name + "\\" + this._subkey + "\\" + Instancename;
 
             if (Registry.GetValue(keyName, valuename, null) != null)
             {
@@ -164,7 +162,8 @@ namespace Co0nUtilZ
         public bool WriteSettingToRegistry(String Instancename, String valuename, String value)
         {
             //Writes a value in the registry
-            if (Instancename != null && valuename !=null && value !=null){
+            if (Instancename != null && valuename != null && value != null)
+            {
                 //Only if all needed values are given
                 try
                 {

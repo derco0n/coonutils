@@ -1,9 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
 
 namespace Co0nUtilZ
@@ -21,9 +19,9 @@ namespace Co0nUtilZ
         private Queue<string> folders = new Queue<string>(); //List with fodlers to parse
         private List<C_FilesIndexerElement> _founditems = new List<C_FilesIndexerElement>();
         public Thread _SearchThread;
-        private String _Searchfor="";
+        private String _Searchfor = "";
         private Boolean _SearchForNameOnly = true;
-        private Boolean _includehiddenelement=false; //Also find hidden files?
+        private Boolean _includehiddenelement = false; //Also find hidden files?
 
         //private List<String> foldersprocessed = new List<string>(); //DEBUG
 
@@ -50,7 +48,7 @@ namespace Co0nUtilZ
         /// <param name="Pathname">Path to Searchbase-Directory</param>
         /// <param name="showhiddenfiles">Include hiddenfiles in result (Default: FALSE)</param>
         /// <param name="Recurse">NOT IN USE (YET) (Default:TRUE)</param>
-        public C_FilesIndexer(String Pathname, Boolean showhiddenfiles=false, Boolean Recurse = true)
+        public C_FilesIndexer(String Pathname, Boolean showhiddenfiles = false, Boolean Recurse = true)
         {
             this._includehiddenelement = showhiddenfiles;
             this._Pathname = Pathname;
@@ -60,7 +58,7 @@ namespace Co0nUtilZ
 
         #region methods
 
-        
+
         public List<C_FilesIndexerElement> FoundItems
         {
             get
@@ -68,7 +66,7 @@ namespace Co0nUtilZ
                 return this._founditems;
             }
         }
-        
+
         /// <summary>
         /// Stops a running searcher Thread
         /// </summary>
@@ -76,7 +74,8 @@ namespace Co0nUtilZ
         {
             if (this._SearchThread != null)
             {
-                lock (this._SearchThread) {
+                lock (this._SearchThread)
+                {
                     //if (this._SearchThread.IsAlive && this._SearchThread.ThreadState == ThreadState.Running)
                     if (this._SearchThread.ThreadState == ThreadState.Running)
                     {
@@ -98,13 +97,13 @@ namespace Co0nUtilZ
         /// <param name="SearchForNameOnly">NOT IN USE (YET). Default=True</param>
         public void FindItems(String Searchfor, Boolean SearchForNameOnly = true)
         {
-            
+
             this._Searchfor = Searchfor;
             this._SearchForNameOnly = SearchForNameOnly;
             //this._SearchThread = new Thread(new ParameterizedThreadStart(findItemsWorker));
             this._SearchThread = new Thread(new ThreadStart(findItemsWorker));
             //this._SearchThread.Start(new { Searchfor, SearchForNameOnly, this._Recurse, this._Pathname });
-            this._SearchThread.Name="FilesSearcher " + this._Pathname;
+            this._SearchThread.Name = "FilesSearcher " + this._Pathname;
             lock (this._SearchThread)
             {
                 if (this.OnSearchStarted != null)
@@ -207,13 +206,13 @@ namespace Co0nUtilZ
                         {//Hidden objects should also be shown. no further checking necessary...
                             newfilObjs.Add(new C_FilesIndexerElement(fil, C_FilesIndexerElement.TYPE_FILE)); //Add object to result
                             newobjectsreallyfound = true;
-                        }                       
+                        }
 
                     }
 
                     if (newobjectsreallyfound /*Will be false if all found items are hidden*/)
                     {
-                    
+
                         lock (this._founditems)
                         {
                             this._founditems.AddRange(newfilObjs);
@@ -255,7 +254,7 @@ namespace Co0nUtilZ
 
                     List<String> newFolders = new List<string>();
                     newFolders.AddRange(matchingfoldersInCurrent);
-                   
+
 
 
                     if (newFolders.Count() > 0)
@@ -289,7 +288,7 @@ namespace Co0nUtilZ
                                 newFolObjs.Add(temp);
                                 newobjectsreallyfound = true;
                             }
-                            
+
                         }
 
                         if (newobjectsreallyfound /*Will be false if all found items are hidden*/)
@@ -323,8 +322,8 @@ namespace Co0nUtilZ
 
                     //Alle Unterordner ermitteln um diese der Suche hinzuzufügen                                
                     var foldersInCurrent = System.IO.Directory.EnumerateDirectories(currentfolder).AsParallel(); // Alle Unterordner des aktuellen Ordners ermitteln...    
-                    
-                    
+
+
                     foreach (string subdir in foldersInCurrent)
                     //foreach (string subdir in DEBUG) //DEBUG
                     {
@@ -371,8 +370,8 @@ namespace Co0nUtilZ
         /// <param name="parameters"></param>
         private void findItemsWorker(/*object parameters*/ /*String Searchfor, Boolean SearchForNameOnly=true*/)
         {
-            
-            
+
+
             String Searchpattern = "";
 
             lock (this._founditems)
@@ -394,7 +393,8 @@ namespace Co0nUtilZ
             {
                 Searchpattern = "*";
             }
-            try {
+            try
+            {
 
                 //Iterate through all subdirs...
 
@@ -409,10 +409,10 @@ namespace Co0nUtilZ
 
                 System.DateTime lastFoldereventspawned = System.DateTime.Now;
                 this.foldersProcessedsoFar = 0;
-                
+
                 while (folders.Count > 0) // Solange Einträge in der Queue sind...
                 {
-                    
+
                     System.DateTime now = System.DateTime.Now;
                     TimeSpan ts = now - lastFoldereventspawned;
                     if (ts.TotalSeconds > 15) // Zyklisches Event zur Aktualisierung der bearbeiteten Ordner nur maximal alle 15 Sekunden werfen
@@ -425,7 +425,8 @@ namespace Co0nUtilZ
                     }
 
                     string currentfolder = "";
-                    lock (this.folders) {
+                    lock (this.folders)
+                    {
                         currentfolder = folders.Dequeue(); // Holt das erste Objekt aus der Queue (Entfernt es aus der Queue und gibt es als Wert zurück)
                     }
 
@@ -455,15 +456,17 @@ namespace Co0nUtilZ
             {
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 if (this.OnErrorOccured != null)
                 {
                     this.OnErrorOccured(this, ex.ToString());
                 }
             }
-            finally {
+            finally
+            {
 
-            
+
             }
 
             if (this.OnSearchFinished != null)

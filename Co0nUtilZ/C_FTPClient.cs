@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
-using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Co0nUtilZ
 {
@@ -30,7 +28,7 @@ namespace Co0nUtilZ
 
         #region === Properties
 
-       
+
         private Exception _lastException = new Exception("No Exception so far");
         /// <summary>
         /// Gibt die letzte Exception zurück
@@ -265,7 +263,7 @@ namespace Co0nUtilZ
 
                 if (this.GeneralError != null)
                 {
-                    this.GeneralError(this, new ErrorEventArgs("Error checking connection: "+ex.ToString()));
+                    this.GeneralError(this, new ErrorEventArgs("Error checking connection: " + ex.ToString()));
                 }
 
                 myReturn = false;
@@ -375,8 +373,8 @@ namespace Co0nUtilZ
 
 
             if (new System.IO.DirectoryInfo(localfolder).Exists == false) //Zielordner existiert nicht
-            { 
-              //Datei existiert nicht
+            {
+                //Datei existiert nicht
                 this.FileTransferError(
                    this,
                    new ErrorEventArgs(
@@ -390,7 +388,7 @@ namespace Co0nUtilZ
                 int TotalKBCount = 0;
                 Stopwatch sW = new Stopwatch();
                 sW.Start();
-                
+
                 foreach (String File in RemoteFiles)
                 {//Alle Dateien des Quellordners durchgehen
 
@@ -454,8 +452,8 @@ namespace Co0nUtilZ
                         FileInfo TargetInfo = new FileInfo(localfolder + "\\" + File);
 
                         TotalKBCount += (int)Math.Round((double)(TargetInfo.Length / 1024), 0); //Statistik: Gesamtzahl übertragener KiB erhöhen
-                       
-                        
+
+
                     }
                     else
                     {
@@ -514,8 +512,8 @@ namespace Co0nUtilZ
 
 
             if (!this.PathExists(remoteFolder)) //Zielordner existiert nicht
-            { 
-              //Datei existiert nicht
+            {
+                //Datei existiert nicht
                 this.FileTransferError(
                    this,
                    new ErrorEventArgs(
@@ -738,7 +736,7 @@ namespace Co0nUtilZ
         /// <returns></returns>
         public bool UploadFile(string remoteFolder, FileInfo fileInfo, bool keepalive = false)
         {
-             
+
 
             System.Threading.Thread.Sleep(PAUSEMS); //Kurz warten, damit Server und Netzwerk bei vielen Dateien hintereinander wieder bereit sind.
 
@@ -860,7 +858,7 @@ namespace Co0nUtilZ
 
             if (this.GeneralError != null)
             {
-                this.GeneralError(this, new ErrorEventArgs("Serverpath not found. Found partial path \"" + existingPath+"\""));
+                this.GeneralError(this, new ErrorEventArgs("Serverpath not found. Found partial path \"" + existingPath + "\""));
             }
 
             return false; //Ordner existiert nicht
@@ -1123,11 +1121,12 @@ namespace Co0nUtilZ
                     {
                         myreturn = false;
                         this._lastException = ex;
-                        if (this.FileTransferError != null) { 
-                        this.FileTransferError(
-                            this,
-                            new ErrorEventArgs("Fehler beim Download von: \"" + RemoteFileFullPath + "\" nach \"" + dstLocalFolder + "\". Handelt es sich um einen Ordner? \r\nFehlerdetails: " + ex.ToString())
-                            );
+                        if (this.FileTransferError != null)
+                        {
+                            this.FileTransferError(
+                                this,
+                                new ErrorEventArgs("Fehler beim Download von: \"" + RemoteFileFullPath + "\" nach \"" + dstLocalFolder + "\". Handelt es sich um einen Ordner? \r\nFehlerdetails: " + ex.ToString())
+                                );
                         }
                         break; //Schleife abbrechen
                     }
@@ -1167,7 +1166,7 @@ namespace Co0nUtilZ
                         if (this.GeneralError != null)
                         {
                             this.GeneralError(this, new ErrorEventArgs("Error while setting File-Timestamp: " + ex.ToString()));
-                        }   
+                        }
                         this._lastException = ex;
 
                         myreturn = false;
