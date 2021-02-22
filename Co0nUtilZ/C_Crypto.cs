@@ -113,12 +113,26 @@ namespace Co0nUtilZ
         /// <returns>Verschlüsselter String</returns>
         public string EncryptText(string input, string password, byte[] saltBytes, string error = "Fehler beim Verschlüsseln.")
         {
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+            return this.EncryptText(input, passwordBytes, saltBytes, error);
+
+        }
+
+        /// <summary>
+        /// Verschlüsselt einen String
+        /// </summary>
+        /// <param name="input">String zum Verschlüsseln</param>
+        /// <param name="passwordBytes">Verschlüsselungspasswort in Bytearray-form</param>
+        /// <param name="saltBytes">Salt als Bytearray mit mindestens 8 Werten</param>
+        /// <returns>Verschlüsselter String</returns>
+        public string EncryptText(string input, byte[] passwordBytes, byte[] saltBytes, string error = "Fehler beim Verschlüsseln.")
+        {
             string result = error;
             try
             {
                 // Get the bytes of the string
                 byte[] bytesToBeEncrypted = Encoding.UTF8.GetBytes(input);
-                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+                
 
                 // Hash the password with SHA256
                 passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
@@ -145,13 +159,25 @@ namespace Co0nUtilZ
         /// <returns>Entschlüsselter String</returns>
         public string DecryptText(string input, string password, byte[] saltBytes, string error = "Fehler beim Entschlüsseln")
         {
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+            return this.DecryptText(input, passwordBytes, saltBytes, error);
+        }
 
+        /// <summary>
+        /// Entschlüsselt einen String
+        /// </summary>
+        /// <param name="input">Verschlüsselter String</param>
+        /// <param name="passwordBytes">Passwort zum Entschlüsseln in Bytearray-form</param>
+        /// <param name="saltBytes">Salt als Bytearray mit mindestens 8 Werten</param>
+        /// <returns>Entschlüsselter String</returns>
+        public string DecryptText(string input, byte[] passwordBytes, byte[] saltBytes, string error = "Fehler beim Entschlüsseln")
+        {
             string result = error;
             try
             {
                 // Get the bytes of the string
                 byte[] bytesToBeDecrypted = Convert.FromBase64String(input);
-                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+                
                 passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
 
                 byte[] bytesDecrypted = AES_Decrypt(bytesToBeDecrypted, passwordBytes, saltBytes);
