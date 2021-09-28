@@ -31,7 +31,11 @@ namespace Co0nUtilZ
         private String _Logsourcename;
         private String _Logname; //System oder Anwendungslog
         private String _MsgPrefix; // Prefix welches Nachrichten vorangestellt werden soll
-        private List<Int32> NumbersInUse;
+
+        //Keep track of the numbers beeing used
+        private List<UInt16> InfoNumbersInUse;
+        private List<UInt16> WarnNumbersInUse;
+        private List<UInt16> ErrorNumbersInUse;
 
         #endregion
 
@@ -88,16 +92,37 @@ namespace Co0nUtilZ
         /// <summary>
         /// Instanziert ein neues Objekt einer Helferklasse zum Logging im Windows-Ereignisprotokoll
         /// </summary>
-        /// <param name="Sourcename">Name der Loggingquelle (Frei wählbarer Name)</param>
-        /// <param name="Log">Welches Log soll verwendet werden? Std.: Application</param>
-        public C_LoggingHelper(String Sourcename, String MsgPrefix/*=""*/, String Log = "Application")
+        /// <param name="Sourcename">Name of the Logging-source (free of choice)</param>
+        /// <param name="Log">Log to be used? Std.: Application</param>
+        /// <param name="BaseID">The BaseID to be used if you prefer auto-incrementing numbers.</param>        
+        public C_LoggingHelper(String Sourcename, String MsgPrefix/*=""*/, String Log = "Application", UInt16 BaseID=10000)
         {//Konstruktor
             this._Logsourcename = Sourcename;
             this._Logname = Log;
             this._MsgPrefix = MsgPrefix;
-            this.NumbersInUse = new List<Int32>();
+            this.InfoNumbersInUse = new List<UInt16>();
+            this.WarnNumbersInUse = new List<UInt16>();
+            this.ErrorNumbersInUse = new List<UInt16>();
+            UInt16 prenum = (UInt16)(BaseID - 1); // Calculate the number before the BaseID
+            this.InfoNumbersInUse.Add(prenum); // and add it to the InfoNumberInUseList
+            this.WarnNumbersInUse.Add((UInt16)(prenum+5000)); // Add a warning-base at an offset of 5000
+            this.ErrorNumbersInUse.Add((UInt16)(prenum + 10000)); // Add a error-base at an offset of 10000
 
-            if (!EventLog.SourceExists(this._Logsourcename))
+            bool sourceexists = false;
+
+            try
+            {
+                if (EventLog.SourceExists(this._Logsourcename))
+                {
+                    sourceexists = true;
+                }
+            }
+            catch
+            {
+
+            }
+
+            if (!sourceexists)
             {
                 try
                 {
@@ -117,20 +142,14 @@ namespace Co0nUtilZ
 
         //Methoden
         /// <summary>
-        /// Protokolliert eine Meldung im Windows Ereignisprotokoll
+        /// Logs a message to the windows eventlog. If the message is to large, it will be split into multiple chunks
         /// </summary>
-        /// <param name="Message">Inhalt der Nachricht</param>
-        /// <param name="Type">Art der Nachricht (Info, Warning oder Error)</param>
-        /// <param name="Messagenumber">Eindeutige Nummer der Meldung</param>
-        /// <returns>Gibt im Fehlerfall FALSE zurück</returns>
-        public bool Log(String Message, EventLogEntryType Type, Int32 Messagenumber)
+        /// <param name="Message">Content of the message</param>
+        /// <param name="Type">Messagetype (Info, Warning or Error)</param>
+        /// <param name="Messagenumber" >Unique-messagenumber. Will use the next free if value is 0</param>
+        /// <returns>Returns FALSE on error. Otherwise TRUE</returns>
+        public bool Log(String Message, EventLogEntryType Type, UInt16 Messagenumber)
         {
-            //Keep track of the messagenumbers used
-            if (!this.NumbersInUse.Contains(Messagenumber))
-            {
-                this.NumbersInUse.Add(Messagenumber);
-            }
-
             try
             {
                 Message = this._MsgPrefix + Message; //Prefix voranstellen
@@ -147,12 +166,12 @@ namespace Co0nUtilZ
 
                     foreach (String msg in Messageparts)
                     {
-                        EventLog.WriteEntry(this._Logsourcename, msg, Type, Messagenumber);
+                        EventLog.WriteEntry(this._Logsourcename, msg, Type, (Int32)Messagenumber);
                     }
                 }
                 else
                 {
-                    EventLog.WriteEntry(this._Logsourcename, Message, Type, Messagenumber);
+                    EventLog.WriteEntry(this._Logsourcename, Message, Type, (Int32)Messagenumber);
                 }
                 return true;
             }
@@ -163,49 +182,86 @@ namespace Co0nUtilZ
         }
 
         /// <summary>
-        /// Protokolliert eine Fehlermeldung im Windows Ereignisprotokoll
+        /// Logs an ERROR-message to the windows eventlog. If the message is to large, it will be split into multiple chunks
         /// </summary>
-        /// <param name="Message">>Inhalt der Nachricht</param>
-        /// <param name="Messagenumber">Eindeutige Nummer der Meldung</param>
-        /// <returns>Gibt im Fehlerfall FALSE zurück</returns>
-        public bool LogError(String Message, Int32 Messagenumber)
+        /// <param name="Message">Messagecontent</param>
+        /// <param name="Messagenumber">Unique-messagenumber. Will use the next free if value is 0 or not specified</param>
+        /// <returns>Returns FALSE on error. Otherwise TRUE</returns>
+        public bool LogError(String Message, UInt16 Messagenumber=0)
         {
+            if (Messagenumber == 0)
+            {
+                //No Messagenumber defined, guess a new one
+                Messagenumber = this.NextFreeNumber(this.ErrorNumbersInUse);
+            }
+
+            //Keep track of the messagenumbers used
+            if (!this.ErrorNumbersInUse.Contains(Messagenumber))
+            {
+                this.ErrorNumbersInUse.Add(Messagenumber);
+            }
+
             return this.Log(Message, C_LoggingHelper.TYPE_ERROR, Messagenumber);
         }
 
         /// <summary>
-        /// Protokolliert eine Warnmeldung im Windows Ereignisprotokoll
+        /// Logs an WARNING-message to the windows eventlog. If the message is to large, it will be split into multiple chunks
         /// </summary>
-        /// <param name="Message">>Inhalt der Nachricht</param>
-        /// <param name="Messagenumber">Eindeutige Nummer der Meldung</param>
-        /// <returns>Gibt im Fehlerfall FALSE zurück</returns>
-        public bool LogWarn(String Message, Int32 Messagenumber)
+        /// <param name="Message">Messagecontent</param>
+        /// <param name="Messagenumber">Unique-messagenumber. Will use the next free if value is 0 or not specified</param>
+        /// <returns>Returns FALSE on error. Otherwise TRUE</returns>
+        public bool LogWarn(String Message, UInt16 Messagenumber=0)
         {
+            if (Messagenumber == 0)
+            {
+                //No Messagenumber defined, guess a new one
+                Messagenumber = this.NextFreeNumber(this.WarnNumbersInUse);
+            }
+
+            //Keep track of the messagenumbers used
+            if (!this.WarnNumbersInUse.Contains(Messagenumber))
+            {
+                this.WarnNumbersInUse.Add(Messagenumber);
+            }
+
             return this.Log(Message, C_LoggingHelper.TYPE_WARN, Messagenumber);
         }
 
         /// <summary>
-        /// Protokolliert eine Infomeldung im Windows Ereignisprotokoll
+        /// Logs an INFO-message to the windows eventlog. If the message is to large, it will be split into multiple chunks
         /// </summary>
-        /// <param name="Message">>Inhalt der Nachricht</param>
-        /// <param name="Messagenumber">Eindeutige Nummer der Meldung</param>
-        /// <returns>Gibt im Fehlerfall FALSE zurück</returns>
-        public bool LogInfo(String Message, Int32 Messagenumber)
+        /// <param name="Message">Messagecontent</param>
+        /// <param name="Messagenumber">Unique-messagenumber. Will use the next free if value is 0 or not specified</param>
+        /// <returns>Returns FALSE on error. Otherwise TRUE</returns>
+        public bool LogInfo(String Message, UInt16 Messagenumber=0)
         {
+            if (Messagenumber == 0)
+            {
+                //No Messagenumber defined, guess a new one
+                Messagenumber = this.NextFreeNumber(this.InfoNumbersInUse);
+            }
+
+            //Keep track of the messagenumbers used
+            if (!this.InfoNumbersInUse.Contains(Messagenumber))
+            {
+                this.InfoNumbersInUse.Add(Messagenumber);
+            }
+
             return this.Log(Message, C_LoggingHelper.TYPE_INFO, Messagenumber);
         }
 
         /// <summary>
-        /// Will return a Number which has not been used yet
-        /// </summary>
-        /// <returns></returns>
-        public Int32 NextFreeNumber()
+        /// Will return the next free number-id which has not been used yet
+        /// </summary>        
+        /// <param name="numberpool">the numberpool to be used</param>
+        /// <returns>the next available number</returns>
+        protected UInt16 NextFreeNumber(List<UInt16> numberpool)
         {
-            Int32 maxValue = this.NumbersInUse.Max();
+            UInt16 maxValue = numberpool.Max();
 
             if (maxValue < UInt16.MaxValue)
             {
-                return maxValue;
+                return (UInt16)(maxValue + 1);
             }
             else
             {
