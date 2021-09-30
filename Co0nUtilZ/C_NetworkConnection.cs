@@ -15,7 +15,7 @@ namespace Co0nUtilZ
     /// GPLv2 - Means, this is free software which comes without any warranty but can be used, modified and redistributed free of charge
     /// You should have received a copy of that license: If not look here: https://www.gnu.org/licenses/gpl-2.0.de.html
     /// </summary>
-    class C_NetworkConnection : IDisposable
+    public class C_NetworkConnection : IDisposable
     {
 
         #region Objects
@@ -29,7 +29,7 @@ namespace Co0nUtilZ
         public event ErrorEventHandler NetworkError;
         #endregion
 
-
+        public const int RESOURCETYPE_DISK = 1;
         public Dictionary<String, String> Errorhints = new Dictionary<string, string>();
 
         public void InitializeErrorhints()
@@ -156,11 +156,11 @@ namespace Co0nUtilZ
         #region Statics
 
         [DllImport("mpr.dll")]
-        private static extern int WNetAddConnection2(NetworkResource netResource,
+        public static extern int WNetAddConnection2(NetworkResource netResource,
             string password, string username, int flags);
 
         [DllImport("mpr.dll")]
-        private static extern int WNetCancelConnection2(string name, int flags,
+        public static extern int WNetCancelConnection2(string name, int flags,
             bool force);
         #endregion
     }
@@ -221,3 +221,24 @@ namespace Co0nUtilZ
 
     #endregion
 }
+
+/*
+public struct NETRESOURCE //Definiert die Eigenschaften einer Netzwerkressource
+{
+    public int dwScope;
+
+    public int dwType;
+
+    public int dwDisplayType;
+
+    public int dwUsage;
+
+    public string lpLocalName;
+
+    public string lpRemoteName;
+
+    public string lpComment;
+
+    public string lpProvider;
+}
+*/
