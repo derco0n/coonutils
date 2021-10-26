@@ -46,11 +46,16 @@ namespace Co0nUtilZ
         #endregion
 
         #region Konstruktor
+        /// <summary>
+        /// Creates a new registry-helper instance
+        /// use "RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)" as root-key to force the 64Bit hive;
+        /// </summary>
+        /// <param name="Rootkey">rootkey</param>
+        /// <param name="Subkey">subkey-path</param>
         public C_RegistryHelper(RegistryKey Rootkey, String Subkey)
         { //Konstruktor
-
-            this._rootkey = Rootkey;
-            this._subkey = Subkey;
+           this._rootkey = Rootkey;
+           this._subkey = Subkey;
         }
         #endregion
 
@@ -138,15 +143,28 @@ namespace Co0nUtilZ
         /// <param name="Instancename">Instanzname (Unterschlüssel des aktuellen Registry-Schlüssels)</param>
         /// <param name="valuename">Name des auszulesenden Werts</param>
         /// <returns>Gibt bei Erfolg den Wert des angegebenen Felds zurück. Im Fehlerfall wird ein leerer String zurück gegeben</returns>
-        public String ReadSettingFromRegistry(String Instancename, String valuename)
+        public String ReadSettingFromRegistry(String Instancename, String valuename, String subkey="")
         {
             //Liest einen Wert aus der Windows Registry
-            string keyName = this._rootkey.Name + "\\" + this._subkey + "\\" + Instancename;
 
-            if (Registry.GetValue(keyName, valuename, null) != null)
+            string keyName = "";
+                        
+            if (subkey.Equals(""))
+            { // subkey is not given, use the legacy path-finder: root\subk\instance
+                keyName = this._subkey + "\\" + Instancename;
+                
+            }
+            else
+            { //subkey is given explicitly. use it
+                keyName = subkey;  
+            }
+
+            RegistryKey Key = this._rootkey.OpenSubKey(keyName);  //This will preserve information about whether its the 32 or 64-Bit registry
+
+            if (Key.GetValue(valuename) != null)
             {
-                //Key existiert. Wert benutzen.
-                return Registry.GetValue(keyName, valuename, "").ToString();
+                //Key exists. Use it, use an empty string as default.
+                return Key.GetValue(valuename).ToString();
             }
 
             return "";
@@ -266,13 +284,19 @@ namespace Co0nUtilZ
         /// //Listet alle Instanzen (Unterschlüssel des aktuellen Schlüsseln) auf
         /// </summary>
         /// <returns>Gibt eine Liste mit gefundenen Instanznamen zurück</returns>
-        public List<String> getInstances()
+        public List<String> getInstances(string subkey="")
         {//Listet alle Instanzen auf
             List<String> myreturn = new List<string>();
 
             try
             {
-                Microsoft.Win32.RegistryKey keyName = this.rootkey.OpenSubKey(this._subkey);
+                string key = this._subkey;
+                if (!subkey.Equals(""))
+                { //different subkey is specified
+                    key = subkey;
+                }                
+
+                Microsoft.Win32.RegistryKey keyName = this.rootkey.OpenSubKey(key);
                 String[] Subkeys = keyName.GetSubKeyNames();
 
                 if (Subkeys.Length > 0) //Wenn mindestens ein Eintrag gefunden wurde

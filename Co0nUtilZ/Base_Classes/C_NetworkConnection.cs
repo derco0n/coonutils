@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Runtime.InteropServices;
 
-namespace Co0nUtilZ
+namespace Co0nUtilZ.Base_Classes
 {
     /// <summary>
     /// This Class connects to network shares (samba/cifs)

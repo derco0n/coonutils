@@ -60,17 +60,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base_Classes\C_WinSessionHelper_Base.cs" />
     <Compile Include="C_BasicSettingsTemplate.cs" />
     <Compile Include="C_CIFSClient.cs" />
+    <Compile Include="C_CitrixSession.cs" />
     <Compile Include="C_Crypto.cs" />
     <Compile Include="C_FilesIndexer-Element.cs" />
     <Compile Include="C_FilesIndexer.cs" />
     <Compile Include="C_FTPClient.cs" />
     <Compile Include="C_LoggingHelper.cs" />
     <Compile Include="C_NetClient.cs" />
-    <Compile Include="C_NetworkConnection.cs" />
+    <Compile Include="Base_Classes\C_NetworkConnection.cs" />
     <Compile Include="C_RegExHelper.cs" />
     <Compile Include="C_RegistryHelper.cs" />
+    <Compile Include="C_WinSessionHelperRDP.cs" />
     <Compile Include="ErrorEventArgs.cs" />
     <Compile Include="ProgressEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
