@@ -132,7 +132,7 @@ namespace Co0nUtilZ
             {
                 // Get the bytes of the string
                 byte[] bytesToBeEncrypted = Encoding.UTF8.GetBytes(input);
-                
+
 
                 // Hash the password with SHA256
                 passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
@@ -177,7 +177,7 @@ namespace Co0nUtilZ
             {
                 // Get the bytes of the string
                 byte[] bytesToBeDecrypted = Convert.FromBase64String(input);
-                
+
                 passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
 
                 byte[] bytesDecrypted = AES_Decrypt(bytesToBeDecrypted, passwordBytes, saltBytes);

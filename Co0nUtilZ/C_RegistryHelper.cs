@@ -54,8 +54,8 @@ namespace Co0nUtilZ
         /// <param name="Subkey">subkey-path</param>
         public C_RegistryHelper(RegistryKey Rootkey, String Subkey)
         { //Konstruktor
-           this._rootkey = Rootkey;
-           this._subkey = Subkey;
+            this._rootkey = Rootkey;
+            this._subkey = Subkey;
         }
         #endregion
 
@@ -143,20 +143,20 @@ namespace Co0nUtilZ
         /// <param name="Instancename">Instanzname (Unterschlüssel des aktuellen Registry-Schlüssels)</param>
         /// <param name="valuename">Name des auszulesenden Werts</param>
         /// <returns>Gibt bei Erfolg den Wert des angegebenen Felds zurück. Im Fehlerfall wird ein leerer String zurück gegeben</returns>
-        public String ReadSettingFromRegistry(String Instancename, String valuename, String subkey="")
+        public String ReadSettingFromRegistry(String Instancename, String valuename, String subkey = "")
         {
             //Liest einen Wert aus der Windows Registry
 
             string keyName = "";
-                        
+
             if (subkey.Equals(""))
             { // subkey is not given, use the legacy path-finder: root\subk\instance
                 keyName = this._subkey + "\\" + Instancename;
-                
+
             }
             else
             { //subkey is given explicitly. use it
-                keyName = subkey;  
+                keyName = subkey;
             }
 
             RegistryKey Key = this._rootkey.OpenSubKey(keyName);  //This will preserve information about whether its the 32 or 64-Bit registry
@@ -284,7 +284,7 @@ namespace Co0nUtilZ
         /// //Listet alle Instanzen (Unterschlüssel des aktuellen Schlüsseln) auf
         /// </summary>
         /// <returns>Gibt eine Liste mit gefundenen Instanznamen zurück</returns>
-        public List<String> getInstances(string subkey="")
+        public List<String> getInstances(string subkey = "")
         {//Listet alle Instanzen auf
             List<String> myreturn = new List<string>();
 
@@ -294,7 +294,7 @@ namespace Co0nUtilZ
                 if (!subkey.Equals(""))
                 { //different subkey is specified
                     key = subkey;
-                }                
+                }
 
                 Microsoft.Win32.RegistryKey keyName = this.rootkey.OpenSubKey(key);
                 String[] Subkeys = keyName.GetSubKeyNames();

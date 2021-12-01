@@ -95,7 +95,7 @@ namespace Co0nUtilZ
         /// <param name="Sourcename">Name of the Logging-source (free of choice)</param>
         /// <param name="Log">Log to be used? Std.: Application</param>
         /// <param name="BaseID">The BaseID to be used if you prefer auto-incrementing numbers.</param>        
-        public C_LoggingHelper(String Sourcename, String MsgPrefix/*=""*/, String Log = "Application", UInt16 BaseID=10000)
+        public C_LoggingHelper(String Sourcename, String MsgPrefix/*=""*/, String Log = "Application", UInt16 BaseID = 10000)
         {//Konstruktor
             this._Logsourcename = Sourcename;
             this._Logname = Log;
@@ -105,7 +105,7 @@ namespace Co0nUtilZ
             this.ErrorNumbersInUse = new List<UInt16>();
             UInt16 prenum = (UInt16)(BaseID - 1); // Calculate the number before the BaseID
             this.InfoNumbersInUse.Add(prenum); // and add it to the InfoNumberInUseList
-            this.WarnNumbersInUse.Add((UInt16)(prenum+5000)); // Add a warning-base at an offset of 5000
+            this.WarnNumbersInUse.Add((UInt16)(prenum + 5000)); // Add a warning-base at an offset of 5000
             this.ErrorNumbersInUse.Add((UInt16)(prenum + 10000)); // Add a error-base at an offset of 10000
 
             bool sourceexists = false;
@@ -187,7 +187,7 @@ namespace Co0nUtilZ
         /// <param name="Message">Messagecontent</param>
         /// <param name="Messagenumber">Unique-messagenumber. Will use the next free if value is 0 or not specified</param>
         /// <returns>Returns FALSE on error. Otherwise TRUE</returns>
-        public bool LogError(String Message, UInt16 Messagenumber=0)
+        public bool LogError(String Message, UInt16 Messagenumber = 0)
         {
             if (Messagenumber == 0)
             {
@@ -210,7 +210,7 @@ namespace Co0nUtilZ
         /// <param name="Message">Messagecontent</param>
         /// <param name="Messagenumber">Unique-messagenumber. Will use the next free if value is 0 or not specified</param>
         /// <returns>Returns FALSE on error. Otherwise TRUE</returns>
-        public bool LogWarn(String Message, UInt16 Messagenumber=0)
+        public bool LogWarn(String Message, UInt16 Messagenumber = 0)
         {
             if (Messagenumber == 0)
             {
@@ -233,7 +233,7 @@ namespace Co0nUtilZ
         /// <param name="Message">Messagecontent</param>
         /// <param name="Messagenumber">Unique-messagenumber. Will use the next free if value is 0 or not specified</param>
         /// <returns>Returns FALSE on error. Otherwise TRUE</returns>
-        public bool LogInfo(String Message, UInt16 Messagenumber=0)
+        public bool LogInfo(String Message, UInt16 Messagenumber = 0)
         {
             if (Messagenumber == 0)
             {
