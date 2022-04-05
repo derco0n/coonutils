@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace Co0nUtilZ
 {
@@ -31,6 +33,7 @@ namespace Co0nUtilZ
         private String _Logsourcename;
         private String _Logname; //System oder Anwendungslog
         private String _MsgPrefix; // Prefix welches Nachrichten vorangestellt werden soll
+        private bool _OnErrorLogToFile = false; //Log to file if eventlog can't be written.
 
         //Keep track of the numbers beeing used
         private List<UInt16> InfoNumbersInUse;
@@ -95,7 +98,7 @@ namespace Co0nUtilZ
         /// <param name="Sourcename">Name of the Logging-source (free of choice)</param>
         /// <param name="Log">Log to be used? Std.: Application</param>
         /// <param name="BaseID">The BaseID to be used if you prefer auto-incrementing numbers.</param>        
-        public C_LoggingHelper(String Sourcename, String MsgPrefix/*=""*/, String Log = "Application", UInt16 BaseID = 10000)
+        public C_LoggingHelper(String Sourcename, String MsgPrefix/*=""*/, String Log = "Application", UInt16 BaseID = 10000, bool OnErrorLogToFile=false)
         {//Konstruktor
             this._Logsourcename = Sourcename;
             this._Logname = Log;
@@ -107,6 +110,7 @@ namespace Co0nUtilZ
             this.InfoNumbersInUse.Add(prenum); // and add it to the InfoNumberInUseList
             this.WarnNumbersInUse.Add((UInt16)(prenum + 5000)); // Add a warning-base at an offset of 5000
             this.ErrorNumbersInUse.Add((UInt16)(prenum + 10000)); // Add a error-base at an offset of 10000
+            this._OnErrorLogToFile = OnErrorLogToFile;
 
             bool sourceexists = false;
 
@@ -142,6 +146,51 @@ namespace Co0nUtilZ
 
         //Methoden
         /// <summary>
+        /// Tries to write a log to the eventlog. If _OnErrorLogToFile is set and writing to the eventlog fails, it'll try to write to a local file instead
+        /// </summary>
+        /// <param name="Message"></param>
+        /// <param name="Type"></param>
+        /// <param name="Messagenumber"></param>
+        private bool TryWriteLog(String msg, EventLogEntryType Type, UInt16 Messagenumber)
+        {   try
+            {
+                //throw new Exception("Test exception for debugging");
+                EventLog.WriteEntry(this._Logsourcename, msg, Type, (Int32)Messagenumber);
+            }
+            catch (Exception ex)
+            { //An error occured while writing to the event-log
+                if (this._OnErrorLogToFile)
+                { //as OnErrorlogtoFile is set, we write log and error down to a file within user's appdata\roaming
+                    try
+                    {
+                        string targetfile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "logs", "coonutils_logexceptions", "logerror_" +
+                                    String.Format("{0:yyyyMMdd_HH-mm-ss}", DateTime.Now) + "_" + Assembly.GetEntryAssembly().GetName().Name + 
+                                    //"-" + Assembly.GetExecutingAssembly().GetName().Name + 
+                                    ".txt");
+                        FileInfo finfo = new FileInfo(targetfile);
+                        if (!(new DirectoryInfo(finfo.DirectoryName)).Exists)
+                        {
+                            Directory.CreateDirectory(finfo.DirectoryName);
+                        }
+                        using (StreamWriter outFile = new StreamWriter(targetfile))
+                        {
+                            outFile.WriteLine("The following error occured while logging to eventlog -> " + ex.Message + "\r\n\r\nStacktrace:\r\n"+ ex.StackTrace + "\r\n\r\n Dumping original logmessage below:\r\n");
+                            outFile.WriteLine(msg);
+                        }
+                    }
+                    catch
+                    {
+                        //giving up, as text file can't be written either
+                    }
+
+                }
+                return false; //as we were unable to write to the eventlog, return false...
+            }
+            return true; //return true on success
+            
+        }
+
+        /// <summary>
         /// Logs a message to the windows eventlog. If the message is to large, it will be split into multiple chunks
         /// </summary>
         /// <param name="Message">Content of the message</param>
@@ -150,35 +199,34 @@ namespace Co0nUtilZ
         /// <returns>Returns FALSE on error. Otherwise TRUE</returns>
         public bool Log(String Message, EventLogEntryType Type, UInt16 Messagenumber)
         {
-            try
-            {
-                Message = this._MsgPrefix + Message; //Prefix voranstellen
+            bool myreturn = true; //assume / init with rseult ok
+          
+            Message = this._MsgPrefix + Message; //Prefix voranstellen
 
-                if (Message.Length > MESSAGE_MAXLENGTH)
-                {//Die Nachricht ist zu lang. Daher die Nachricht aufteilen
-                    List<String> Messageparts;
-                    C_RegExHelper myRegEx = new C_RegExHelper();
+            if (Message.Length > MESSAGE_MAXLENGTH)
+            {//Die Nachricht ist zu lang. Daher die Nachricht aufteilen
+                List<String> Messageparts;
+                C_RegExHelper myRegEx = new C_RegExHelper();
 
-                    double dchunks = Message.Length / (double)MESSAGE_MAXLENGTH;
-                    int chunks = (int)Math.Floor(dchunks);
+                double dchunks = Message.Length / (double)MESSAGE_MAXLENGTH;
+                int chunks = (int)Math.Floor(dchunks);
 
-                    Messageparts = myRegEx.SplitString(Message, chunks);
+                Messageparts = myRegEx.SplitString(Message, chunks);
 
-                    foreach (String msg in Messageparts)
+                foreach (String msg in Messageparts)
+                {
+                   if (! this.TryWriteLog(msg, Type, Messagenumber)) //if any of those chunk-writes returns false, the overall return-value will be false
                     {
-                        EventLog.WriteEntry(this._Logsourcename, msg, Type, (Int32)Messagenumber);
+                        myreturn = false;
                     }
                 }
-                else
-                {
-                    EventLog.WriteEntry(this._Logsourcename, Message, Type, (Int32)Messagenumber);
-                }
-                return true;
             }
-            catch (Exception ex)
+            else
             {
-                return false;
+                myreturn= this.TryWriteLog(Message, Type, Messagenumber); //we only write one chunk. it's return value will be the overall return value                   
             }
+           
+            return myreturn;
         }
 
         /// <summary>
