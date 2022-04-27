@@ -163,20 +163,13 @@ namespace Co0nUtilZ
                 { //as OnErrorlogtoFile is set, we write log and error down to a file within user's appdata\roaming
                     try
                     {
-                        string targetfile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "logs", "coonutils_logexceptions", "logerror_" +
+                        string prefix = "coonutils_logexceptions";
+                        string targetfile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "logs", prefix, "logerror_" +
                                     String.Format("{0:yyyyMMdd_HH-mm-ss}", DateTime.Now) + "_" + Assembly.GetEntryAssembly().GetName().Name + 
                                     //"-" + Assembly.GetExecutingAssembly().GetName().Name + 
                                     ".txt");
-                        FileInfo finfo = new FileInfo(targetfile);
-                        if (!(new DirectoryInfo(finfo.DirectoryName)).Exists)
-                        {
-                            Directory.CreateDirectory(finfo.DirectoryName);
-                        }
-                        using (StreamWriter outFile = new StreamWriter(targetfile))
-                        {
-                            outFile.WriteLine("The following error occured while logging to eventlog -> " + ex.Message + "\r\n\r\nStacktrace:\r\n"+ ex.StackTrace + "\r\n\r\n Dumping original logmessage below:\r\n");
-                            outFile.WriteLine(msg);
-                        }
+                        msg="The following error occured while logging to eventlog -> " + ex.Message + "\r\n\r\nStacktrace:\r\n" + ex.StackTrace + "\r\n\r\n Dumping original logmessage below:\r\n" + msg;
+                        this.logtofile(targetfile, msg, 30, prefix);
                     }
                     catch
                     {
@@ -188,6 +181,69 @@ namespace Co0nUtilZ
             }
             return true; //return true on success
             
+        }
+
+        /// <summary>
+        /// Logs the string in message to the file filename. Cleans up old logfiles, if removelogsolerthan > 0
+        /// </summary>
+        /// <param name="filename">the filename to be written to</param>
+        /// <param name="message">the content that should be written</param>
+        /// <param name="removelogsolderthan">if > 0, will remove logfiles older than specified (days)</param>
+        /// <param name="delprefix">the prefix of the filenames to be deleted (e.g. logfile_). Can be used and should be set to avoid deleting all old files in that folder.</param>
+        /// <returns>TRUE on success, otherwise FALSE</returns>
+        public bool logtofile(string filename, string message, int removelogsolderthan=-1, string delprefix="")
+        {
+            try
+            {
+                if (!filename.EndsWith(".txt")) //Avoid writing anything other than .txt-files. If the specified file doensn't end with .txt, append it.
+                {
+                    filename = filename + ".txt";
+                }
+
+                //Prepare
+                FileInfo finfo = new FileInfo(filename);
+                if (!(new DirectoryInfo(finfo.DirectoryName)).Exists)
+                {
+                    Directory.CreateDirectory(finfo.DirectoryName);
+                }
+                // Write the file
+                using (StreamWriter outFile = new StreamWriter(filename))
+                {
+                    outFile.WriteLine(filename);
+                }
+
+                //Cleanup old logfiles
+                if (removelogsolderthan > 0)
+                {
+                    //check if the logfiles-dir exists
+                    DirectoryInfo logfilesdir = new DirectoryInfo(finfo.DirectoryName);                    
+                    if (logfilesdir.Exists)
+                    {
+                        foreach (string file in Directory.GetFiles(logfilesdir.FullName, delprefix+"*.txt")) // find all logfiles (.txt) files in the logfiles-dir
+                        { // iterate through all files found
+
+                            FileInfo fi = new FileInfo(file);
+                            if (fi.LastWriteTime < DateTime.Now.AddDays(-0)) //check if the file is older than 60 days
+                            {
+                                try
+                                {
+                                    fi.Delete(); // if it is old, try to delete it
+                                }
+                                catch
+                                { //the logfile can't be deleted for whatever reason                                    
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
