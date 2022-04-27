@@ -52,6 +52,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.DirectoryServices.Protocols" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,6 +71,7 @@
     <Compile Include="C_FilesIndexer-Element.cs" />
     <Compile Include="C_FilesIndexer.cs" />
     <Compile Include="C_FTPClient.cs" />
+    <Compile Include="C_LDAPHelper.cs" />
     <Compile Include="C_LoggingHelper.cs" />
     <Compile Include="C_NetClient.cs" />
     <Compile Include="Base_Classes\C_NetworkConnection.cs" />

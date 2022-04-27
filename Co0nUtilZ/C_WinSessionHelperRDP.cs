@@ -173,6 +173,8 @@ namespace Co0nUtilZ
                 return new TimeSpan(CurrentTimeUTC - LastInputTimeUTC);
             }
         }
+
+        
     }
     #endregion
 

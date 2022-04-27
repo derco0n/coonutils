@@ -25,6 +25,7 @@ namespace Co0nUtilZ.Base_Classes
                                                 //", IdleMinutes=" + this.sessionInfo.IdleTime.TotalMinutes;
                                                 //return myreturn;
         }
+
     }
 
     /// <summary>
