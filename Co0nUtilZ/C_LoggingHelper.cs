@@ -207,7 +207,7 @@ namespace Co0nUtilZ
                 // Write the file
                 using (StreamWriter outFile = new StreamWriter(filename))
                 {
-                    outFile.WriteLine(filename);
+                    outFile.WriteLine(message);
                 }
 
                 //Cleanup old logfiles
