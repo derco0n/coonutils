@@ -220,7 +220,6 @@ namespace Co0nUtilZ
                         DateTime maxage = DateTime.Now.AddDays(removelogsolderthan * -1); //Calculate maximum file age
                         foreach (string file in Directory.GetFiles(logfilesdir.FullName, delprefix+"*.txt")) // find all logfiles (.txt) files in the logfiles-dir
                         { // iterate through all files found
-
                             FileInfo fi = new FileInfo(file);
                             if (fi.LastWriteTime < maxage) //check if the file is older than specified
                             {
