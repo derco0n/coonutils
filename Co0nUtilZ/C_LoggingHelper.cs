@@ -165,9 +165,7 @@ namespace Co0nUtilZ
                     {
                         string prefix = "coonutils_logexceptions";
                         string targetfile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "logs", prefix, "logerror_" +
-                                    String.Format("{0:yyyyMMdd_HH-mm-ss}", DateTime.Now) + "_" + Assembly.GetEntryAssembly().GetName().Name + 
-                                    //"-" + Assembly.GetExecutingAssembly().GetName().Name + 
-                                    ".txt");
+                                    String.Format("{0:yyyyMMdd_HH-mm-ss}", DateTime.Now) + "_" + Assembly.GetEntryAssembly().GetName().Name);
                         msg="The following error occured while logging to eventlog -> " + ex.Message + "\r\n\r\nStacktrace:\r\n" + ex.StackTrace + "\r\n\r\n Dumping original logmessage below:\r\n" + msg;
                         this.logtofile(targetfile, msg, 30, prefix);
                     }
@@ -219,11 +217,12 @@ namespace Co0nUtilZ
                     DirectoryInfo logfilesdir = new DirectoryInfo(finfo.DirectoryName);                    
                     if (logfilesdir.Exists)
                     {
+                        DateTime maxage = DateTime.Now.AddDays(removelogsolderthan * -1); //Calculate maximum file age
                         foreach (string file in Directory.GetFiles(logfilesdir.FullName, delprefix+"*.txt")) // find all logfiles (.txt) files in the logfiles-dir
                         { // iterate through all files found
 
                             FileInfo fi = new FileInfo(file);
-                            if (fi.LastWriteTime < DateTime.Now.AddDays(-0)) //check if the file is older than 60 days
+                            if (fi.LastWriteTime < maxage) //check if the file is older than specified
                             {
                                 try
                                 {
@@ -236,9 +235,8 @@ namespace Co0nUtilZ
                         }
                     }
                 }
-
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }
