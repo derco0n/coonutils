@@ -161,19 +161,11 @@ namespace Co0nUtilZ
             { //An error occured while writing to the event-log
                 if (this._OnErrorLogToFile)
                 { //as OnErrorlogtoFile is set, we write log and error down to a file within user's appdata\roaming
-                    try
-                    {
                         string prefix = "coonutils_logexceptions";
                         string targetfile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "logs", prefix, "logerror_" +
                                     String.Format("{0:yyyyMMdd_HH-mm-ss}", DateTime.Now) + "_" + Assembly.GetEntryAssembly().GetName().Name);
                         msg="The following error occured while logging to eventlog -> " + ex.Message + "\r\n\r\nStacktrace:\r\n" + ex.StackTrace + "\r\n\r\n Dumping original logmessage below:\r\n" + msg;
                         this.logtofile(targetfile, msg, 30, prefix);
-                    }
-                    catch
-                    {
-                        //giving up, as text file can't be written either
-                    }
-
                 }
                 return false; //as we were unable to write to the eventlog, return false...
             }
