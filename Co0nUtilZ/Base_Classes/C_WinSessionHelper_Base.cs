@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace Co0nUtilZ.Base_Classes
 {
@@ -14,11 +15,71 @@ namespace Co0nUtilZ.Base_Classes
         public string Server;
         public WTS_CONNECTSTATE_CLASS ConnectionState;
         public WTSINFOA sessionInfo;
+        public uint sessiontype;
+
+        public uint SESSIONTYPE_UNKNOWN {get {return 0;}}
+        public uint SESSIONTYPE_LOCAL {get {return 1;} }
+        public uint SESSIONTYPE_RDP {get {return 2;}}
+        public uint SESSIONTYPE_CITRIX {get {return 3;}}
+
+/// <summary>
+/// Returns the textual interpretation of the current sessiontype
+/// </summary>
+public string sessiontype_name
+        {
+            get
+            {
+                switch (this.sessiontype)
+                {                                           
+                    case 1:
+                        return "local";
+                    case 2:
+                        return "RDP";
+                    case 3:
+                        return "Citrix";
+                }
+                return "unknown";
+            }
+        }
+
+        public SessionInfo()
+        {
+            this.sessiontype = SESSIONTYPE_UNKNOWN;
+        }
+        
+        /// <summary>
+        /// sets the session type
+        /// </summary>
+        public void setSessionType()
+        {
+            string sessionname = "";
+            sessionname=this.sessionInfo.WinStationName.ToString();
+            if (null != sessionname && sessionname.ToLower().Equals("console")){
+                // Local session
+                this.sessiontype = SESSIONTYPE_LOCAL;                
+            }
+            else if (null != sessionname && sessionname.ToLower().Contains("rdp-"))
+            {
+                // Local session
+                this.sessiontype = SESSIONTYPE_RDP;
+            }
+            else if (null != sessionname && sessionname.ToLower().Contains("ica-"))
+            {
+                // Local session
+                this.sessiontype = SESSIONTYPE_CITRIX;
+            }
+
+        }
 
         public override string ToString()
         {
-            return /* string myreturn = */ this.UserName +
-                " (ID: " + this.SessionId.ToString() + ") " +
+            string cl = "local(no RDP)";
+            if (!this.Client.Equals(""))
+            {
+                cl = this.Client;
+            }
+            return /* string myreturn = */ this.UserName + "@" + cl + " on " + this.Server +
+                " (ID: " + this.SessionId.ToString() + ", Name: "+this.sessionInfo.WinStationName.ToString()+") " +
                 this.ConnectionState.ToString();//+ 
                                                 //" => Times: Now=" + this.sessionInfo.CurrentTime.ToString() + 
                                                 //", Lastinput= " + this.sessionInfo.LastInputTime.ToString() + 
@@ -68,5 +129,6 @@ namespace Co0nUtilZ.Base_Classes
         public abstract bool endSession(KeyValuePair<int, String> sess, String ServerName);
 
         public abstract bool endSession(SessionInfo sessionInfo);
+
     }
 }

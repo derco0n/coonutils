@@ -177,7 +177,7 @@ namespace Co0nUtilZ
         /// <param name="valuename">Name des zu schreibenden Felds</param>
         /// <param name="value">Wert</param>
         /// <returns>Gibt bei Erfolg TRUE zurück.</returns>
-        public bool WriteSettingToRegistry(String Instancename, String valuename, String value)
+        public bool WriteSettingToRegistry(String Instancename, String valuename, object value, RegistryValueKind rvkind = RegistryValueKind.String)
         {
             //Writes a value in the registry
             if (Instancename != null && valuename != null && value != null)
@@ -185,8 +185,8 @@ namespace Co0nUtilZ
                 //Only if all needed values are given
                 try
                 {
-                    string keyName = this._rootkey.Name + "\\" + this._subkey + "\\" + Instancename;
-                    Registry.SetValue(keyName, valuename, value);
+                    string keyName = this._rootkey.Name + "\\" + this._subkey + "\\" + Instancename;                    
+                    Registry.SetValue(keyName, valuename, value, rvkind);
                     return true;
                 }
                 catch (Exception ex)
@@ -226,6 +226,21 @@ namespace Co0nUtilZ
                 return false;
             }
 
+        }
+
+        /// <summary>
+        /// Removes all values of a given instance
+        /// </summary>
+        /// <param name="instancename">The instance's name.</param>
+        /// <returns>true on success otherwise false</returns>
+        public bool dropAllValues(String instancename)
+        {
+            bool myreturn = true;
+            foreach (string value in this.ListValues(instancename))
+            {
+                myreturn = myreturn & this.dropValue(instancename, value);                
+            }
+            return myreturn;
         }
 
         /// <summary>
@@ -317,6 +332,40 @@ namespace Co0nUtilZ
                 }
             }
             return myreturn;
+        }
+
+        public bool keyexists(string keyname="")
+        {
+            string lookup = this._subkey;
+            // if keyname is given search for it. if not given lookup this._subkey only
+            if (!keyname.Equals(""))
+            {
+                lookup = lookup + "\\" + keyname;
+            }
+            RegistryKey key = this._rootkey.OpenSubKey(lookup, true);
+            if (null != key)
+            { //key exists
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool createkey(string keyname = "")
+        {
+            string tocreate = this._subkey;
+            // if keyname is use it otherwise use this._subkey only
+            if (!keyname.Equals(""))
+            {
+                tocreate = tocreate + "\\" + keyname;
+            }
+
+            if (this._rootkey.CreateSubKey(tocreate) != null)
+            {
+                return true; //success
+            }
+
+            return false;
         }
 
         #endregion

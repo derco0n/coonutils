@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
+
+
 namespace Co0nUtilZ
 {
     #region some_enums_and_structs
@@ -383,7 +385,6 @@ namespace Co0nUtilZ
             return this.endSession(sess);
 
         }
-
         #endregion
     }
 }
