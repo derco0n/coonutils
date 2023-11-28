@@ -98,7 +98,7 @@ namespace Co0nUtilZ
             }
             name = name.ToLower();
             DirectoryEntry result = null;
-            ArrayList objs = this.searchObject(objectclass);
+            ArrayList objs = this.searchObject(objectclass); //It is highly inefficient to get a complete list of all matching object-types in the first place. TODO: adjust searchObject() to searchOne() instead of searchAll() when looking up a specific object (by name).
             foreach (SearchResult obj in objs)
             {
                 DirectoryEntry entry = obj.GetDirectoryEntry();
